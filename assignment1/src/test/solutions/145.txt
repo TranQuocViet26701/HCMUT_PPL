@@ -1,0 +1,1 @@
+inline,comment,inline,comment,<EOF>

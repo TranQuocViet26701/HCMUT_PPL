@@ -1,0 +1,21 @@
+ 
+Class Test {
+   swap(a, b: Boolean)
+{
+    Var tmp : Boolean;
+    tmp = a;
+    a = b;
+    b = tmp;
+    Other.printf(a, b);
+    ##Return True;
+    ##
+    Return;
+}
+    main(){
+    Var a, b : Int;
+    Var result: Boolean;
+    result = Test.swap(a,b);
+    Other.print(result);
+}
+}
+                

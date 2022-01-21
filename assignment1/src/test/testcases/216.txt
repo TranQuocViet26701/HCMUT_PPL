@@ -1,0 +1,9 @@
+ 
+Class Test : TestParent{
+        abc__bc_ab(c : Int){
+        }
+        print(a : String){
+            Return "hello" + a;
+        }
+}
+                

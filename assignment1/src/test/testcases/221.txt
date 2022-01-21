@@ -1,0 +1,9 @@
+ 
+Class Test {
+    main()
+        {
+            Foreach (i In 1 .. 100 By -1) {}
+        }
+}
+    
+                

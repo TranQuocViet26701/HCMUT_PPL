@@ -1,0 +1,11 @@
+ 
+Class Test {
+        main()
+        {
+            Foreach (i In 1 .. x {
+                
+            }
+        }
+}
+    
+                

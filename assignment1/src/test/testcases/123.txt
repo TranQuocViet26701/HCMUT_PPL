@@ -1,0 +1,4 @@
+
+            "He asked me: '"Where is John?'""
+            "This is a string containing tab 	"
+            

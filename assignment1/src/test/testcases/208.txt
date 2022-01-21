@@ -1,0 +1,7 @@
+ 
+                    Class Shape {
+                        Val $numOfShape: Int = 5+2;
+                        Val immutableAttribute: Int = 10*6/8;
+                        
+                        }
+                
