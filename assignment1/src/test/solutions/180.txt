@@ -1,0 +1,1 @@
+Class,A,{,Var,a,:,Int,=,5,;,},<EOF>

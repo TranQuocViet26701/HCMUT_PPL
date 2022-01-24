@@ -1,0 +1,1 @@
+class downto obj_zz {if a == b them "string\"\"\"" else "string\s"}

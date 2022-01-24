@@ -1,0 +1,2 @@
+string return(string input; int l) {classSTR.getData(input);
+if (l > 0) then return getS()^input; else return input;}

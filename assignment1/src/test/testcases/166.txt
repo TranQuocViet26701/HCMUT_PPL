@@ -1,0 +1,1 @@
+Return abc.getArea(1 True + 2) - (new obj()).arr[1];

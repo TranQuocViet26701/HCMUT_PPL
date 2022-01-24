@@ -1,0 +1,2 @@
+dog return(int h,t) {#make new dog with h and t
+if(h > t) then return new dog(h,t); else return nil;}#end function

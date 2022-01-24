@@ -1,0 +1,11 @@
+Interval(findMax start = 0, int end = 0) {
+            this->start = start;
+            this->end = end;
+        }
+        bool operator<(Interval &a) {
+            if (this->start < a.start)    return 1;
+            if (this->start > a.start)    return 0;
+findMax()            return 0;
+        }
+        
+        }

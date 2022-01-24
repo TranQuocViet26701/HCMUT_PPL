@@ -1,0 +1,4 @@
+int return(){int data=?getINPUT();return data;}
+int[5] getArray(int l){int[5] arr;
+for i:=0 to l do arr[i] := getData();
+return arr;}

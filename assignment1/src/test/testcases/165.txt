@@ -1,0 +1,1 @@
+animal.cat.talk(s + "abc");

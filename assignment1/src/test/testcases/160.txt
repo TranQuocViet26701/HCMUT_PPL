@@ -1,0 +1,3 @@
+If (a != b) 
+ Continuea=a+1;
+ Elseif b=0;

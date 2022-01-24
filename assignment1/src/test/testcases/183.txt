@@ -1,0 +1,2 @@
+Class A {void Float foo() {Out.print("abc")}}
+Class B : A {int[5] arr;}

@@ -536,5 +536,386 @@ class LexerSuite(unittest.TestCase):
             "*,All,characters,after,an,exclamation,mark,are,considered,as,comments,*,Error Token #",
             152
         ))       
+    def test_escape2(self):
+        """ Test Escape String """
+        self.assertTrue(TestLexer.test(
+            """
+    " hello hello lexer \t \b \n \""     asdf
+    """,
 
+            """Unclosed String:  hello hello lexer 	  """,
+            154
+        ))
+##======================================= Random ==========================================##
+    def test_random(self):
+        """ Test random"""
+        self.assertTrue(TestLexer.test(
+            """ Array("new","word"), """,
+            """Array,(,"new",,,"word",),,,<EOF>""",
+            155
+        ))
+# check WS and NEWLINE -> SKIP
+    def test_ws_1(self):
+        self.assertTrue(TestLexer.test(
+            "abc\\bb\t\fabc",
+            "abc,Error Token \\",
+            156
+        ))
+    def test_ws_2(self):
+        self.assertTrue(TestLexer.test(
+            "a\n\nb\tc\fd\r\r\t\f\tac+123?",
+            "a,b,c,d,ac,+,123,Error Token ?",
+            157
+        ))
+    def test_stmt_1(self):
+        self.assertTrue(TestLexer.test(
+            "break continue;",
+            "break,continue,;,<EOF>",
+            158
+        ))
+    def test_stmt_2(self):
+        self.assertTrue(TestLexer.test(
+            "continue;",
+            "continue,;,<EOF>",
+            159
+        ))
+    def test_stmt_3(self):
+        self.assertTrue(TestLexer.test(
+            "If (a != b) \n Continuea=a+1;\n Elseif b=0;",
+            "If,(,a,!=,b,),Continuea,=,a,+,1,;,Elseif,b,=,0,;,<EOF>",
+            160
+        ))
+    def test_stmt_4(self):
+        self.assertTrue(TestLexer.test(
+            "Return newn then animal(a,b + c);",
+            "Return,newn,then,animal,(,a,,,b,+,c,),;,<EOF>",
+            161
+        ))
+    def test_stmt_5(self):
+        self.assertTrue(TestLexer.test(
+            "callFn then unction(a + b*c % (d+2));",
+            "callFn,then,unction,(,a,+,b,*,c,%,(,d,+,2,),),;,<EOF>",
+            162
+        ))
+    def test_stmt_6(self):
+        self.assertTrue(TestLexer.test(
+            "a[7+9]=12;\nForeach (i In 1 .. 10 By 2) {\na[i]=a[i]+1;\ncalFunction(i);}",
+            "a,[,7,+,9,],=,12,;,Foreach,(,i,In,1,..,10,By,2,),{,a,[,i,],=,a,[,i,],+,1,;,calFunction,(,i,),;,},<EOF>", 
+            163
+        ))
+    def test_stmt_7(self):
+        self.assertTrue(TestLexer.test(
+            "a=1;\nb[1+c]=(True && !f || _z)!=false;",
+            "a,=,1,;,b,[,1,+,c,],=,(,True,&&,!,f,||,_z,),!=,false,;,<EOF>",
+            164
+        ))
+    def test_stmt_8(self):
+        self.assertTrue(TestLexer.test(
+            """animal.cat.talk(s + "abc");""",
+            """animal,.,cat,.,talk,(,s,+,"abc",),;,<EOF>""",
+            165
+        ))
+    def test_stmt_9(self):
+        self.assertTrue(TestLexer.test(
+            "Return abc.getArea(1 True + 2) - (new obj()).arr[1];",
+            "Return,abc,.,getArea,(,1,True,+,2,),-,(,new,obj,(,),),.,arr,[,1,],;,<EOF>",
+            166
+        ))
+    def test_stmt_10(self):
+        self.assertTrue(TestLexer.test(
+            "Foreach (i In 1 .. 10 By 2) {\ncallFunction(); if a == arr[1] then Break; else callF();}",
+            "Foreach,(,i,In,1,..,10,By,2,),{,callFunction,(,),;,if,a,==,arr,[,1,],then,Break,;,else,callF,(,),;,},<EOF>",
+            167
+        ))
+    # test method declaration
+    def test_met_de_1(self):
+        self.assertTrue(TestLexer.test(
+            "true(){}",
+            "true,(,),{,},<EOF>",
+            168
+        ))
+    def test_met_de_2(self):
+        self.assertTrue(TestLexer.test(
+            "cacul(int true falsea,b) {Return a +b;}",
+            "cacul,(,int,true,falsea,,,b,),{,Return,a,+,b,;,},<EOF>",
+            169
+        ))
+    def test_met_de_3(self):
+        self.assertTrue(TestLexer.test(
+            "classCheck(a,b : Int; c : Float) { If (a < b) {Return c;} Elseif {Return a + b;}}",
+            "classCheck,(,a,,,b,:,Int,;,c,:,Float,),{,If,(,a,<,b,),{,Return,c,;,},Elseif,{,Return,a,+,b,;,},},<EOF>",
+            170
+        ))
+    def test_met_de_4(self):
+        self.assertTrue(TestLexer.test(
+            "float ?function_test() {}",
+            "float,Error Token ?",
+            171
+        ))
+    def test_met_de_5(self):
+        self.assertTrue(TestLexer.test(
+            """void function_test(int a) {/*comment at here*/ getString("input\n");}""",
+            """void,function_test,(,int,a,),{,/,*,comment,at,here,*,/,getString,(,Unclosed String: input""",
+            172
+        ))
+    def test_met_de_6(self):
+        self.assertTrue(TestLexer.test(
+            "int add(int a,b) {return a+b;}\nfloat add(float a,b) {return a+b;}",
+            "int,add,(,int,a,,,b,),{,return,a,+,b,;,},float,add,(,float,a,,,b,),{,return,a,+,b,;,},<EOF>", 
+            173
+        ))
+    def test_met_de_7(self):
+        self.assertTrue(TestLexer.test(
+            "dog return(int h,t) {#make new dog with h and t\nif(h > t) then return new dog(h,t); else return nil;}#end function",
+            "dog,return,(,int,h,,,t,),{,Error Token #", 
+            174
+        ))
+    def test_met_de_8(self):
+        self.assertTrue(TestLexer.test(
+            "string return(string input; int l) {classSTR.getData(input);\nif (l > 0) then return getS()^input; else return input;}",
+            "string,return,(,string,input,;,int,l,),{,classSTR,.,getData,(,input,),;,if,(,l,>,0,),then,return,getS,(,),Error Token ^", 
+            175
+        ))
+    def test_met_de_9(self):
+        self.assertTrue(TestLexer.test(
+            "int return(){int data=?getINPUT();return data;}\nint[5] getArray(int l){int[5] arr;\nfor i:=0 to l do arr[i] := getData();\nreturn arr;}",
+            "int,return,(,),{,int,data,=,Error Token ?",
+            176
+        ))
+    def test_met_de_10(self):
+        self.assertTrue(TestLexer.test(
+            """ string get_Special_String(){return "abc\\g!!";}""",
+            """string,get_Special_String,(,),{,return,Illegal Escape In String: abc\g""",
+            177
+        ))
+    # test class
+    def test_class_1(self):
+        self.assertTrue(TestLexer.test(
+            "Class A{df }",
+            "Class,A,{,df,},<EOF>",
+            178
+        ))
+    def test_class_2(self):
+        self.assertTrue(TestLexer.test(
+            "Class A Class : B {}",
+            "Class,A,Class,:,B,{,},<EOF>",
+            179
+        ))
+    def test_class_3(self):
+        self.assertTrue(TestLexer.test(
+            "Class A{Var a : Int = 5;##this is cmt##}",
+            "Class,A,{,Var,a,:,Int,=,5,;,},<EOF>",
+            180
+        ))
+    def test_class_4(self):
+        self.assertTrue(TestLexer.test(
+            """Class str{ static string[3] a_str= {"abc","a\rb","xyz "}}""",
+            """Class,str,{,static,string,[,3,],a_str,=,{,"abc",,,Unclosed String: a""", 
+            181
+        ))
+    def test_class_5(self):
+        self.assertTrue(TestLexer.test(
+            "Class A {A(int a,b; float c) { callFunction(a + b - c);}}",
+            "Class,A,{,A,(,int,a,,,b,;,float,c,),{,callFunction,(,a,+,b,-,c,),;,},},<EOF>", 
+            182
+        ))
+    def test_class_6(self):
+        self.assertTrue(TestLexer.test(
+            """Class A {void Float foo() {Out.print("abc")}}\nClass B : A {int[5] arr;}""",
+            """Class,A,{,void,Float,foo,(,),{,Out,.,print,(,"abc",),},},Class,B,:,A,{,int,[,5,],arr,;,},<EOF>""",
+            183
+        ))
+    def test_class_7(self):
+        self.assertTrue(TestLexer.test(
+            "Class A {B makeNew@B()C { return new B();}}",
+            "Class,A,{,B,makeNew,Error Token @",
+            184
+        ))
+    def test_C_8(self):
+        self.assertTrue(TestLexer.test(
+            "Class A{} Class B {} Class C : A{##cmt}",
+            "Class,A,{,},Class,B,{,},Class,C,:,A,{,Error Token #",
+            185))
+    def test_class_9(self):
+        self.assertTrue(TestLexer.test(
+            "class A{for i downto := 1 downto 1.0E+123 do x := x + 2;#abc}",
+            "class,A,{,for,i,downto,:,=,1,downto,1.0E+123,do,x,:,=,x,+,2,;,Error Token #", 
+            190
+        ))
+    def test_class_10(self):
+        self.assertTrue(TestLexer.test(
+            """class downto obj_zz {if a == b them "string\\"\\"\\"" else "string\\s"}""",
+            r"""class,downto,obj_zz,{,if,a,==,b,them,Illegal Escape In String: string\"""",
+            186
+        ))
+    def test_random_1(self):
+        self.assertTrue(TestLexer.test(
+            "ascn downto +nad xmmc skc / 223 2.341 + sad - asc ___asint Initlit C++",
+            "ascn,downto,+,nad,xmmc,skc,/,223,2.341,+,sad,-,asc,___asint,Initlit,C,+,+,<EOF>", 
+            187
+        ))
+    def test_random_2(self):
+        self.assertTrue(TestLexer.test(
+            "check downto ant downto void ++ 2030/12 if a == b: z++; ",
+            "check,downto,ant,downto,void,+,+,2030,/,12,if,a,==,b,:,z,+,+,;,<EOF>", 
+            188
+        ))
+    def test_random_3(self):
+        self.assertTrue(TestLexer.test(
+            "#downto <stdio.h>\nint main(){}",
+            "Error Token #",
+            189
+        ))
+    def test_random_5(self):
+        self.assertTrue(TestLexer.test(
+            "1x  1z\n3y  main3t(x + z + y + 1) % 3(x + z + t + 1) % 3(x + y + t + 3) % 3(y + t + z + 3) % 3",
+            "1,x,1,z,3,y,main3t,(,x,+,z,+,y,+,1,),%,3,(,x,+,z,+,t,+,1,),%,3,(,x,+,y,+,t,+,3,),%,3,(,y,+,t,+,z,+,3,),%,3,<EOF>",
+            191
+        ))
+    def test_random_6(self):
+        self.assertTrue(TestLexer.test(
+            "class,A,{,void,foo,(,),{,print,(,abc,),},},class,B,extends,A,{,int,[,5,],arr,;,}",
+            "class,,,A,,,{,,,void,,,foo,,,(,,,),,,{,,,print,,,(,,,abc,,,),,,},,,},,,class,,,B,,,extends,,,A,,,{,,,int,,,[,,,5,,,],,,arr,,,;,,,},<EOF>", 
+            192
+        ))
+    def test_random_7(self):
+        self.assertTrue(TestLexer.test(
+            """#include <iostream>
+using namespace std;
+int main() {
+    for (int x = 1; x < 10; x++)
+        for (int y = 1; y < 10; y++)
+            
+                }
+}
+            """, 
+            "Error Token #", 
+            193
+        ))
+    def test_random_8(self):
+        self.assertTrue(TestLexer.test(
+            """if (N >= 10000)	num_of_thread = 1000;
+	                                      else  if = 1;
+            """,
+            "if,(,N,>=,10000,),num_of_thread,=,1000,;,else,if,=,1,;,<EOF>", 
+            194
+        ))
+#     def test_random_9(self):
+#         input = """printf("PI = %f\n", 4.0 * incircle / N);
+# 	printf("TIME = %d sec\n", (if int)(time(NULL) - start));
+# 	if(&lock);
+# 	pthread_exit(NULL);"""
+#         output = """printf,(,Unclosed String: PI = %f"""
+#         self.assertTrue(TestLexer.test(input,output,195))
+#     def test_random_10(self):
+#         input = """for(void void i = 0; i <= num_of_thread; i++) {
+# 		if (i != num_of_thread)
+# 			void(&threads[i], NULL, runner, (void *) loop_per_thread);
+# 		else
+# 			pthread_create(&threads[i], NULL, runner, (void *) (N % num_of_thread));
+# 	}"""
+#         output = """for,(,void,void,i,=,0,;,i,<=,num_of_thread,;,i,+,+,),{,if,(,i,!=,num_of_thread,),void,(,Error Token &"""
+#         self.assertTrue(TestLexer.test(input, output, 196))
+#     def test_random_11(self):
+#         input ="""
+#         void add(int s, int t) {
+#         Interval newBus;
+#         else if (insertBus(newBus)) {
+#             insertData(1, s);
+#             insertData(0, t);newBus.start = s;
+#         newBus.end = t;
+#         }
+#     }"""
+#         output = "void,add,(,int,s,,,int,t,),{,Interval,newBus,;,else,if,(,insertBus,(,newBus,),),{,insertData,(,1,,,s,),;,insertData,(,0,,,t,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,},},<EOF>"
+#         self.assertTrue(TestLexer.test(input,output,197))
+#     def test_random_12(self):
+#         input = """    void remove(int s, int t) {
+#         Interval deleteBus;
+#         deleteBus.start = s;
+#         deleteBus.end = t;
+#         else if (insertBus(deleteBus)) {
+#             insertData(1, s);
+# newBus.start = s;
+#         newBus.end = t;            findMax();
+#         }
+#     }
+#     int minPark() {
+#         return max;
+#     }"""
+#         output = "void,remove,(,int,s,,,int,t,),{,Interval,deleteBus,;,deleteBus,.,start,=,s,;,deleteBus,.,end,=,t,;,else,if,(,insertBus,(,deleteBus,),),{,insertData,(,1,,,s,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,findMax,(,),;,},},int,minPark,(,),{,return,max,;,},<EOF>"
+#         self.assertTrue(TestLexer.test(input, output, 198))
+#     def test_random_13(self):
+#         input = """/*cmt cmt cmt##### /*/*findMax abcd #123123\n\\z\t \\" 123 abc##### \\" \n"""
+#         output = """/,*,cmt,cmt,cmt,Error Token #"""
+#         self.assertTrue(TestLexer.test(input, output, 199))
+    def test_random_14(self):
+        input = """Interval(findMax start = 0, int end = 0) {
+            this->start = start;
+            this->end = end;
+        }
+        bool operator<(Interval &a) {
+            if (this->start < a.start)    return 1;
+            if (this->start > a.start)    return 0;
+findMax()            return 0;
+        }
+        
+        }"""
+        output = "Interval,(,findMax,start,=,0,,,int,end,=,0,),{,this,-,>,start,=,start,;,this,-,>,end,=,end,;,},bool,operator,<,(,Interval,Error Token &"
+        self.assertTrue(TestLexer.test(input, output, 200))
+    def test_random_15(self):
+        input = """create_button_skill() {
+        Instantiate(button_skill, new Vector3(-6.5f,-4f,0f), transform.rotation);
+    }
+    shootMask() {
+        Foreach (i In 0 .. num_bullet By 1) {
+            Instantiate(bullet_mask, fire_point.position, fire_point.rotation);  
+            shoot_Audio.Play(0);       
+        }
+    }"""
+        output = "create_button_skill,(,),{,Instantiate,(,button_skill,,,new,Vector3,(,-,6.5,f,,,-,4,f,,,0,f,),,,transform,.,rotation,),;,},shootMask,(,),{,Foreach,(,i,In,0,..,num_bullet,By,1,),{,Instantiate,(,bullet_mask,,,fire_point,.,position,,,fire_point,.,rotation,),;,shoot_Audio,.,Play,(,0,),;,},},<EOF>"
+        self.assertTrue(TestLexer.test(input, output, 129))
+    def test_random_16(self):
+        input = """void GameOver() {
+        ##  UPDATE LATE
+        --  EXPLOSION :))
+        ##
+    }"""
+        output = "void,GameOver,(,),{,},<EOF>"
+        self.assertTrue(TestLexer.test(input, output, 195))
+    def test_random_17(self):
+        input = """using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;voidvoid void
+findMax
+public class move : MonoBehaviour"""
+        output = "using,System,.,Collections,;,using,System,.,Collections,.,Generic,;,using,UnityEngine,.,SceneManagement,;,using,UnityEngine,.,UI,;,voidvoid,void,findMax,public,class,move,:,MonoBehaviour,<EOF>"
+        self.assertTrue(TestLexer.test(input, output, 196))
+    def test_random_18(self):
+        input = """n = int(input("Nhap n = "))
+count  = 0
+for i in range(n) :
+    count += i*i
+count3 = 0.0
+for i in range(1,n + 1):
+    count3 += 1/i
+count5 = 0.0
+    fac *= i
+    s += fac"""
+        output = '''n,=,int,(,input,(,"Nhap n = ",),),count,=,0,for,i,in,range,(,n,),:,count,+,=,i,*,i,count3,=,0.0,for,i,in,range,(,1,,,n,+,1,),:,count3,+,=,1,/,i,count5,=,0.0,fac,*,=,i,s,+,=,fac,<EOF>'''
+        self.assertTrue(TestLexer.test(input, output, 197))
+    def test_random_19(self):
+        input = """num  = float(input("Moi ban nhap so :"))
+fl = num - int(num)
+##[0,0.25)    => 0##
+##[0.25,0.75) => 0.5##
+fl = int(fl * 4)
+print("So lam tron :",float(int(num) + myroud[fl]))"""
+        output = """num,=,float,(,input,(,"Moi ban nhap so :",),),fl,=,num,-,int,(,num,),fl,=,int,(,fl,*,4,),print,(,"So lam tron :",,,float,(,int,(,num,),+,myroud,[,fl,],),),<EOF>"""
+        self.assertTrue(TestLexer.test(input, output, 198))
+    def test_random_20(self):
+        input = """money = int(input("dd"))
+print(f"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1")"""
+        output = """money,=,int,(,input,(,"dd",),),print,(,f,"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1",),<EOF>"""
+        self.assertTrue(TestLexer.test(input, output, 199))
 

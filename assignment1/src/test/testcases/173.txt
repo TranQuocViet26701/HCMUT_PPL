@@ -1,0 +1,2 @@
+int add(int a,b) {return a+b;}
+float add(float a,b) {return a+b;}

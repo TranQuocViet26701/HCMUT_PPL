@@ -1,1 +1,1 @@
-Unclosed String:  hello lexer 	  
+create_button_skill,(,),{,Instantiate,(,button_skill,,,new,Vector3,(,-,6.5,f,,,-,4,f,,,0,f,),,,transform,.,rotation,),;,},shootMask,(,),{,Foreach,(,i,In,0,..,num_bullet,By,1,),{,Instantiate,(,bullet_mask,,,fire_point,.,position,,,fire_point,.,rotation,),;,shoot_Audio,.,Play,(,0,),;,},},<EOF>

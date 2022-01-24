@@ -1,0 +1,1 @@
+classCheck,(,a,,,b,:,Int,;,c,:,Float,),{,If,(,a,<,b,),{,Return,c,;,},Elseif,{,Return,a,+,b,;,},},<EOF>

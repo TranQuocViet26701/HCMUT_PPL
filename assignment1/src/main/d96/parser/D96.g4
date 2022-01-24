@@ -238,7 +238,7 @@ fragment ESC_SEQ: '\\' [btnfr'\\];
 
 fragment ESC_ILLEGAL: '\\' ~[btnfr'\\];
 
-WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
+WS: [ \t\r\f\n]+ -> skip; // skip spaces, tabs, form feed, newlines
 NEWLINE: '\n'+ -> skip;
 
 UNCLOSE_STRING: '"' STR_CHAR* EOF { raise UncloseString(self.text[1:])}

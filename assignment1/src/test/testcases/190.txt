@@ -1,0 +1,1 @@
+class A{for i downto := 1 downto 1.0E+123 do x := x + 2;#abc}
