@@ -49,13 +49,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#instance_attr_names.
-    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#static_attr_names.
-    def visitStatic_attr_names(self, ctx:D96Parser.Static_attr_namesContext):
+    # Visit a parse tree produced by D96Parser#attr_name.
+    def visitAttr_name(self, ctx:D96Parser.Attr_nameContext):
         return self.visitChildren(ctx)
 
 
@@ -159,6 +154,11 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by D96Parser#expr11.
+    def visitExpr11(self, ctx:D96Parser.Expr11Context):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by D96Parser#list_of_expr.
     def visitList_of_expr(self, ctx:D96Parser.List_of_exprContext):
         return self.visitChildren(ctx)
@@ -181,6 +181,11 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#declaration_statement.
     def visitDeclaration_statement(self, ctx:D96Parser.Declaration_statementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#instance_attr_names.
+    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
         return self.visitChildren(ctx)
 
 
@@ -301,16 +306,6 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#class_type.
     def visitClass_type(self, ctx:D96Parser.Class_typeContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#multi_array_lit.
-    def visitMulti_array_lit(self, ctx:D96Parser.Multi_array_litContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#multi_arraylist.
-    def visitMulti_arraylist(self, ctx:D96Parser.Multi_arraylistContext):
         return self.visitChildren(ctx)
 
 

@@ -25,10 +25,15 @@ member: attribute_declare | method_declare;
 /**** Attribute ****/
 attribute_declare: (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
 
-names_type_list: attr_names COLON data_type;										// $?My1stCons, $?My2ndCons: Int
-attr_names: instance_attr_names | static_attr_names;								
-instance_attr_names: ID CM instance_attr_names | ID;								// a, b
-static_attr_names: DOLLAR_ID CM static_attr_names | DOLLAR_ID;						// $a, $b
+// fixed list attribute names
+names_type_list: attr_names COLON data_type;
+attr_names: attr_name CM attr_names | attr_name;	
+attr_name: DOLLAR_ID | ID;										// $?My1stCons, $?My2ndCons: Int
+// attr_names: instance_attr_names | static_attr_names;			
+// static_attr_names: DOLLAR_ID CM static_attr_names | DOLLAR_ID;						// $a, $b
+
+
+
 
 initialization: ASSIGN exprlist | ;													// (= 1 + 5, 2)?
 exprlist: expr CM exprlist | expr;				
@@ -41,7 +46,9 @@ special_instance_name: CONSTRUCTOR | DESTRUCTOR;
 
 paramlist: params | ;
 params: param SEMI params | param;
-param: names_type_list;
+// param: names_type_list;
+// ******* can be mixed instance and static param ??
+param: instance_attr_names COLON data_type;											
 
 /**********************************************************************/
 /*							  Expression						   	  */
@@ -60,16 +67,16 @@ expr6: SUB expr6 | expr7;													// - right
 expr7: expr7 index_operators | expr8;										// [,] left
 index_operators: LSB expr RSB | LSB expr RSB index_operators;
 
-expr8: expr8 DOT ID | ID TWOCOLON DOLLAR_ID 										// ., :: left
-	| expr8 DOT ID LB list_of_expr RB | ID TWOCOLON DOLLAR_ID LB list_of_expr RB 
-	| expr9;
+expr8: expr8 DOT ID | expr8 DOT ID LB list_of_expr RB | expr9;				// . left
 
-expr9: NEW ID LB list_of_expr RB | expr10;											// New right
-expr10: LB expr RB | ID | DOLLAR_ID | SELF | literal | method_call;
+expr9: ID TWOCOLON DOLLAR_ID | ID TWOCOLON DOLLAR_ID LB list_of_expr RB | expr10;	// :: none
+
+expr10: NEW ID LB list_of_expr RB | expr11;											// New right
+expr11: LB expr RB | ID | DOLLAR_ID | SELF | literal | method_call;					// method_call ?????????
 
 list_of_expr: exprlist | ;
-method_call: ID LB list_of_expr RB | DOLLAR_ID LB list_of_expr RB;					// expression as a method inside a class
-literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit | multi_array_lit;
+method_call: ID LB list_of_expr RB | DOLLAR_ID LB list_of_expr RB;					// expression as a method inside a class ???
+literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit ;
 /**********************************************************************/
 /*							  Statement						   	  	  */
 /**********************************************************************/
@@ -84,6 +91,7 @@ statement: declaration_statement
 		| block_statement;
 
 declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
+instance_attr_names: ID CM instance_attr_names | ID;											// a, b
 
 assignment_statement: lhs ASSIGN expr SEMI;
 lhs: ID | expr7;
@@ -94,7 +102,7 @@ elseif_statements: elseif_statement elseif_statements | else_statement;
 elseif_statement: ELSEIF expr block_statement;
 else_statement: ELSE block_statement |;
 
-for_statement: FOREACH LB ID IN expr DOT DOT expr by_expr_in_for RB block_statement;
+for_statement: FOREACH LB ID IN expr TWODOT expr by_expr_in_for RB block_statement;
 by_expr_in_for: BY expr | ;
 
 break_statement: BREAK SEMI;
@@ -132,22 +140,21 @@ BLOCK_COMMENT: '##' .*? '##' -> skip;
 /**** LITERALS ****/
 INTLIT: (DECIMAL | BINARY | HEXADECIMAL | OCTAL ) {self.text = self.text.replace("_", "")};
 DECIMAL: '0' | [1-9]DIGIT*('_'DIGIT+)*;
-HEXADECIMAL: '0'[xX][0-9A-F]+('_'[0-9A-F]+)*;
-OCTAL: '0'DIGIT+('_'DIGIT+)*;
-BINARY: '0'[bB][01]+('_'[01]+)*;
+// HEXADECIMAL: '0'[xX][0-9A-F]+('_'[0-9A-F]+)*;
+HEXADECIMAL: '0'[xX]'0' | '0'[xX][1-9A-F][0-9A-F]*('_'[0-9A-F]+)*;	// Fix 0 case
+// OCTAL: '0'[0-7]+('_'[0-7]+)*;
+OCTAL: '00' | '0'[1-7][0-7]*('_'[0-7]+)*;							// Fix 0 case
+// BINARY: '0'[bB][01]+('_'[01]+)*;
+BINARY: '0'[bB]'0' | '0'[bB]'1'[01]*('_'[01]+)*;					// Fix 0 case
 
-FLOATLIT: ( DECIMAL DOT 
-		| DECIMAL DOT DIGIT+('_'DIGIT+)*
-		| DECIMAL DOT [eE] [-+]? [1-9]DIGIT*('_'DIGIT+)*  //confused case: 1.e10
-		| DECIMAL (DOT DIGIT+('_'DIGIT+)*)? [eE] [+-]? [1-9]DIGIT*('_'DIGIT+)*) 
+FLOATLIT: ( DECIMAL DOT DIGIT*							// 1. OR 1.2
+		| DECIMAL (DOT DIGIT*)? [eE] [+-]? DIGIT+ 		// 1E10 OR 1.E1 1.01E10
+		| DOT DIGIT* [eE] [+-]? DIGIT+ )				// .E123
 		{self.text = self.text.replace("_", "")} ;
 
 BOOLLIT: TRUE | FALSE ;
 
 STRINGLIT: '"' STR_CHAR* '"';
-
-multi_array_lit: ARRAY LB multi_arraylist RB;
-multi_arraylist: array_lit CM multi_arraylist | array_lit;
 
 array_lit: ARRAY LB arraylist RB;
 arraylist: expr CM arraylist | expr;
@@ -211,6 +218,7 @@ LSB: '[';
 RSB: ']';
 SEMI: ';';
 COLON: ':';
+TWODOT: '..';
 DOT: '.'; // DOT_OP AND DOT IS THE SAME LEXEM.
 CM: ',';
 

@@ -104,7 +104,7 @@ class LexerSuite(unittest.TestCase):
         """test valid integer literal"""
         self.assertTrue(TestLexer.test(
             "0 1 0x01 0b01 001 1_000_000",
-            "0,1,0x01,0b01,001,1000000,<EOF>",
+            "0,1,0x0,1,0b0,1,00,1,1000000,<EOF>",
             120
         ))   
     
@@ -116,9 +116,16 @@ class LexerSuite(unittest.TestCase):
             000000000000000001 09132 321 
             000000000000001
             """,
-            "0001321,00000031231,000312312,00312,0,123,132,012,1,2,3,8912,000000000000000001,09132,321,000000000000001,<EOF>",
+            "00,01321,00,00,00,31231,00,0312312,00,312,0,123,132,012,1,2,3,8912,00,00,00,00,00,00,00,00,01,0,9132,321,00,00,00,00,00,00,00,1,<EOF>",
             122
-        ))   
+        ))
+    def test_invalid_intlit2(self):
+        """test invalid integer literal"""
+        self.assertTrue(TestLexer.test(
+            "00123 0b01010 0x0123 0b1100 0X0_AABB_CCDD 0B00_001_101 010101 000000 0b0010",
+            "00,123,0b0,1010,0x0,123,0b1100,0X0,_AABB_CCDD,0B0,0,_001_101,010101,00,00,00,0b0,010,<EOF>",
+            153
+        ))    
     
     def test_invalid_intlit(self):
         """test invalid integer literal"""
@@ -164,7 +171,7 @@ class LexerSuite(unittest.TestCase):
         """test valid float literal"""
         self.assertTrue(TestLexer.test(
             "123_456. 0.123_456 123_456.12_34_56 1.5e123_456 1_0.1_2e-1_000",
-            "123456.,0.123456,123456.123456,1.5e123456,10.12e-1000,<EOF>",
+            "123456.,0.123,_456,123456.12,_34_56,1.5e123,_456,10.1,_2e,-,1000,<EOF>",
             117
         ))     
     
@@ -172,7 +179,7 @@ class LexerSuite(unittest.TestCase):
         """test invalid float literal"""
         self.assertTrue(TestLexer.test(
             "00001.1101010101000 000000001e-542400 000313121.e00031321132",
-            "00001,.,1101010101000,000000001,e,-,542400,000313121,.,e00031321132,<EOF>",
+            "00,00,1.1101010101000,00,00,00,00,1e-542400,00,0313121,.e00031321132,<EOF>",
             118
         ))     
     
@@ -180,7 +187,7 @@ class LexerSuite(unittest.TestCase):
         """test invalid float literal"""
         self.assertTrue(TestLexer.test(
             "1e 123e e123 e-132 -e123 123e1 .e10",
-            "1,e,123,e,e123,e,-,132,-,e123,123e1,.,e10,<EOF>",
+            "1,e,123,e,e123,e,-,132,-,e123,123e1,.e10,<EOF>",
             119
         ))     
 ##======================================= Stringlit ==========================================##
@@ -528,4 +535,6 @@ class LexerSuite(unittest.TestCase):
             """,
             "*,All,characters,after,an,exclamation,mark,are,considered,as,comments,*,Error Token #",
             152
-        ))
+        ))       
+
+
