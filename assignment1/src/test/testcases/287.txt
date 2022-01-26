@@ -1,0 +1,13 @@
+
+Class special_student : student {
+    VAl list_skill_special : Array[String, 100];
+    Val num_skill : Int;
+    special_student(c : Classssss) {
+        Self.student(name, id, c);
+        num_skill = 0;
+        updateSkill(skill : String) {
+        Self.list_skill_special[123] = skill; 
+        num_skill = num_skill + 1;
+    }
+    }
+}

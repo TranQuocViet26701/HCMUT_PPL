@@ -1,0 +1,14 @@
+
+Class display {
+    Val $dis_instance : Float;
+    Var txt : Text;
+    Start()
+    {
+        If ($dis_instance == null)  {
+            dis_instance = Self;
+        }
+    }
+    $Display(str: String) {
+        txt.text = str;
+    }
+}

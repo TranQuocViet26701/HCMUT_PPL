@@ -1,0 +1,8 @@
+
+Class skill_check {
+    FixedUpdate()
+    {
+        If (Input.GetKeyDown("s")) {
+        }
+    }
+}

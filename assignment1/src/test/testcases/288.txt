@@ -1,0 +1,8 @@
+
+Class  Class {
+    
+    student getdStudent() {
+        if (option == True) 
+            { Return New special_student(name,id,c);}
+    }
+}

@@ -1,0 +1,17 @@
+
+Class ButtonRun {
+    Var my_skill : skill;
+    InitButton(input_skill : Skill) {
+        Self.my_skill = input_skill;
+        txt.text = my_skill.getName();
+    }
+    clickButton() {
+        my_skill.displayData();
+    }
+}
+Class manager_skill {
+    Val list_button :ButtonRun;
+    manager_skill(all_skill : i) {
+        list_button.InitButton(factory_skill.get_skill(i));
+    }
+}

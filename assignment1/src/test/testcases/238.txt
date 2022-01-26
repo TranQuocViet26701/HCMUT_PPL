@@ -1,0 +1,8 @@
+
+        Class testData : PPL {
+            _LoopTest() {
+                Foreach (incre In -10 .. (22+a) By -(22+5)) {
+                    Return (a!=10 && !a);
+                }
+            }
+        }

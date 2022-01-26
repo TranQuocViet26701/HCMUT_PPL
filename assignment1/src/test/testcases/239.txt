@@ -1,0 +1,12 @@
+
+        Class School {
+            cloneStudent(stu: Student){
+                Var clone : Student = "qwerty\n";
+                If (clone != nil) {
+                    Return clone;
+                }
+                Else {
+                    Return null;
+                }
+            }
+        }

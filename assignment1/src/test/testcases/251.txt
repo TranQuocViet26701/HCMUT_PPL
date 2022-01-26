@@ -1,0 +1,9 @@
+
+        Class mainClass {
+            main() {
+                Var c1 : C1 = New C1();
+                Val c2 = New C2(c1);
+                Var c3 : C3 = New C3("abc
+                ",c1);
+            }
+        }

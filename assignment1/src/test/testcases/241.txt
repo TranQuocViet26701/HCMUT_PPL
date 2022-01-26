@@ -1,0 +1,18 @@
+Class Res {
+            Add(a, b : Int) {
+                Return a + b;
+            }
+            Add(a,b : Float) {
+                Return a + b || c % 2 / 1 * a;
+            }
+            Add(a,b : Boolean) {
+                Return a || !b && !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(c == f);
+            }
+            Add (a : String) {
+                Add(10);
+            }
+            makeNew(a : Int; b : Float) {
+                If ( a== 0) {
+                
+            }
+        }

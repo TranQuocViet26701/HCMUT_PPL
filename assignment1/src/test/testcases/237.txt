@@ -1,0 +1,9 @@
+
+        Class testData : PPL {
+            $loopTestTest(int a,v; float c,d; boolean a,s; string str1,str2; Room r1,r2) {
+                for i = (a + c -d == f) downto a+(a >=d)/32 do {
+                    If ((a > f-1)&&(a||1)) {Break;}
+                    If (a > f-1) {Break;}
+                }
+            }
+        }

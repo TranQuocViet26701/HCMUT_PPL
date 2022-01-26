@@ -1,1 +1,1 @@
-num,=,float,(,input,(,"Moi ban nhap so :",),),fl,=,num,-,int,(,num,),fl,=,int,(,fl,*,4,),print,(,"So lam tron :",,,float,(,int,(,num,),+,myroud,[,fl,],),),<EOF>
+"Use \n in string. Is OK!",<EOF>

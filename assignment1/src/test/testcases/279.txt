@@ -1,0 +1,7 @@
+
+Class Student {
+        Val studentID : Int;
+        getAverage()  {
+            Return (float)sumMark / numOfGrade;
+        }
+};

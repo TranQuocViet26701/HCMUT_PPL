@@ -20,35 +20,27 @@ program: class_declare+ EOF;
 class_declare: CLASS ID ( COLON ID)? LP memberlist RP;							// Class ID (: ID)? {...}
 memberlist: members | ;							
 members: member members | member;
-member: attribute_declare | method_declare;
+member: attribute_declare | method_declare ;
 
 /**** Attribute ****/
-attribute_declare: (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
+attribute_declare : (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
 
 // fixed list attribute names
 names_type_list: attr_names COLON data_type;
-attr_names: attr_name CM attr_names | attr_name;	
-attr_name: DOLLAR_ID | ID;										// $?My1stCons, $?My2ndCons: Int
-// attr_names: instance_attr_names | static_attr_names;			
-// static_attr_names: DOLLAR_ID CM static_attr_names | DOLLAR_ID;						// $a, $b
-
-
+attr_names: identifier CM attr_names | identifier;	
+identifier: ID | DOLLAR_ID;															// $?My1stCons, $?My2ndCons: Int
 
 
 initialization: ASSIGN exprlist | ;													// (= 1 + 5, 2)?
 exprlist: expr CM exprlist | expr;				
 
 /**** Method ****/
-method_declare: method_name LB paramlist RB block_statement;
-
-method_name: special_instance_name | ID | DOLLAR_ID;								// name method
-special_instance_name: CONSTRUCTOR | DESTRUCTOR;
-
+method_declare: CONSTRUCTOR LB paramlist RB block_statement
+				| DESTRUCTOR LB RB block_statement
+				| identifier LB paramlist RB block_statement;  
 paramlist: params | ;
 params: param SEMI params | param;
-// param: names_type_list;
-// ******* can be mixed instance and static param ??
-param: instance_attr_names COLON data_type;											
+param: instance_attr_names COLON data_type;	
 
 /**********************************************************************/
 /*							  Expression						   	  */
@@ -124,9 +116,9 @@ statements: statement statements | statement;
 data_type: primitive_type | array_type | class_type;
 primitive_type: INT | FLOAT | BOOLEAN | STRING;
 
-array_type: ARRAY LSB element_type CM size_array RSB;								// Array[<element_type>, <size>] (size maybe 0 !!!)
+array_type: ARRAY LSB element_type CM size_array RSB;								
 element_type: primitive_type | array_type;
-size_array: INTLIT;																	// required "The lower bound is always 1", but maybe 0 now !!
+size_array: {self.getCurrentToken().text not in ['0', '00', '0b0', '0B0', '0x0', '0X0']}? INTLIT;																	// required "The lower bound is always 1", but maybe 0 now !!
 
 class_type: ID; 
 
@@ -138,26 +130,23 @@ class_type: ID;
 BLOCK_COMMENT: '##' .*? '##' -> skip;
 
 /**** LITERALS ****/
-INTLIT: (DECIMAL | BINARY | HEXADECIMAL | OCTAL ) {self.text = self.text.replace("_", "")};
-DECIMAL: '0' | [1-9]DIGIT*('_'DIGIT+)*;
-// HEXADECIMAL: '0'[xX][0-9A-F]+('_'[0-9A-F]+)*;
-HEXADECIMAL: '0'[xX]'0' | '0'[xX][1-9A-F][0-9A-F]*('_'[0-9A-F]+)*;	// Fix 0 case
-// OCTAL: '0'[0-7]+('_'[0-7]+)*;
-OCTAL: '00' | '0'[1-7][0-7]*('_'[0-7]+)*;							// Fix 0 case
-// BINARY: '0'[bB][01]+('_'[01]+)*;
-BINARY: '0'[bB]'0' | '0'[bB]'1'[01]*('_'[01]+)*;					// Fix 0 case
+INTLIT: ('0' | '00' | '0'[bB]'0' | '0'[xX]'0'
+		| NONEZERO_BINARY | NONEZERO_DECIMAL
+		| NONEZERO_HEXADECIMAL | NONEZERO_OCTAL
+		) {self.text = self.text.replace("_", "")};
 
-FLOATLIT: ( DECIMAL DOT DIGIT*							// 1. OR 1.2
-		| DECIMAL (DOT DIGIT*)? [eE] [+-]? DIGIT+ 		// 1E10 OR 1.E1 1.01E10
-		| DOT DIGIT* [eE] [+-]? DIGIT+ )				// .E123
-		{self.text = self.text.replace("_", "")} ;
+FLOATLIT: ( ( '0' | NONEZERO_DECIMAL) '.' DIGIT*							// 1. OR 1.2
+		| ( '0' | NONEZERO_DECIMAL) ('.' DIGIT*)? [eE] [+-]? DIGIT+ 		// 1E10 OR 1.E1 1.01E10
+		| '.' DIGIT* [eE] [+-]? DIGIT+ 										// .e-10
+		) {self.text = self.text.replace("_", "")} ;
 
 BOOLLIT: TRUE | FALSE ;
 
 STRINGLIT: '"' STR_CHAR* '"';
 
 array_lit: ARRAY LB arraylist RB;
-arraylist: expr CM arraylist | expr;
+arraylist: array_elements | ;
+array_elements: expr CM array_elements | expr;
 
 /**** KEYWORD ****/
 BREAK: 'Break';
@@ -183,7 +172,7 @@ CLASS: 'Class';
 VAL: 'Val';
 VAR: 'Var';
 CONSTRUCTOR: 'Constructor';
-DESTRUCTOR: 'Destructor';
+DESTRUCTOR: 'Destructor' {self.text = 'Destructorrrrr'};
 NEW: 'New';
 BY: 'By';
 
@@ -222,7 +211,7 @@ TWODOT: '..';
 DOT: '.'; // DOT_OP AND DOT IS THE SAME LEXEM.
 CM: ',';
 
-
+/**** IDENTIFIERS ****/
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 DOLLAR_ID: '$'[a-zA-Z0-9_]+;
 
@@ -231,6 +220,14 @@ DOLLAR_ID: '$'[a-zA-Z0-9_]+;
 
 /**** FRAGMENTS ****/
 fragment DIGIT: [0-9];
+
+fragment NONEZERO_DECIMAL: [1-9]DIGIT*('_'DIGIT+)*;
+
+fragment NONEZERO_HEXADECIMAL: '0'[xX][1-9A-F][0-9A-F]*('_'[0-9A-F]+)*;	
+
+fragment NONEZERO_OCTAL: '0'[1-7][0-7]*('_'[0-7]+)*;							
+
+fragment NONEZERO_BINARY: '0'[bB]'1'[01]*('_'[01]+)*;					
 
 fragment STR_CHAR: ESC_SEQ | ~[\\"\n\r] | '\'"';
 

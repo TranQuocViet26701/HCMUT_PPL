@@ -1,1 +1,1 @@
-money,=,int,(,input,(,"dd",),),print,(,f,"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1",),<EOF>
+Unclosed String: abd\n\t\r\b 

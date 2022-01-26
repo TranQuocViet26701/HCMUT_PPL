@@ -1,0 +1,16 @@
+
+    Class Subject {
+            
+            Subject(n : String; $number: Int) { name=n; sLec=0;}
+            getNameSubject() { Return name; }
+            setNameSubject(n : String) { name = n; }
+            inputData() {
+               
+                io.print("---------------\n");
+                io.print("Input name of Subject: ");
+                io.fflush(stdin);
+                io.getline(n);
+                name = n;
+            }
+           
+    }

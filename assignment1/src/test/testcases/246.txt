@@ -1,0 +1,10 @@
+
+        Class C3 : C2 {
+            Val string : String;
+            Constructor(self, name : String) {
+                Return "Name of C3: " +. name;
+            }
+            CheckName(n1 : String) {
+                Return string == self.name;
+            }
+        }

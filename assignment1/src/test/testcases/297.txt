@@ -1,0 +1,6 @@
+
+Class tesster {
+    getCaculatorInt() {
+        arr = Array(1, a - b, a * bb);
+    }
+}

@@ -1,0 +1,4 @@
+
+        Class a : _class {
+            Var $x: Float = 1.0, y: Int = 3;
+        }

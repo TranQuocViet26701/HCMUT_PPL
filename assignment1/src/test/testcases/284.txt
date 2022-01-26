@@ -1,0 +1,20 @@
+
+Class heap {
+ minWaitingTime(arr: Array[]) {
+     curTime = 0;
+
+    return totalWaitTime;   
+for i=((-1!=true||false)==(22/15)) downto xyz do {
+        for i = 0 to n do {
+            if ((curTime >= arrvalTime[i]) && ((serCos == -1) || (serTime > completeTime[i]))) then {
+                    serCos = i;
+                    serTime = completeTime[i];
+            }
+            if (min == -1) || (min > arrvalTime[i])    min = arrvalTime[i];
+        }
+        else    curTime = min;
+        if n < 0 then break;
+    }
+}
+
+}

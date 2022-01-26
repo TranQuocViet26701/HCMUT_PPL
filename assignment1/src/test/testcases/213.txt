@@ -1,6 +1,6 @@
  
     Class Shape {
-        ## This is a class for shape ##
+        ## Self is a class for shape ##
         Val $numOfShape: Int = 0;
         Val immutableAttribute: Int = 0;
         Var length, width: Int;

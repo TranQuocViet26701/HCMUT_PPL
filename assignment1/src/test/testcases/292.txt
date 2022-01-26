@@ -1,0 +1,12 @@
+
+Class getStudent {
+     main() {
+        io.getInt(n);
+        Foreach (i In 0 .. n) {
+            io.fflush(stdin);
+            io.getBoolean(option);
+            new_student = (School.getNameClass(range.random() % School.num_Class)).getStudent(name,id,option);
+            Class.updateStudent(new_student);
+        }
+    }
+}

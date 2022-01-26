@@ -1,0 +1,12 @@
+
+Class smoke_run : MonoBehaviour{
+    Val speed : Int = 5f;
+    Var counter : Float = 0;;
+    Var scaleChange : Vector3;
+    $FixedUpdate()
+    {
+        transform.localScale = transform.localScale + scaleChange;
+        if (counter == 100) {
+        }
+    }
+}

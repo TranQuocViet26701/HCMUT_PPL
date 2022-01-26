@@ -1,0 +1,20 @@
+
+        Class C3 : C2 {
+            Val name : Car = New Car("Mazda", 2019);
+            
+            Constructor(name : String; year : Int) {
+                Self.name = name;
+                Self.year = year;
+            }
+            
+            C3(n : String;c : C1) {
+                Self.name = n;
+            }
+            
+            getName() {
+                Return "Name of C3: " +. name;
+            }
+            checkName(n1 : String) {
+                Return n1 ==. name;
+            }
+        }

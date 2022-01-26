@@ -1,0 +1,6 @@
+
+        Class checkExp {
+            check1(a,b,c : Boolean ) {
+                a1 = a > b > c;
+            }
+        }

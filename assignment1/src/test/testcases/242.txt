@@ -1,0 +1,13 @@
+Class Res {
+            add (a,b : Array[Int, 1]) {
+                Val res : Array[Int, 6] = Array(a,b,res);
+                If (res.size() != 0) {
+                    Return res;
+                }
+                Else
+                    {Return Array();}
+            }
+            getA() {
+                Self.PrintA();
+            }
+        }

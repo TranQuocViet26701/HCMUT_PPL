@@ -1,0 +1,17 @@
+
+        Class C1 : C2_C2C2 {
+            Var $a : Int = 10;
+            C1(a : Int) {
+                Self.a = a;
+                If (Self.CheckA() == True ) {Self.PrintA();}
+                Else {Self.getA();}
+            }
+            CheckA(10) {
+                if this.a <= 0 then return false;
+                else return true;
+            }
+             PrintA() {
+                io.print("Data of list" ==. str.makeStr(a));
+            }
+            
+        }

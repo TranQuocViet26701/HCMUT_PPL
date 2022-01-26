@@ -1,0 +1,11 @@
+
+Class io {
+    $getInt() {
+        data = (system.checkIntLitForm(system.getIO())).toInt();
+        a = data;
+    }
+    getFloat(a : Float) {
+        data = (system.checkFloatLitForm(system.getIO())).toFloat();
+        a = data;
+    }    
+}

@@ -1,0 +1,8 @@
+
+Class tesster {
+    $getCaculatorInt($a,b : Int) {
+        a132 = a + b;
+        a2 = a- b;
+        arr = Array(a1,a2,a3,a4,a5);
+    }
+}

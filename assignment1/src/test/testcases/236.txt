@@ -1,0 +1,9 @@
+
+        Class testData{
+            loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
+                Foreach (i In (a + c -d == f) .. a+(a >=d)/32) {
+                        If (a > f-1) {Out.print(10);} 
+                        Elseif (a <= 10) {Return Tester::$number;}
+                }
+            }
+        }

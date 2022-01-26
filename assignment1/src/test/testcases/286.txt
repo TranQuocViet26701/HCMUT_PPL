@@ -1,0 +1,11 @@
+
+Class student {
+    $num_student: Int;
+    $name : String;
+    getSkill() {
+        Return list_skill_special;
+    }
+    getNumStudent() {
+        Return CLASS::$num_student;
+    }
+}

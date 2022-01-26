@@ -1,0 +1,26 @@
+
+        ## class parent ##
+        Class Exp {
+            eval() {}
+        }
+        ## class intlit and floatlit ##
+        Class IntLit : Exp {
+            Val value : Int;
+            Intlit(a : Int) {
+                Self.value = a;
+            }
+            eval() {
+                Return Self.value;
+            }
+        }
+        ## Class floatlit and floatlit
+        Class FloatLit : Exp {
+            Val value : Float;
+            Constructor(a : Float) {
+                Self.value = a;
+            }
+            eval() {
+                Return Self.value;
+            }
+        }
+        

@@ -1,0 +1,11 @@
+
+        Class testFor {
+            testFor() {
+                Foreach (i In 1 .. 10) {a=a+1;}
+            }
+            callFor() {
+                Foreach (i In 25 .. 5 By 2) {
+                    a = a + 1;
+                };
+            }
+        }

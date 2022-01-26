@@ -1,0 +1,11 @@
+
+Class Grade {
+        
+        Grade() {
+            nameOfCourse = "";
+            mark = 0;
+        }
+        Grade() {
+            Val $num : Int = 10;
+        }
+}

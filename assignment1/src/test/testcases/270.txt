@@ -1,0 +1,16 @@
+
+
+    Class Student {
+            findSubject(name : String) {
+                If (subs.getNameSubject() == name) { Return 1; }
+                Return 0;
+            }
+            checkLec() {
+                    io.print("\n----------\n");
+                    subs.checkLect();
+            }
+            checkFacuSub(facu : String; sub : String) {
+                If (facul.getNameFaculty() != facu) {Return 0;}
+                Return self.findSubject(sub);
+            }
+    }

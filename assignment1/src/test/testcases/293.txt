@@ -1,0 +1,18 @@
+
+Class node {
+    
+    node(data : Int; Node : Next) {
+        Self.data = data;
+        Self.next = next;
+    }
+     getData() {
+        Return data;
+    }
+    
+    $putNode(n : node) {
+        If (n.getNext() == nil)  {
+            io.getInt(data);
+            n.setNext(New node(data, nil));
+        }
+    }
+}

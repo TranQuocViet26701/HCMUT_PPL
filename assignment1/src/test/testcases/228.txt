@@ -1,0 +1,24 @@
+
+        Class testFor {
+            testFor() {
+                Foreach (i In 1 .. 10) {a=a+1;}
+            }
+            callFor(a : Int) {
+                Foreach (a In 1 .. 10) {
+                    a = a + 1;
+                    Foreach (a In -10 .. 10 By 5) {
+                        a.Pi[5] = 1 + 2;
+                        If (a.v < z[2]) {
+                            If (a == 1) {
+                                If (a == 1) {
+                                    
+                                }
+                            }
+                            Else {
+                                If (a > b) {a = 2;} Elseif (a == -5) {a = 2;}
+                            }
+                        }
+                    }
+                }
+            }
+        }

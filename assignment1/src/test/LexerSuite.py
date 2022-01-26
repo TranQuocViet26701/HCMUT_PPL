@@ -882,40 +882,69 @@ findMax()            return 0;
     }"""
         output = "void,GameOver,(,),{,},<EOF>"
         self.assertTrue(TestLexer.test(input, output, 195))
-    def test_random_17(self):
-        input = """using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;voidvoid void
-findMax
-public class move : MonoBehaviour"""
-        output = "using,System,.,Collections,;,using,System,.,Collections,.,Generic,;,using,UnityEngine,.,SceneManagement,;,using,UnityEngine,.,UI,;,voidvoid,void,findMax,public,class,move,:,MonoBehaviour,<EOF>"
-        self.assertTrue(TestLexer.test(input, output, 196))
-    def test_random_18(self):
-        input = """n = int(input("Nhap n = "))
-count  = 0
-for i in range(n) :
-    count += i*i
-count3 = 0.0
-for i in range(1,n + 1):
-    count3 += 1/i
-count5 = 0.0
-    fac *= i
-    s += fac"""
-        output = '''n,=,int,(,input,(,"Nhap n = ",),),count,=,0,for,i,in,range,(,n,),:,count,+,=,i,*,i,count3,=,0.0,for,i,in,range,(,1,,,n,+,1,),:,count3,+,=,1,/,i,count5,=,0.0,fac,*,=,i,s,+,=,fac,<EOF>'''
-        self.assertTrue(TestLexer.test(input, output, 197))
-    def test_random_19(self):
-        input = """num  = float(input("Moi ban nhap so :"))
-fl = num - int(num)
-##[0,0.25)    => 0##
-##[0.25,0.75) => 0.5##
-fl = int(fl * 4)
-print("So lam tron :",float(int(num) + myroud[fl]))"""
-        output = """num,=,float,(,input,(,"Moi ban nhap so :",),),fl,=,num,-,int,(,num,),fl,=,int,(,fl,*,4,),print,(,"So lam tron :",,,float,(,int,(,num,),+,myroud,[,fl,],),),<EOF>"""
-        self.assertTrue(TestLexer.test(input, output, 198))
-    def test_random_20(self):
-        input = """money = int(input("dd"))
-print(f"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1")"""
-        output = """money,=,int,(,input,(,"dd",),),print,(,f,"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1",),<EOF>"""
-        self.assertTrue(TestLexer.test(input, output, 199))
+#     def test_random_17(self):
+#         input = """using System.Collections;
+# using System.Collections.Generic;
+# using UnityEngine.SceneManagement;
+# using UnityEngine.UI;voidvoid void
+# findMax
+# public class move : MonoBehaviour"""
+#         output = "using,System,.,Collections,;,using,System,.,Collections,.,Generic,;,using,UnityEngine,.,SceneManagement,;,using,UnityEngine,.,UI,;,voidvoid,void,findMax,public,class,move,:,MonoBehaviour,<EOF>"
+#         self.assertTrue(TestLexer.test(input, output, 196))
+#     def test_random_18(self):
+#         input = """n = int(input("Nhap n = "))
+# count  = 0
+# for i in range(n) :
+#     count += i*i
+# count3 = 0.0
+# for i in range(1,n + 1):
+#     count3 += 1/i
+# count5 = 0.0
+#     fac *= i
+#     s += fac"""
+#         output = '''n,=,int,(,input,(,"Nhap n = ",),),count,=,0,for,i,in,range,(,n,),:,count,+,=,i,*,i,count3,=,0.0,for,i,in,range,(,1,,,n,+,1,),:,count3,+,=,1,/,i,count5,=,0.0,fac,*,=,i,s,+,=,fac,<EOF>'''
+#         self.assertTrue(TestLexer.test(input, output, 197))
+#     def test_random_19(self):
+#         input = """num  = float(input("Moi ban nhap so :"))
+# fl = num - int(num)
+# ##[0,0.25)    => 0##
+# ##[0.25,0.75) => 0.5##
+# fl = int(fl * 4)
+# print("So lam tron :",float(int(num) + myroud[fl]))"""
+#         output = """num,=,float,(,input,(,"Moi ban nhap so :",),),fl,=,num,-,int,(,num,),fl,=,int,(,fl,*,4,),print,(,"So lam tron :",,,float,(,int,(,num,),+,myroud,[,fl,],),),<EOF>"""
+#         self.assertTrue(TestLexer.test(input, output, 198))
+# #     def test_random_20(self):
+# #         input = """money = int(input("dd"))
+# # print(f"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1")"""
+# #         output = """money,=,int,(,input,(,"dd",),),print,(,f,"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1",),<EOF>"""
+# #         self.assertTrue(TestLexer.test(input, output, 199))
+#     def test_random_20(self):
+#         input = """1\ta_bc@ca/"""
+#         output = """123,a123,<EOF>"""
+#         self.assertTrue(TestLexer.test(input, output, 199))
+    def test_escape301(self):
+        """ Test Escape String """
+        self.assertTrue(TestLexer.test(
+            """
+     "abc\\\\h def"
+    """,
 
+            """"abc\\\\h def",<EOF>""",
+            196
+        ))
+    def test_304(self):
+        self.assertTrue(TestLexer.test(
+            """
+    Class _childTest : _parentTest {
+            Constructor(){
+                Return;
+            }
+            
+            Destructor(a : Int){
+                Return;
+            }
+        }
+    """,
+            """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
+            197
+        ))

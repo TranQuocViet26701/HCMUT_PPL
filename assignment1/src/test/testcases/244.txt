@@ -1,0 +1,19 @@
+
+        Class C1 {
+            Val $a : Int = 10;
+            C1(a : Int) {
+                Self.a = a;
+                If (Self.CheckA() == True ) {Self.PrintA();}
+                Else {Self.getA();}
+            }
+            getA() {
+                Foreach (i In 1 .. 10) {
+                    Var a : Int = io.getInt();
+                    If (a > 0)  {
+                        Self.a = a;
+                        Break;
+                    }
+                }
+                Self.PrintA();
+            }
+        }

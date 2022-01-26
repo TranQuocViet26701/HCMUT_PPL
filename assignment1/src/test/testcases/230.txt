@@ -1,0 +1,6 @@
+
+        Class _childTest : _parentTest {
+            Destructor(a : Int){
+                Return;
+            }
+        }

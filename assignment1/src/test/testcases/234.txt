@@ -1,0 +1,13 @@
+
+        Class testData : PPL {
+            $loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
+                Foreach (i In (a + c -d == f) .. a+(a >=d)/32 By (10-5)) {
+                    ## in loop ##
+                }
+            }
+            loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
+                Foreach (i In (a + c -d == f) .. a+(a >=d)/32 By (10-5)) {
+                    If (a > f-1) {Break;} Else {Continue;}
+                }
+            }
+        }

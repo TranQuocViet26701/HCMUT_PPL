@@ -1,0 +1,13 @@
+
+Class linked_list {
+    Val $node : start;
+    linked_list(node: s) {
+        Self.start = s;
+    }
+    $getNode(index: Int; node : n) {
+        If (index == 0) 
+            { Return n; }
+        Else
+           { Return Self.getNode(index - 1, n.getNext()); }
+    }
+}

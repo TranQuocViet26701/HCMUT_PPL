@@ -1,0 +1,15 @@
+
+Class makeSchool {
+     main() {
+        secondary(a : int) {
+            io.fflush(stdin);
+            io.getline(Class);
+            If (Class != "-1") 
+                School.updateClass(Class);
+            else break;
+        }
+    }
+    setNext(next : Node) {
+        Self.next = next;
+    }
+}

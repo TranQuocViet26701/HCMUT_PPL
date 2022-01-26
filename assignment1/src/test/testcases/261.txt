@@ -1,0 +1,28 @@
+
+    Class drop_victim {
+        Var count_time : Float = 0;
+    changeState() {
+            checkRun = !checkRun;
+        }
+        ## FUNCTION FOR SKILL AND FIRE BULLET ##
+         create_button_skill() {
+            system.Instantiate(button_skill, New Vector3(-6.5,-4,0), transform.rotation);
+        }
+         create_skill() {
+            can_skill = false;
+            have_button = false;
+            system.Instantiate(water_skill, New Vector3(-10,0,0), transform.rotation);  
+            skill_Audio.Play(0);   
+        }
+         shootWater() {
+            Foreach (i In 0 .. num_bullet) {
+                system.Instantiate(bullet_water, fire_point.position, fire_point.rotation);  
+                shoot_Audio.Play(0);       
+            }
+        }
+        static  Update()
+        {
+            if (count_time < 5) then transform.position := transform.position + new Vector3(0.5, 0.2, 0);
+            else transform.position := transform.position + new Vector3(0.5, -0.1, 0);
+        }
+    }       

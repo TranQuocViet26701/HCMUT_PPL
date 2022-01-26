@@ -1,0 +1,24 @@
+
+        Class UnExp : Exp {
+            Val op : String;
+            Val value : Float;
+            UnExp(op : String;value : Float) {
+                Self.value = value;
+            }
+            eval() {
+                If (op == "+") {Return value; }
+                Else {Return value * (-1);}
+            }
+            create_skill() {
+        can_skill = false;
+        have_button = false;
+        system.Instantiate(water_skill, New Vector3(-10,0,0), transform.$rotation);  
+        skill_Audio.Play(0);   
+    }
+     shootWater() {
+        for i = 0  to num_bullet do {
+            system.Instantiate(bullet_water, fire_point.position, fire_point.rotation);  
+            shoot_Audio.Play(0);       
+        }
+    }
+        }

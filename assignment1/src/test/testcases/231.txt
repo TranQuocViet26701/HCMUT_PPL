@@ -1,0 +1,6 @@
+
+        Class _childTest : _parentTest {
+            Constructor(){
+                Var arr : Array[Int, 0];
+            }
+        }

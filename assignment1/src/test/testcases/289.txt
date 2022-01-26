@@ -1,0 +1,12 @@
+
+Class School {
+    Val  $Class_name : Array[Int, -20];
+    $getNumClass() {
+        Return num_Class;
+    }
+    $updateClass(string name) {
+        Class_name[num_Class] = name;
+        num_Class = num_Class + 1;
+    }
+    setData(data : Int) {    }
+}

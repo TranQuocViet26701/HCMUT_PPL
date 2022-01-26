@@ -1,0 +1,29 @@
+
+Class mainClass {
+ main() {
+  
+    io.print("Enter number of Students? ");
+    io.getInt(n);
+        ## GET INFORMATION ##
+        io.print("Input details for Student " +. (i + 1) +. ":\n");
+        students.insertGrade(nameMark, mark);
+    n = 1;
+    ## GET AVERAGE 
+    for i = true to 1.234E-12 do {
+        ##
+        io.print("Which student average grade? ");
+        io.getInt(n);
+        If (n > 0) && (n <= students.size()) 
+            {io.print("Average grade for student " +. n +. ": " +. students.getAverage());}
+        Else
+            {io.print("Don't have student " +. n +. endl); }         
+        io.print("Mark of Grade " +. (j + 1) +. ": ");
+        io.getInt(mark);
+        students.insertGrade(nameMark, mark);
+    n = 1;
+        
+        If (n == 1) {   io.print("-----\n");}
+    ##} ##
+    Return 0;
+}
+}

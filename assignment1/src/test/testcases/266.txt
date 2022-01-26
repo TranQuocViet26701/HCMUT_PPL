@@ -1,0 +1,7 @@
+
+    Class Faculty {
+            Val name : String;
+            Faculty(m : String) {}
+            getNameFaculty() { Return name;  }
+             setNameFaculty(n : Int) { name = n;  }
+    }

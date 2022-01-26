@@ -1,0 +1,8 @@
+
+        Class mainClass {
+            main() {
+                Val c3 : C3 = New C3("abc",c1);
+                c3.checkName("abcd");
+                io.Print(c3.getName());
+            }
+        }

@@ -1,0 +1,30 @@
+
+Class mainClass {
+    $getline(a : String) {
+        test = system.getIO();
+        a = "";
+        Foreach (i In 1 .. (a+b) ) {
+            a = a+.test;
+            test = system.getIO();
+            If (test == "\n") { Break; }
+            Else  { Continue; }
+        }
+    }
+    $fflush(s : typeIO) {
+        If (s == stdin) {system.clear_console(); }
+    }
+$main() {
+    io.print("Enter number of Students? ");
+    io.getInt(n);
+        ##GET INFORMATION ##
+        io.print("Input details for Student " +. (1+2) +. ":\n");
+        students.push(New Student(ID, name));
+       
+   
+ 
+  
+        if (n == 1)    io.print("-----\n");
+    }
+    Return 0;
+}
+}

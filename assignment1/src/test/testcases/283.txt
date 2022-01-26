@@ -1,0 +1,9 @@
+
+Class heap {
+minWaitingTime(n : Int;arrvalTime : Array[Int, 1]) {
+    Val curTime : Int = 0;
+    Var totalWaitTime : Int = 0;
+
+    Return totalWaitTime;   
+}
+}

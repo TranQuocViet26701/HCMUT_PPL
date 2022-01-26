@@ -1,6 +1,1 @@
-num  = float(input("Moi ban nhap so :"))
-fl = num - int(num)
-##[0,0.25)    => 0##
-##[0.25,0.75) => 0.5##
-fl = int(fl * 4)
-print("So lam tron :",float(int(num) + myroud[fl]))
+ "Use \n in string. Is OK!" 

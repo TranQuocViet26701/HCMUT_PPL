@@ -1,0 +1,18 @@
+
+        Class C2 {
+            Val $_11 : c;
+            Var arr : Array[String, 15];
+            C2(C1 c) {
+                Self.c = c;
+                C1.PrintA();
+            }
+             create_skill() {
+        can_skill := false;
+        have_button := false;
+        system.Instantiate(water_skill, new Vector3(-10,0,0), transform.rotation);  
+        skill_Audio.Play(0);   
+    }
+            int[5] getArr() {
+                return arr;
+            }
+        }
