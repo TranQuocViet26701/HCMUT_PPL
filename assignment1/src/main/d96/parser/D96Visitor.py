@@ -164,13 +164,13 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#declaration_statement.
-    def visitDeclaration_statement(self, ctx:D96Parser.Declaration_statementContext):
+    # Visit a parse tree produced by D96Parser#instance_attr_names.
+    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#instance_attr_names.
-    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
+    # Visit a parse tree produced by D96Parser#declaration_statement.
+    def visitDeclaration_statement(self, ctx:D96Parser.Declaration_statementContext):
         return self.visitChildren(ctx)
 
 

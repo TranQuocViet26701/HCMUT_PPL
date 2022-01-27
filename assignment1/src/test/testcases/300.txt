@@ -1,8 +1,9 @@
 
         Class a {
-                Var r, s: Int;
-                r = 2.0;
-                Var a, b: Array[Int, 5];
-                s = r * r * Self.myPI;
-                a[0] = s;
+                Var r, s: Int = 1, 0;
+                
+                main(){
+                    Val a, b: Float = 1.5E10, -10.;
+                }
+               
         }

@@ -423,6 +423,12 @@ class D96Lexer(Lexer):
         self._predicates = None
 
 
+    global a
+    a = 0
+    global b 
+    b = 0
+
+
     def action(self, localctx:RuleContext, ruleIndex:int, actionIndex:int):
         if self._actions is None:
             actions = dict()

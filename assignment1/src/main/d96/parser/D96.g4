@@ -11,6 +11,13 @@ options {
 	language = Python3;
 }
 
+@members{
+global countName
+countName = 0
+global countValue 
+countValue = 0
+}
+
 program: class_declare+ EOF;
 
 /**********************************************************************/
@@ -24,7 +31,10 @@ members: member members | member;
 member: attribute_declare | method_declare;
 
 /**** Attribute ****/
-attribute_declare: (VAL | VAR) names_type_list initialization  SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
+// attribute_declare: (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
+attribute_declare: (VAL | VAR) identifier (CM identifier)*  COLON data_type SEMI
+				| {countName,countValue=0,0} (VAL | VAR) identifier (CM identifier {countName+=1})*  COLON data_type ASSIGN? expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
+
 
 // fixed list attribute names
 names_type_list: attr_names COLON data_type;
@@ -82,8 +92,11 @@ statement: declaration_statement
 		| method_invocation_statement
 		| block_statement;
 
-declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
-instance_attr_names: ID CM instance_attr_names | ID ;											// a, b
+// declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
+instance_attr_names: ID CM instance_attr_names | ID ;
+declaration_statement: (VAL | VAR) ID (CM ID)*  COLON data_type SEMI
+				| {countName,countValue=0,0} (VAL | VAR) ID (CM ID {countName+=1})*  COLON data_type ASSIGN? expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
+											// a, b
 
 assignment_statement: lhs ASSIGN expr SEMI;
 lhs: ID | expr7;
