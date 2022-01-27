@@ -1,1 +1,1 @@
-Unclosed String: abd\n\t\r\b 
+/,*,cmt,cmt,cmt,Error Token #

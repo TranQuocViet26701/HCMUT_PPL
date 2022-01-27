@@ -9,7 +9,7 @@ Class Res {
                 Return a || !b && !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(c == f);
             }
             Add (a : String) {
-                Add(10);
+                Self.Add(10);
             }
             makeNew(a : Int; b : Float) {
                 If ( a== 0) {

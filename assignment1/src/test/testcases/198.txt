@@ -1,1 +1,13 @@
- "Use \n in string. Is OK!" 
+    void remove(int s, int t) {
+        Interval deleteBus;
+        deleteBus.start = s;
+        deleteBus.end = t;
+        else if (insertBus(deleteBus)) {
+            insertData(1, s);
+newBus.start = s;
+        newBus.end = t;            findMax();
+        }
+    }
+    int minPark() {
+        return max;
+    }

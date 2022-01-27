@@ -1,1 +1,1 @@
-multi,-,line,comment,.,Error Token #
+inline,comment,inline,comment,<EOF>

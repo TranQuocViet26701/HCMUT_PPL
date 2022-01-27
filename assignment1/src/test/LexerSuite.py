@@ -105,7 +105,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "0 1 0x01 0b01 001 1_000_000",
             "0,1,0x0,1,0b0,1,00,1,1000000,<EOF>",
-            120
+            113
         ))   
     
     def test_valid_intlit4(self):
@@ -117,14 +117,14 @@ class LexerSuite(unittest.TestCase):
             000000000000001
             """,
             "00,01321,00,00,00,31231,00,0312312,00,312,0,123,132,012,1,2,3,8912,00,00,00,00,00,00,00,00,01,0,9132,321,00,00,00,00,00,00,00,1,<EOF>",
-            122
+            114
         ))
     def test_invalid_intlit2(self):
         """test invalid integer literal"""
         self.assertTrue(TestLexer.test(
             "00123 0b01010 0x0123 0b1100 0X0_AABB_CCDD 0B00_001_101 010101 000000 0b0010",
             "00,123,0b0,1010,0x0,123,0b1100,0X0,_AABB_CCDD,0B0,0,_001_101,010101,00,00,00,0b0,010,<EOF>",
-            153
+            115
         ))    
     
     def test_invalid_intlit(self):
@@ -132,7 +132,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "0Xffffff 0xffffff 0Xaa_ff_00 0xGHJK 0x123_abc 0b123 0_00000000 0B_010101 0X_AAAAAA 0ABCD",
             "0,Xffffff,0,xffffff,0,Xaa_ff_00,0,xGHJK,0x123,_abc,0b1,23,0,_00000000,0,B_010101,0,X_AAAAAA,0,ABCD,<EOF>",
-            121
+            116
         ))     
 ##======================================= Boollit ==========================================##         
     def test_valid_boollit(self):
@@ -140,7 +140,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "True False",
             "True,False,<EOF>",
-            113
+            117
         ))     
     
     def test_invalid_boollit(self):
@@ -148,7 +148,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "true false TRUE FALSE TruE FalsE TRUe FALSe truE falsE",
             "true,false,TRUE,FALSE,TruE,FalsE,TRUe,FALSe,truE,falsE,<EOF>",
-            114
+            118
         ))     
 ##======================================= Floatlit ==========================================##
     def test_valid_floatlit(self):
@@ -156,7 +156,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "1.234 1.2e3 7E-10 1_234.567",
             "1.234,1.2e3,7E-10,1234.567,<EOF>",
-            115
+            119
         ))     
     
     def test_valid_floatlit2(self):
@@ -164,7 +164,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "9.0 12e8 1. 0.33E-3 128e+42",
             "9.0,12e8,1.,0.33E-3,128e+42,<EOF>",
-            116
+            120
         ))     
     
     def test_valid_floatlit3(self):
@@ -172,7 +172,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "123_456. 0.123_456 123_456.12_34_56 1.5e123_456 1_0.1_2e-1_000",
             "123456.,0.123,_456,123456.12,_34_56,1.5e123,_456,10.1,_2e,-,1000,<EOF>",
-            117
+            121
         ))     
     
     def test_invalid_floatlit(self):
@@ -180,7 +180,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "00001.1101010101000 000000001e-542400 000313121.e00031321132",
             "00,00,1.1101010101000,00,00,00,00,1e-542400,00,0313121,.e00031321132,<EOF>",
-            118
+            122
         ))     
     
     def test_invalid_floatlit2(self):
@@ -188,7 +188,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "1e 123e e123 e-132 -e123 123e1 .e10",
             "1,e,123,e,e123,e,-,132,-,e123,123e1,.e10,<EOF>",
-            119
+            123
         ))     
 ##======================================= Stringlit ==========================================##
     def test_valid_stringlit(self):
@@ -198,8 +198,8 @@ class LexerSuite(unittest.TestCase):
             "He asked me: '"Where is John?'""
             "This is a string containing tab \t"
             """,
-            """"He asked me: '"Where is John?'"","This is a string containing tab 	",<EOF>""",
-            123
+            """He asked me: '"Where is John?'",Error Token \"""",
+            124
         ))     
 
     def test_illegal_escape_string(self):
@@ -209,7 +209,7 @@ class LexerSuite(unittest.TestCase):
             "abc\\h def"
             """,
             """Illegal Escape In String: abc\h""",
-            124
+            125
         ))     
 
     def test_unclose_without_endline(self):
@@ -219,7 +219,7 @@ class LexerSuite(unittest.TestCase):
             " hello lexer
             """,
             """Unclosed String:  hello lexer""",
-            125
+            126
         )) 
         
     def test_unclose_multi_lines(self):
@@ -231,7 +231,7 @@ class LexerSuite(unittest.TestCase):
             "
             """,
             """Unclosed String: Newline""",
-            126
+            127
         ))
         
     def test_unclose_with_invalid_close(self):
@@ -243,7 +243,7 @@ class LexerSuite(unittest.TestCase):
             g = 9
             """,
             """s,=,Unclosed String: string          '""",
-            127
+            128
         ))
     def test_escape1(self):
         """ Test Escape String """
@@ -253,7 +253,7 @@ class LexerSuite(unittest.TestCase):
             " abc \\n xyz "
             """,
             """Unclosed String:  abc """,
-            128
+            129
         ))
 
     def test_escape2(self):
@@ -262,8 +262,8 @@ class LexerSuite(unittest.TestCase):
             """
             " hello lexer \t \b \n \""     asdf
             """,
-            """Unclosed String:  hello lexer 	  """,
-            129
+            """Error Token \"""",
+            130
         ))
 
     def test_escape3(self):
@@ -278,8 +278,8 @@ class LexerSuite(unittest.TestCase):
             "single quote       \'"
             "backslash  \\ "
             """,
-            r""""backspace  \b","formfeed   \f","return     \r","newline    \n","tab        \t","single quote       \'","backslash  \\ ",<EOF>""",
-            130
+            r"""backspace  \b,formfeed   \f,return     \r,newline    \n,tab        \t,single quote       \',backslash  \\ ,<EOF>""",
+            131
         ))
 
     def test_illegal1(self):
@@ -287,7 +287,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             r""" Illegal"\a" """,
             r"""Illegal,Illegal Escape In String: \a""",
-            131
+            132
         ))
 
     def test_illegal2(self):
@@ -297,7 +297,7 @@ class LexerSuite(unittest.TestCase):
             " hey hey \c \d "
             """,
             """Illegal Escape In String:  hey hey \c""",
-            132
+            133
         ))
 
     def test_illegal3(self):
@@ -307,7 +307,7 @@ class LexerSuite(unittest.TestCase):
             " hey hey \s\d\\f "
             """,
             """Illegal Escape In String:  hey hey \s""",
-            133
+            134
         ))
 
     def test_illegal4(self):
@@ -317,8 +317,8 @@ class LexerSuite(unittest.TestCase):
             "qwerty - xyz"
             "qwerty \ xyz"
             """,
-            """"qwerty - xyz",Illegal Escape In String: qwerty \ """,
-            134
+            """qwerty - xyz,Illegal Escape In String: qwerty \ """,
+            135
         ))
 
     def test_illegal5(self):
@@ -328,8 +328,8 @@ class LexerSuite(unittest.TestCase):
             "qwerty - xyz"
             "qwerty \yyz"
             """,
-            """"qwerty - xyz",Illegal Escape In String: qwerty \y""",
-            135
+            """qwerty - xyz,Illegal Escape In String: qwerty \y""",
+            136
         ))
 
     def test_illegal6(self):
@@ -339,7 +339,7 @@ class LexerSuite(unittest.TestCase):
             "abc\qwerty"
             """,
             """Illegal Escape In String: abc\q""",
-            136
+            137
         ))
 
     def test_illegal7(self):
@@ -348,8 +348,8 @@ class LexerSuite(unittest.TestCase):
             """
             "\a"
             """,
-            """"",<EOF>""",
-            137
+            """,<EOF>""",
+            138
         ))
 
     def test_illegal8(self):
@@ -359,7 +359,7 @@ class LexerSuite(unittest.TestCase):
             "9juFvp3leS.dasd1f21.da1.pg56WPtopzJdR6D8GUyK^*&*13\o"
             """,
             """Illegal Escape In String: 9juFvp3leS.dasd1f21.da1.pg56WPtopzJdR6D8GUyK^*&*13\o""",
-            138
+            139
         ))
 
     def test_illegal9(self):
@@ -369,7 +369,7 @@ class LexerSuite(unittest.TestCase):
             "%&*%(%&(\#!\4))"
             """,
             """Illegal Escape In String: %&*%(%&(\#""", 
-            139
+            140
         ))
 
     def test_illegal_char_in_string(self):
@@ -379,7 +379,7 @@ class LexerSuite(unittest.TestCase):
             " abc \n  123 "
             """,
             """Unclosed String:  abc """,
-            140
+            141
         ))
 ##======================================= Comment ==========================================##
     def test_comment(self):
@@ -390,7 +390,7 @@ class LexerSuite(unittest.TestCase):
             ## comment ##
             """, 
             "<EOF>", 
-            141
+            142
         ))
 
     def test_multiline_comment(self):
@@ -403,7 +403,7 @@ class LexerSuite(unittest.TestCase):
             ##
             """,
             "<EOF>",
-            142
+            143
         ))
 
     def test_multiline_comment2(self):
@@ -417,7 +417,7 @@ class LexerSuite(unittest.TestCase):
             ##
             """,
             "<EOF>",
-            143
+            144
         ))
 
     def test_multiline_comment3(self):
@@ -432,7 +432,7 @@ class LexerSuite(unittest.TestCase):
             #--------------------------##
             """,
             "<EOF>",
-            144
+            145
         ))
 
     def test_mix_comment(self):
@@ -453,7 +453,7 @@ class LexerSuite(unittest.TestCase):
             ##
             """,
             "inline,comment,inline,comment,<EOF>",
-            145
+            146
         ))
 
     def test_mix_comment2(self):
@@ -466,7 +466,7 @@ class LexerSuite(unittest.TestCase):
             ##
             """,
             "multi,-,line,comment,.,Error Token #",
-            146
+            147
         ))
 
     def test_mix_comment3(self):
@@ -478,7 +478,7 @@ class LexerSuite(unittest.TestCase):
             # This is comment ##
             """,
             "<EOF>",
-            147
+            148
         ))
 
     def test_mix_comment4(self):
@@ -488,7 +488,7 @@ class LexerSuite(unittest.TestCase):
             ## This is a block comment so # has no meaning here ##
             """,
             "<EOF>",
-            148
+            149
         ))
 
     def test_invalid_comment(self):
@@ -500,7 +500,7 @@ class LexerSuite(unittest.TestCase):
             ## inline comment ##
             """,
             "is,multiple,lines,<EOF>",
-            149
+            150
         ))
 
     def test_invalid_comment2(self):
@@ -511,7 +511,7 @@ class LexerSuite(unittest.TestCase):
             /## -*- coding: UTF-8 -*-
             ##""",
             "/,<EOF>",
-            150
+            151
         ))
 
     def test_invalid_comment3(self):
@@ -522,7 +522,7 @@ class LexerSuite(unittest.TestCase):
             <!-- end: wsf_resource_nodes -->
             """,
             "<,!,-,-,begin,Error Token &",
-            151
+            152
         ))
 
     def test_invalid_comment4(self):
@@ -534,16 +534,16 @@ class LexerSuite(unittest.TestCase):
             #!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *#
             """,
             "*,All,characters,after,an,exclamation,mark,are,considered,as,comments,*,Error Token #",
-            152
+            153
         ))       
-    def test_escape2(self):
+    def test_escape4(self):
         """ Test Escape String """
         self.assertTrue(TestLexer.test(
             """
     " hello hello lexer \t \b \n \""     asdf
     """,
 
-            """Unclosed String:  hello hello lexer 	  """,
+            """Error Token \"""",
             154
         ))
 ##======================================= Random ==========================================##
@@ -551,7 +551,7 @@ class LexerSuite(unittest.TestCase):
         """ Test random"""
         self.assertTrue(TestLexer.test(
             """ Array("new","word"), """,
-            """Array,(,"new",,,"word",),,,<EOF>""",
+            """Array,(,new,,,word,),,,<EOF>""",
             155
         ))
 # check WS and NEWLINE -> SKIP
@@ -612,7 +612,7 @@ class LexerSuite(unittest.TestCase):
     def test_stmt_8(self):
         self.assertTrue(TestLexer.test(
             """animal.cat.talk(s + "abc");""",
-            """animal,.,cat,.,talk,(,s,+,"abc",),;,<EOF>""",
+            """animal,.,cat,.,talk,(,s,+,abc,),;,<EOF>""",
             165
         ))
     def test_stmt_9(self):
@@ -710,7 +710,7 @@ class LexerSuite(unittest.TestCase):
     def test_class_4(self):
         self.assertTrue(TestLexer.test(
             """Class str{ static string[3] a_str= {"abc","a\rb","xyz "}}""",
-            """Class,str,{,static,string,[,3,],a_str,=,{,"abc",,,Unclosed String: a""", 
+            """Class,str,{,static,string,[,3,],a_str,=,{,abc,,,Unclosed String: a""", 
             181
         ))
     def test_class_5(self):
@@ -722,7 +722,7 @@ class LexerSuite(unittest.TestCase):
     def test_class_6(self):
         self.assertTrue(TestLexer.test(
             """Class A {void Float foo() {Out.print("abc")}}\nClass B : A {int[5] arr;}""",
-            """Class,A,{,void,Float,foo,(,),{,Out,.,print,(,"abc",),},},Class,B,:,A,{,int,[,5,],arr,;,},<EOF>""",
+            """Class,A,{,void,Float,foo,(,),{,Out,.,print,(,abc,),},},Class,B,:,A,{,int,[,5,],arr,;,},<EOF>""",
             183
         ))
     def test_class_7(self):
@@ -740,31 +740,31 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(
             "class A{for i downto := 1 downto 1.0E+123 do x := x + 2;#abc}",
             "class,A,{,for,i,downto,:,=,1,downto,1.0E+123,do,x,:,=,x,+,2,;,Error Token #", 
-            190
+            186
         ))
     def test_class_10(self):
         self.assertTrue(TestLexer.test(
             """class downto obj_zz {if a == b them "string\\"\\"\\"" else "string\\s"}""",
             r"""class,downto,obj_zz,{,if,a,==,b,them,Illegal Escape In String: string\"""",
-            186
+            187
         ))
     def test_random_1(self):
         self.assertTrue(TestLexer.test(
             "ascn downto +nad xmmc skc / 223 2.341 + sad - asc ___asint Initlit C++",
             "ascn,downto,+,nad,xmmc,skc,/,223,2.341,+,sad,-,asc,___asint,Initlit,C,+,+,<EOF>", 
-            187
+            188
         ))
     def test_random_2(self):
         self.assertTrue(TestLexer.test(
             "check downto ant downto void ++ 2030/12 if a == b: z++; ",
             "check,downto,ant,downto,void,+,+,2030,/,12,if,a,==,b,:,z,+,+,;,<EOF>", 
-            188
+            189
         ))
     def test_random_3(self):
         self.assertTrue(TestLexer.test(
             "#downto <stdio.h>\nint main(){}",
             "Error Token #",
-            189
+            190
         ))
     def test_random_5(self):
         self.assertTrue(TestLexer.test(
@@ -800,54 +800,54 @@ int main() {
             "if,(,N,>=,10000,),num_of_thread,=,1000,;,else,if,=,1,;,<EOF>", 
             194
         ))
-#     def test_random_9(self):
-#         input = """printf("PI = %f\n", 4.0 * incircle / N);
-# 	printf("TIME = %d sec\n", (if int)(time(NULL) - start));
-# 	if(&lock);
-# 	pthread_exit(NULL);"""
-#         output = """printf,(,Unclosed String: PI = %f"""
-#         self.assertTrue(TestLexer.test(input,output,195))
-#     def test_random_10(self):
-#         input = """for(void void i = 0; i <= num_of_thread; i++) {
-# 		if (i != num_of_thread)
-# 			void(&threads[i], NULL, runner, (void *) loop_per_thread);
-# 		else
-# 			pthread_create(&threads[i], NULL, runner, (void *) (N % num_of_thread));
-# 	}"""
-#         output = """for,(,void,void,i,=,0,;,i,<=,num_of_thread,;,i,+,+,),{,if,(,i,!=,num_of_thread,),void,(,Error Token &"""
-#         self.assertTrue(TestLexer.test(input, output, 196))
-#     def test_random_11(self):
-#         input ="""
-#         void add(int s, int t) {
-#         Interval newBus;
-#         else if (insertBus(newBus)) {
-#             insertData(1, s);
-#             insertData(0, t);newBus.start = s;
-#         newBus.end = t;
-#         }
-#     }"""
-#         output = "void,add,(,int,s,,,int,t,),{,Interval,newBus,;,else,if,(,insertBus,(,newBus,),),{,insertData,(,1,,,s,),;,insertData,(,0,,,t,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,},},<EOF>"
-#         self.assertTrue(TestLexer.test(input,output,197))
-#     def test_random_12(self):
-#         input = """    void remove(int s, int t) {
-#         Interval deleteBus;
-#         deleteBus.start = s;
-#         deleteBus.end = t;
-#         else if (insertBus(deleteBus)) {
-#             insertData(1, s);
-# newBus.start = s;
-#         newBus.end = t;            findMax();
-#         }
-#     }
-#     int minPark() {
-#         return max;
-#     }"""
-#         output = "void,remove,(,int,s,,,int,t,),{,Interval,deleteBus,;,deleteBus,.,start,=,s,;,deleteBus,.,end,=,t,;,else,if,(,insertBus,(,deleteBus,),),{,insertData,(,1,,,s,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,findMax,(,),;,},},int,minPark,(,),{,return,max,;,},<EOF>"
-#         self.assertTrue(TestLexer.test(input, output, 198))
-#     def test_random_13(self):
-#         input = """/*cmt cmt cmt##### /*/*findMax abcd #123123\n\\z\t \\" 123 abc##### \\" \n"""
-#         output = """/,*,cmt,cmt,cmt,Error Token #"""
-#         self.assertTrue(TestLexer.test(input, output, 199))
+    def test_random_9(self):
+        input = """printf("PI = %f\n", 4.0 * incircle / N);
+	printf("TIME = %d sec\n", (if int)(time(NULL) - start));
+	if(&lock);
+	pthread_exit(NULL);"""
+        output = """printf,(,Unclosed String: PI = %f"""
+        self.assertTrue(TestLexer.test(input,output,195))
+    def test_random_10(self):
+        input = """for(void void i = 0; i <= num_of_thread; i++) {
+		if (i != num_of_thread)
+			void(&threads[i], NULL, runner, (void *) loop_per_thread);
+		else
+			pthread_create(&threads[i], NULL, runner, (void *) (N % num_of_thread));
+	}"""
+        output = """for,(,void,void,i,=,0,;,i,<=,num_of_thread,;,i,+,+,),{,if,(,i,!=,num_of_thread,),void,(,Error Token &"""
+        self.assertTrue(TestLexer.test(input, output, 196))
+    def test_random_11(self):
+        input ="""
+        void add(int s, int t) {
+        Interval newBus;
+        else if (insertBus(newBus)) {
+            insertData(1, s);
+            insertData(0, t);newBus.start = s;
+        newBus.end = t;
+        }
+    }"""
+        output = "void,add,(,int,s,,,int,t,),{,Interval,newBus,;,else,if,(,insertBus,(,newBus,),),{,insertData,(,1,,,s,),;,insertData,(,0,,,t,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,},},<EOF>"
+        self.assertTrue(TestLexer.test(input,output,197))
+    def test_random_12(self):
+        input = """    void remove(int s, int t) {
+        Interval deleteBus;
+        deleteBus.start = s;
+        deleteBus.end = t;
+        else if (insertBus(deleteBus)) {
+            insertData(1, s);
+newBus.start = s;
+        newBus.end = t;            findMax();
+        }
+    }
+    int minPark() {
+        return max;
+    }"""
+        output = "void,remove,(,int,s,,,int,t,),{,Interval,deleteBus,;,deleteBus,.,start,=,s,;,deleteBus,.,end,=,t,;,else,if,(,insertBus,(,deleteBus,),),{,insertData,(,1,,,s,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,findMax,(,),;,},},int,minPark,(,),{,return,max,;,},<EOF>"
+        self.assertTrue(TestLexer.test(input, output, 198))
+    def test_random_13(self):
+        input = """/*cmt cmt cmt##### /*/*findMax abcd #123123\n\\z\t \\" 123 abc##### \\" \n"""
+        output = """/,*,cmt,cmt,cmt,Error Token #"""
+        self.assertTrue(TestLexer.test(input, output, 199))
     def test_random_14(self):
         input = """Interval(findMax start = 0, int end = 0) {
             this->start = start;
@@ -862,27 +862,27 @@ findMax()            return 0;
         }"""
         output = "Interval,(,findMax,start,=,0,,,int,end,=,0,),{,this,-,>,start,=,start,;,this,-,>,end,=,end,;,},bool,operator,<,(,Interval,Error Token &"
         self.assertTrue(TestLexer.test(input, output, 200))
-    def test_random_15(self):
-        input = """create_button_skill() {
-        Instantiate(button_skill, new Vector3(-6.5f,-4f,0f), transform.rotation);
-    }
-    shootMask() {
-        Foreach (i In 0 .. num_bullet By 1) {
-            Instantiate(bullet_mask, fire_point.position, fire_point.rotation);  
-            shoot_Audio.Play(0);       
-        }
-    }"""
-        output = "create_button_skill,(,),{,Instantiate,(,button_skill,,,new,Vector3,(,-,6.5,f,,,-,4,f,,,0,f,),,,transform,.,rotation,),;,},shootMask,(,),{,Foreach,(,i,In,0,..,num_bullet,By,1,),{,Instantiate,(,bullet_mask,,,fire_point,.,position,,,fire_point,.,rotation,),;,shoot_Audio,.,Play,(,0,),;,},},<EOF>"
-        self.assertTrue(TestLexer.test(input, output, 129))
-    def test_random_16(self):
-        input = """void GameOver() {
-        ##  UPDATE LATE
-        --  EXPLOSION :))
-        ##
-    }"""
-        output = "void,GameOver,(,),{,},<EOF>"
-        self.assertTrue(TestLexer.test(input, output, 195))
-#     def test_random_17(self):
+#     def test_random_15(self):
+#         input = """create_button_skill() {
+#         Instantiate(button_skill, new Vector3(-6.5f,-4f,0f), transform.rotation);
+#     }
+#     shootMask() {
+#         Foreach (i In 0 .. num_bullet By 1) {
+#             Instantiate(bullet_mask, fire_point.position, fire_point.rotation);  
+#             shoot_Audio.Play(0);       
+#         }
+#     }"""
+#         output = "create_button_skill,(,),{,Instantiate,(,button_skill,,,new,Vector3,(,-,6.5,f,,,-,4,f,,,0,f,),,,transform,.,rotation,),;,},shootMask,(,),{,Foreach,(,i,In,0,..,num_bullet,By,1,),{,Instantiate,(,bullet_mask,,,fire_point,.,position,,,fire_point,.,rotation,),;,shoot_Audio,.,Play,(,0,),;,},},<EOF>"
+#         self.assertTrue(TestLexer.test(input, output, 129))
+#     def test_random_16(self):
+#         input = """void GameOver() {
+#         ##  UPDATE LATE
+#         --  EXPLOSION :))
+#         ##
+#     }"""
+#         output = "void,GameOver,(,),{,},<EOF>"
+#         self.assertTrue(TestLexer.test(input, output, 195))
+#    def test_random_17(self):
 #         input = """using System.Collections;
 # using System.Collections.Generic;
 # using UnityEngine.SceneManagement;
@@ -922,29 +922,37 @@ findMax()            return 0;
 #         input = """1\ta_bc@ca/"""
 #         output = """123,a123,<EOF>"""
 #         self.assertTrue(TestLexer.test(input, output, 199))
-    def test_escape301(self):
-        """ Test Escape String """
-        self.assertTrue(TestLexer.test(
-            """
-     "abc\\\\h def"
-    """,
+    # def test_escape301(self):
+    #     """ Test Escape String """
+    #     self.assertTrue(TestLexer.test(
+    #         """
+    #  "abc\\\\h def"
+    # """,
 
-            """"abc\\\\h def",<EOF>""",
-            196
-        ))
-    def test_304(self):
-        self.assertTrue(TestLexer.test(
-            """
-    Class _childTest : _parentTest {
-            Constructor(){
-                Return;
-            }
+    #         """"abc\\\\h def",<EOF>""",
+    #         196
+    #     ))
+    # def test_304(self):
+    #     self.assertTrue(TestLexer.test(
+    #         """
+    # Class _childTest : _parentTest {
+    #         Constructor(){
+    #             Return;
+    #         }
             
-            Destructor(a : Int){
-                Return;
-            }
-        }
-    """,
-            """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
-            197
-        ))
+    #         Destructor(a : Int){
+    #             Return;
+    #         }
+    #     }
+    # """,
+    #         """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
+    #         197
+    #     ))
+    # def test_304(self):
+    #     self.assertTrue(TestLexer.test(
+    #         """
+    #      2.callfunc();
+    # """,
+    #         """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
+    #         197
+    #     ))

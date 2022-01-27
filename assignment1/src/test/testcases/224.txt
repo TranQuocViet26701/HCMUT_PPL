@@ -1,0 +1,17 @@
+ 
+Class Test {
+    main()
+        {
+            Var x: Int;
+            IO.input(x);
+            Foreach (i In 1 .. x) {
+                If (i%2==1) {IO.print(i);}
+                If (i==(x/2)) {
+                    i = i + 5;
+                    Continue;
+                    }
+            }
+        }
+}
+    
+                

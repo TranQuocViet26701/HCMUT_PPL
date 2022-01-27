@@ -1,1 +1,1 @@
-Class,_childTest,:,_parentTest,{,Constructor,(,),{,Return,;,},Destructorrrrr,(,a,:,Int,),{,Return,;,},},<EOF>
+void,add,(,int,s,,,int,t,),{,Interval,newBus,;,else,if,(,insertBus,(,newBus,),),{,insertData,(,1,,,s,),;,insertData,(,0,,,t,),;,newBus,.,start,=,s,;,newBus,.,end,=,t,;,},},<EOF>

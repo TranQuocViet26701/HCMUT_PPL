@@ -1,5 +1,6 @@
-void GameOver() {
-        ##  UPDATE LATE
-        --  EXPLOSION :))
-        ##
-    }
+printf("PI = %f
+", 4.0 * incircle / N);
+	printf("TIME = %d sec
+", (if int)(time(NULL) - start));
+	if(&lock);
+	pthread_exit(NULL);

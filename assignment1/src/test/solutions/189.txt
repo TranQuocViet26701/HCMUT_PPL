@@ -1,1 +1,1 @@
-Error Token #
+check,downto,ant,downto,void,+,+,2030,/,12,if,a,==,b,:,z,+,+,;,<EOF>

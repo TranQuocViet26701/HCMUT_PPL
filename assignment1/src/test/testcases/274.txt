@@ -4,7 +4,7 @@ Class display {
     Var txt : Text;
     Start()
     {
-        If ($dis_instance == null)  {
+        If (display::$dis_instance == null)  {
             dis_instance = Self;
         }
     }

@@ -1,5 +1,5 @@
 
-            " abc 
- xyz "
-            " abc \n xyz "
+            s = "string          '
+            "a = 4
+            g = 9
             

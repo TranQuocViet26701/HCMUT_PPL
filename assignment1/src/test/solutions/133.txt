@@ -1,1 +1,1 @@
-Illegal Escape In String:  hey hey \s
+Illegal Escape In String:  hey hey \c

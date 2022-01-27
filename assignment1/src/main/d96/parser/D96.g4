@@ -1,4 +1,5 @@
 // My ID: 1915919
+// My name: Tran Quoc Viet
 
 grammar D96;
 
@@ -20,18 +21,18 @@ program: class_declare+ EOF;
 class_declare: CLASS ID ( COLON ID)? LP memberlist RP;							// Class ID (: ID)? {...}
 memberlist: members | ;							
 members: member members | member;
-member: attribute_declare | method_declare ;
+member: attribute_declare | method_declare;
 
 /**** Attribute ****/
-attribute_declare : (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
+attribute_declare: (VAL | VAR) names_type_list initialization  SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
 
 // fixed list attribute names
 names_type_list: attr_names COLON data_type;
-attr_names: identifier CM attr_names | identifier;	
+attr_names: (identifier CM attr_names | identifier);	
 identifier: ID | DOLLAR_ID;															// $?My1stCons, $?My2ndCons: Int
 
 
-initialization: ASSIGN exprlist | ;													// (= 1 + 5, 2)?
+initialization: ASSIGN exprlist | ;																// (= 1 + 5, 2)?
 exprlist: expr CM exprlist | expr;				
 
 /**** Method ****/
@@ -64,10 +65,9 @@ expr8: expr8 DOT ID | expr8 DOT ID LB list_of_expr RB | expr9;				// . left
 expr9: ID TWOCOLON DOLLAR_ID | ID TWOCOLON DOLLAR_ID LB list_of_expr RB | expr10;	// :: none
 
 expr10: NEW ID LB list_of_expr RB | expr11;											// New right
-expr11: LB expr RB | ID | DOLLAR_ID | SELF | literal | method_call;					// method_call ?????????
+expr11: LB expr RB | ID | SELF | literal;					// method_call ????????? DOLLAR_ID ?????
 
 list_of_expr: exprlist | ;
-method_call: ID LB list_of_expr RB | DOLLAR_ID LB list_of_expr RB;					// expression as a method inside a class ???
 literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit ;
 /**********************************************************************/
 /*							  Statement						   	  	  */
@@ -83,7 +83,7 @@ statement: declaration_statement
 		| block_statement;
 
 declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
-instance_attr_names: ID CM instance_attr_names | ID;											// a, b
+instance_attr_names: ID CM instance_attr_names | ID ;											// a, b
 
 assignment_statement: lhs ASSIGN expr SEMI;
 lhs: ID | expr7;
@@ -94,7 +94,7 @@ elseif_statements: elseif_statement elseif_statements | else_statement;
 elseif_statement: ELSEIF expr block_statement;
 else_statement: ELSE block_statement |;
 
-for_statement: FOREACH LB ID IN expr TWODOT expr by_expr_in_for RB block_statement;
+for_statement: FOREACH LB (ID | DOLLAR_ID) IN expr TWODOT expr by_expr_in_for RB block_statement;
 by_expr_in_for: BY expr | ;
 
 break_statement: BREAK SEMI;
@@ -103,7 +103,7 @@ continue_statement: CONTINUE SEMI;
 
 return_statement: RETURN SEMI | RETURN expr SEMI;
 
-method_invocation_statement: (instance_method_invocation | static_method_invocation | method_call) SEMI;		// has method_call
+method_invocation_statement: (instance_method_invocation | static_method_invocation ) SEMI;		
 instance_method_invocation: expr DOT ID LB list_of_expr RB;
 static_method_invocation: ID TWOCOLON DOLLAR_ID LB list_of_expr RB;
 
@@ -113,12 +113,12 @@ statements: statement statements | statement;
 /****************************************************************************/
 /*								Type										*/
 /****************************************************************************/
-data_type: primitive_type | array_type | class_type;
+data_type: primitive_type | arr_type | class_type;
 primitive_type: INT | FLOAT | BOOLEAN | STRING;
 
-array_type: ARRAY LSB element_type CM size_array RSB;								
-element_type: primitive_type | array_type;
-size_array: {self.getCurrentToken().text not in ['0', '00', '0b0', '0B0', '0x0', '0X0']}? INTLIT;																	// required "The lower bound is always 1", but maybe 0 now !!
+arr_type: ARRAY LSB element_type CM arr_size RSB;								
+element_type: primitive_type | arr_type;
+arr_size: {self.getCurrentToken().text not in ['0', '00', '0b0', '0B0', '0x0', '0X0']}? INTLIT;																	// required "The lower bound is always 1", but maybe 0 now !!
 
 class_type: ID; 
 
@@ -142,7 +142,7 @@ FLOATLIT: ( ( '0' | NONEZERO_DECIMAL) '.' DIGIT*							// 1. OR 1.2
 
 BOOLLIT: TRUE | FALSE ;
 
-STRINGLIT: '"' STR_CHAR* '"';
+STRINGLIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1]};
 
 array_lit: ARRAY LB arraylist RB;
 arraylist: array_elements | ;
@@ -172,7 +172,7 @@ CLASS: 'Class';
 VAL: 'Val';
 VAR: 'Var';
 CONSTRUCTOR: 'Constructor';
-DESTRUCTOR: 'Destructor' {self.text = 'Destructorrrrr'};
+DESTRUCTOR: 'Destructor';
 NEW: 'New';
 BY: 'By';
 
@@ -229,7 +229,7 @@ fragment NONEZERO_OCTAL: '0'[1-7][0-7]*('_'[0-7]+)*;
 
 fragment NONEZERO_BINARY: '0'[bB]'1'[01]*('_'[01]+)*;					
 
-fragment STR_CHAR: ESC_SEQ | ~[\\"\n\r] | '\'"';
+fragment STR_CHAR: ESC_SEQ | ~[\\"\b\f\r\n\t] | '\'"';
 
 fragment ESC_SEQ: '\\' [btnfr'\\];
 

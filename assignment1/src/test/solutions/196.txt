@@ -1,1 +1,1 @@
-"abc\\h def",<EOF>
+for,(,void,void,i,=,0,;,i,<=,num_of_thread,;,i,+,+,),{,if,(,i,!=,num_of_thread,),void,(,Error Token &

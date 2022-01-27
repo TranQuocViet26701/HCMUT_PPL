@@ -1,1 +1,1 @@
-Array,(,"new",,,"word",),,,<EOF>
+Array,(,new,,,word,),,,<EOF>

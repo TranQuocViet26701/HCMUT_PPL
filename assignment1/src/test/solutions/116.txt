@@ -1,1 +1,1 @@
-9.0,12e8,1.,0.33E-3,128e+42,<EOF>
+0,Xffffff,0,xffffff,0,Xaa_ff_00,0,xGHJK,0x123,_abc,0b1,23,0,_00000000,0,B_010101,0,X_AAAAAA,0,ABCD,<EOF>

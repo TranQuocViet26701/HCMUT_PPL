@@ -1,1 +1,1 @@
-<,!,-,-,begin,Error Token &
+/,<EOF>

@@ -1,14 +1,8 @@
 
-            ## This is a block comment ##
-            ## This is a line comment##
-            ## Comment with multiple lines
-                Hello comments
-            ##
-            ##
-                Comment multiple lines
-            ##
-            ## nest comments
-                ## inline comment ##
-            ## inline comment ##
-            ##
+            ##--------------------------#
+            -                           -
+            - This is the comment body. -
+            - Variation Two.            -
+            -                           -
+            #--------------------------##
             

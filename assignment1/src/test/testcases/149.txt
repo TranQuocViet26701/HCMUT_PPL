@@ -1,5 +1,3 @@
 
-            ## inline comment  	
-            ## is multiple lines
-            ## inline comment ##
+            ## This is a block comment so # has no meaning here ##
             

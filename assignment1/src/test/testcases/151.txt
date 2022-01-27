@@ -1,4 +1,4 @@
 
-            <!-- begin& wsf_resource_nodes -->
-            <!-- end: wsf_resource_nodes -->
-            
+            ##!/usr/bin/env python3##
+            /## -*- coding: UTF-8 -*-
+            ##

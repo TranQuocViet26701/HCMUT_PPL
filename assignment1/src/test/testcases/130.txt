@@ -1,9 +1,4 @@
 
-            "backspace  \b"
-            "formfeed   \f"
-            "return     \r"
-            "newline    \n"
-            "tab        \t"
-            "single quote       \'"
-            "backslash  \\ "
+            " hello lexer 	  
+ ""     asdf
             

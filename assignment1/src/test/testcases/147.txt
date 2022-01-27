@@ -1,5 +1,6 @@
 
-            ##/* /* # // /b/r/n */ */
-            /*/* This is a block comment so # has no meaning here*/ */
-            # This is comment ##
+            ## This is a
+            ## multi-line
+            comment.
+            ##
             

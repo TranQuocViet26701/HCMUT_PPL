@@ -1,3 +1,6 @@
-
-     "abc\\h def"
-    
+for(void void i = 0; i <= num_of_thread; i++) {
+		if (i != num_of_thread)
+			void(&threads[i], NULL, runner, (void *) loop_per_thread);
+		else
+			pthread_create(&threads[i], NULL, runner, (void *) (N % num_of_thread));
+	}

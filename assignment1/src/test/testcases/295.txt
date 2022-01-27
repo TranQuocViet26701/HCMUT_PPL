@@ -4,6 +4,6 @@ Class mainFuncion {
         If (index == 0) 
            { n.setNext(root.getNext());}
         Else 
-           { insert(index - 1, root.getNext(), n)[Math.ceil(10, 5)[iphone.get()]] = 1; }
+           { Self.insert(index - 1, root.getNext(), n)[Math.ceil(10, 5)[iphone.get()]] = 1; }
     }
 }

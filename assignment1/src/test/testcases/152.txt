@@ -1,5 +1,4 @@
 
-            ##* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-            ##* All characters after an exclamation mark are considered as comments *
-            #!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *#
+            <!-- begin& wsf_resource_nodes -->
+            <!-- end: wsf_resource_nodes -->
             
