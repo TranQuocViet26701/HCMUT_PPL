@@ -198,7 +198,7 @@ class LexerSuite(unittest.TestCase):
             "He asked me: '"Where is John?'""
             "This is a string containing tab \t"
             """,
-            """He asked me: '"Where is John?'",Error Token \"""",
+            """He asked me: '"Where is John?'",Unclosed String: This is a string containing tab """,
             124
         ))     
 
@@ -262,7 +262,7 @@ class LexerSuite(unittest.TestCase):
             """
             " hello lexer \t \b \n \""     asdf
             """,
-            """Error Token \"""",
+            """Unclosed String:  hello lexer """,
             130
         ))
 
@@ -543,7 +543,7 @@ class LexerSuite(unittest.TestCase):
     " hello hello lexer \t \b \n \""     asdf
     """,
 
-            """Error Token \"""",
+            """Unclosed String:  hello hello lexer """,
             154
         ))
 ##======================================= Random ==========================================##
@@ -862,97 +862,3 @@ findMax()            return 0;
         }"""
         output = "Interval,(,findMax,start,=,0,,,int,end,=,0,),{,this,-,>,start,=,start,;,this,-,>,end,=,end,;,},bool,operator,<,(,Interval,Error Token &"
         self.assertTrue(TestLexer.test(input, output, 200))
-#     def test_random_15(self):
-#         input = """create_button_skill() {
-#         Instantiate(button_skill, new Vector3(-6.5f,-4f,0f), transform.rotation);
-#     }
-#     shootMask() {
-#         Foreach (i In 0 .. num_bullet By 1) {
-#             Instantiate(bullet_mask, fire_point.position, fire_point.rotation);  
-#             shoot_Audio.Play(0);       
-#         }
-#     }"""
-#         output = "create_button_skill,(,),{,Instantiate,(,button_skill,,,new,Vector3,(,-,6.5,f,,,-,4,f,,,0,f,),,,transform,.,rotation,),;,},shootMask,(,),{,Foreach,(,i,In,0,..,num_bullet,By,1,),{,Instantiate,(,bullet_mask,,,fire_point,.,position,,,fire_point,.,rotation,),;,shoot_Audio,.,Play,(,0,),;,},},<EOF>"
-#         self.assertTrue(TestLexer.test(input, output, 129))
-#     def test_random_16(self):
-#         input = """void GameOver() {
-#         ##  UPDATE LATE
-#         --  EXPLOSION :))
-#         ##
-#     }"""
-#         output = "void,GameOver,(,),{,},<EOF>"
-#         self.assertTrue(TestLexer.test(input, output, 195))
-#    def test_random_17(self):
-#         input = """using System.Collections;
-# using System.Collections.Generic;
-# using UnityEngine.SceneManagement;
-# using UnityEngine.UI;voidvoid void
-# findMax
-# public class move : MonoBehaviour"""
-#         output = "using,System,.,Collections,;,using,System,.,Collections,.,Generic,;,using,UnityEngine,.,SceneManagement,;,using,UnityEngine,.,UI,;,voidvoid,void,findMax,public,class,move,:,MonoBehaviour,<EOF>"
-#         self.assertTrue(TestLexer.test(input, output, 196))
-#     def test_random_18(self):
-#         input = """n = int(input("Nhap n = "))
-# count  = 0
-# for i in range(n) :
-#     count += i*i
-# count3 = 0.0
-# for i in range(1,n + 1):
-#     count3 += 1/i
-# count5 = 0.0
-#     fac *= i
-#     s += fac"""
-#         output = '''n,=,int,(,input,(,"Nhap n = ",),),count,=,0,for,i,in,range,(,n,),:,count,+,=,i,*,i,count3,=,0.0,for,i,in,range,(,1,,,n,+,1,),:,count3,+,=,1,/,i,count5,=,0.0,fac,*,=,i,s,+,=,fac,<EOF>'''
-#         self.assertTrue(TestLexer.test(input, output, 197))
-#     def test_random_19(self):
-#         input = """num  = float(input("Moi ban nhap so :"))
-# fl = num - int(num)
-# ##[0,0.25)    => 0##
-# ##[0.25,0.75) => 0.5##
-# fl = int(fl * 4)
-# print("So lam tron :",float(int(num) + myroud[fl]))"""
-#         output = """num,=,float,(,input,(,"Moi ban nhap so :",),),fl,=,num,-,int,(,num,),fl,=,int,(,fl,*,4,),print,(,"So lam tron :",,,float,(,int,(,num,),+,myroud,[,fl,],),),<EOF>"""
-#         self.assertTrue(TestLexer.test(input, output, 198))
-# #     def test_random_20(self):
-# #         input = """money = int(input("dd"))
-# # print(f"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1")"""
-# #         output = """money,=,int,(,input,(,"dd",),),print,(,f,"{money//50} to 50 ,{money%50//20} to 20 ,{money%50%20//10} to 10 ,{money%50%20%10//5} to 5,{money%50%20%10%5//2} to 2,{money%50%20%10%5%2} to 1",),<EOF>"""
-# #         self.assertTrue(TestLexer.test(input, output, 199))
-#     def test_random_20(self):
-#         input = """1\ta_bc@ca/"""
-#         output = """123,a123,<EOF>"""
-#         self.assertTrue(TestLexer.test(input, output, 199))
-    # def test_escape301(self):
-    #     """ Test Escape String """
-    #     self.assertTrue(TestLexer.test(
-    #         """
-    #  "abc\\\\h def"
-    # """,
-
-    #         """"abc\\\\h def",<EOF>""",
-    #         196
-    #     ))
-    # def test_304(self):
-    #     self.assertTrue(TestLexer.test(
-    #         """
-    # Class _childTest : _parentTest {
-    #         Constructor(){
-    #             Return;
-    #         }
-            
-    #         Destructor(a : Int){
-    #             Return;
-    #         }
-    #     }
-    # """,
-    #         """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
-    #         197
-    #     ))
-    # def test_304(self):
-    #     self.assertTrue(TestLexer.test(
-    #         """
-    #      2.callfunc();
-    # """,
-    #         """Destructor,(,a,:,Int,),{,Return,;,},<EOF>""",
-    #         197
-    #     ))

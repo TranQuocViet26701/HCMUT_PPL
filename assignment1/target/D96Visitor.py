@@ -154,11 +154,6 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#method_call.
-    def visitMethod_call(self, ctx:D96Parser.Method_callContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by D96Parser#literal.
     def visitLiteral(self, ctx:D96Parser.LiteralContext):
         return self.visitChildren(ctx)
@@ -169,13 +164,13 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#declaration_statement.
-    def visitDeclaration_statement(self, ctx:D96Parser.Declaration_statementContext):
+    # Visit a parse tree produced by D96Parser#instance_attr_names.
+    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#instance_attr_names.
-    def visitInstance_attr_names(self, ctx:D96Parser.Instance_attr_namesContext):
+    # Visit a parse tree produced by D96Parser#declaration_statement.
+    def visitDeclaration_statement(self, ctx:D96Parser.Declaration_statementContext):
         return self.visitChildren(ctx)
 
 
@@ -279,8 +274,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#array_type.
-    def visitArray_type(self, ctx:D96Parser.Array_typeContext):
+    # Visit a parse tree produced by D96Parser#arr_type.
+    def visitArr_type(self, ctx:D96Parser.Arr_typeContext):
         return self.visitChildren(ctx)
 
 
@@ -289,8 +284,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#size_array.
-    def visitSize_array(self, ctx:D96Parser.Size_arrayContext):
+    # Visit a parse tree produced by D96Parser#arr_size.
+    def visitArr_size(self, ctx:D96Parser.Arr_sizeContext):
         return self.visitChildren(ctx)
 
 

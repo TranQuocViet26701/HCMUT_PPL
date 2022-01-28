@@ -33,7 +33,7 @@ member: attribute_declare | method_declare;
 /**** Attribute ****/
 // attribute_declare: (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
 attribute_declare: (VAL | VAR) identifier (CM identifier)*  COLON data_type SEMI
-				| {countName,countValue=0,0} (VAL | VAR) identifier (CM identifier {countName+=1})*  COLON data_type ASSIGN? expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
+				| {countName,countValue=0,0} (VAL | VAR) identifier (CM identifier {countName+=1})*  COLON data_type ASSIGN expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
 
 
 // fixed list attribute names
@@ -95,7 +95,7 @@ statement: declaration_statement
 // declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
 instance_attr_names: ID CM instance_attr_names | ID ;
 declaration_statement: (VAL | VAR) ID (CM ID)*  COLON data_type SEMI
-				| {countName,countValue=0,0} (VAL | VAR) ID (CM ID {countName+=1})*  COLON data_type ASSIGN? expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
+				| {countName,countValue=0,0} (VAL | VAR) ID (CM ID {countName+=1})*  COLON data_type ASSIGN expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
 											// a, b
 
 assignment_statement: lhs ASSIGN expr SEMI;
@@ -103,7 +103,7 @@ lhs: ID | expr7;
 
 if_statement: IF expr block_statement elseif_statement_list  else_statement;
 elseif_statement_list: elseif_statements | ;
-elseif_statements: elseif_statement elseif_statements | else_statement;
+elseif_statements: elseif_statement elseif_statements | elseif_statement;
 elseif_statement: ELSEIF expr block_statement;
 else_statement: ELSE block_statement |;
 
@@ -252,7 +252,7 @@ WS: [ \t\r\f\n]+ -> skip; // skip spaces, tabs, form feed, newlines
 NEWLINE: '\n'+ -> skip;
 
 UNCLOSE_STRING: '"' STR_CHAR* EOF { raise UncloseString(self.text[1:])}
-				| '"' STR_CHAR* [\n\r] { raise UncloseString(self.text[1:-1]) };
+				| '"' STR_CHAR* [\\\b\f\t\n\r] { raise UncloseString(self.text[1:-1]) };
 
 ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL { raise IllegalEscape(self.text[1:] )};
 ERROR_CHAR: . { raise ErrorToken(self.text) };
