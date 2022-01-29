@@ -39,11 +39,6 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#names_type_list.
-    def visitNames_type_list(self, ctx:D96Parser.Names_type_listContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by D96Parser#attr_names.
     def visitAttr_names(self, ctx:D96Parser.Attr_namesContext):
         return self.visitChildren(ctx)
@@ -51,11 +46,6 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#identifier.
     def visitIdentifier(self, ctx:D96Parser.IdentifierContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#initialization.
-    def visitInitialization(self, ctx:D96Parser.InitializationContext):
         return self.visitChildren(ctx)
 
 

@@ -2,25 +2,25 @@ import unittest
 from TestUtils import TestParser
 
 class ParserSuite(unittest.TestCase):
-    def test_simple_program(self):
+    def test_simple_program201(self):
         """Simple program"""
         input = """Class main { }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 201))
         
-    def test_simple_program1(self):
+    def test_simple_program202(self):
         """Simple program"""
         input = """Class Main : { }"""
         expect = "Error on line 1 col 13: {"
         self.assertTrue(TestParser.test(input, expect, 202))
 
-    def test_simple_program2(self):
+    def test_simple_program203(self):
         """Simple program"""
         input = """Class secondary : main { }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 203))
     
-    def test_more_complex_program(self):
+    def test_more_complex_program204(self):
         """More complex program"""
         input = """ Class main { 
                         Val My1stCons, My2ndCons: Int = 6, 2;
@@ -31,7 +31,7 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 204))
 
-    def test_more_complex_program2(self):
+    def test_more_complex_program205(self):
         """More complex program"""
         input = """ Class secondary : main { 
                         Constructor () {}
@@ -40,7 +40,7 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 205))
 
-    def test_more_complex_program3(self):
+    def test_more_complex_program206(self):
         """More complex program"""
         input = """ 
                     Class Shape {
@@ -54,13 +54,13 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,206))
     
-    def test_wrong_miss_close(self):
+    def test_wrong_miss_close207(self):
         """Miss } Class"""
         input = """Class missing_close {"""
         expect = "Error on line 1 col 21: <EOF>"
         self.assertTrue(TestParser.test(input,expect,207))
 
-    def test_more_complex_program4(self):
+    def test_more_complex_program208(self):
         """More complex program"""
         input = """ 
                     Class Shape {
@@ -72,7 +72,7 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,208))
     
-    def test_more_complex_program5(self):
+    def test_more_complex_program209(self):
         """More complex program"""
         input = """ 
                     Class arr_test {
@@ -85,7 +85,7 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,209))
     
-    def test_more_complex_program6(self):
+    def test_more_complex_program210(self):
         """More complex program"""
         input = """ 
                     Class Rectangle: Shape {
@@ -97,7 +97,7 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,210))
     
-    def test_more_complex_program7(self):
+    def test_more_complex_program211(self):
         """More complex program"""
         input = """ 
                     Class Shape {
@@ -109,7 +109,7 @@ class ParserSuite(unittest.TestCase):
         expect = "Error on line 3 col 43: {"
         self.assertTrue(TestParser.test(input,expect,211))
     
-    def test_more_complex_program8(self):
+    def test_more_complex_program212(self):
         """More complex program"""
         input = """ 
 Class Shape {
@@ -134,7 +134,7 @@ Class Program {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,212))
     
-    def test_more_complex_program9(self):
+    def test_more_complex_program213(self):
         """More complex program"""
         input = """ 
     Class Shape {
@@ -162,7 +162,7 @@ Class Program {
         expect = "Error on line 8 col 19: $numOfShape"
         self.assertTrue(TestParser.test(input,expect,213))
         
-    def test_more_complex_program11(self):
+    def test_more_complex_program214(self):
         """More complex program"""
         input = """ 
  Class Person {
@@ -179,7 +179,7 @@ Class Program {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,214))
         
-    def test_more_complex_program12(self):
+    def test_more_complex_program215(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -194,7 +194,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,215))
         
-    def test_more_complex_program13(self):
+    def test_more_complex_program216(self):
         """More complex program"""
         input = """ 
 Class Test : TestParent{
@@ -208,7 +208,7 @@ Class Test : TestParent{
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,216))
         
-    def test_more_complex_program14(self):
+    def test_more_complex_program217(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -227,7 +227,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,217))
         
-    def test_more_complex_program15(self):
+    def test_more_complex_program218(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -242,7 +242,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,218))
         
-    def test_more_complex_program16(self):
+    def test_more_complex_program219(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -268,7 +268,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,219))
         
-    def test_more_complex_program17(self):
+    def test_more_complex_program220(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -280,7 +280,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,220))
 #====================================  For/In statement ====================================#
-    def test_more_complex_program18(self):
+    def test_more_complex_program221(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -294,7 +294,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,221))
     
-    def test_more_complex_program19(self):
+    def test_more_complex_program222(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -310,7 +310,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,222))
     
-    def test_more_complex_program20(self):
+    def test_more_complex_program223(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -329,7 +329,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,223))
     
-    def test_more_complex_program21(self):
+    def test_more_complex_program224(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -351,7 +351,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,224))
     
-    def test_more_complex_program22(self):
+    def test_more_complex_program225(self):
         """More complex program"""
         input = """ 
 Class Test {
@@ -366,7 +366,7 @@ Class Test {
                 """
         expect = "Error on line 5 col 33: {"
         self.assertTrue(TestParser.test(input,expect,225))
-    def test_for_stmt_3(self):
+    def test_for_stmt_226(self):
         input = """
         Class testFor {
             testFor() {
@@ -380,7 +380,7 @@ Class Test {
         }"""
         expect = "Error on line 9 col 17: ;"
         self.assertTrue(TestParser.test(input, expect, 226))
-    def test_for_stmt_4(self):
+    def test_for_stmt_227(self):
         input = """
         Class testFor {
             testFor() {
@@ -399,7 +399,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 227))
-    def test_for_stmt_5(self):
+    def test_for_stmt_228(self):
         input = """
         Class testFor {
             testFor() {
@@ -426,7 +426,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 228))
-    def test_for_stmt_6(self):
+    def test_for_stmt_229(self):
         input = """
         Class testFor : _parentTest {
             testFor(i: Float) {
@@ -447,7 +447,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 229))
         # Test special
-    def test_special(self):
+    def test_special230(self):
         input = """
         Class _childTest : _parentTest {
             Destructor(a : Int){
@@ -457,7 +457,7 @@ Class Test {
         expect = "Error on line 3 col 23: a"
         self.assertTrue(TestParser.test(input, expect, 230))
 
-    def test_special2(self):
+    def test_special231(self):
         input = """
         Class _childTest : _parentTest {
             Constructor(){
@@ -466,7 +466,7 @@ Class Test {
         }"""
         expect = "Error on line 4 col 37: 0"
         self.assertTrue(TestParser.test(input, expect, 231))
-    def test_break_con_1(self):
+    def test_break_con_232(self):
         input = """
         Class testData : PPL {
             $loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
@@ -477,7 +477,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 232))
-    def test_break_con_2(self):
+    def test_break_con_233(self):
         input = """
         Class testData : PPL {
             loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
@@ -485,7 +485,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 233))
-    def test_break_con_3(self):
+    def test_break_con_234(self):
         input = """
         Class testData : PPL {
             $loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
@@ -501,7 +501,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 234))
-    def test_break_con_4(self):
+    def test_break_con_235(self):
         input = """
         Class testData : PPL {
             loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
@@ -519,7 +519,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 235))
-    def test_break_con_5(self):
+    def test_break_con_236(self):
         input = """
         Class testData{
             loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
@@ -531,7 +531,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 236))
-    def test_break_con_6(self):
+    def test_break_con_237(self):
         input = """
         Class testData : PPL {
             $loopTestTest(int a,v; float c,d; boolean a,s; string str1,str2; Room r1,r2) {
@@ -543,7 +543,7 @@ Class Test {
         }"""
         expect = "Error on line 3 col 30: a"
         self.assertTrue(TestParser.test(input, expect, 237))
-    def test_break_con_7(self):
+    def test_break_con_238(self):
         input = """
         Class testData : PPL {
             _LoopTest() {
@@ -554,7 +554,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 238))
-    def test_return_1(self):
+    def test_return_239(self):
         input = """
         Class School {
             cloneStudent(stu: Student){
@@ -570,7 +570,7 @@ Class Test {
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 239))
     # #======================================= 40-49 ==========================================
-    def test_return_2(self):
+    def test_return_240(self):
         input = """Class Res {
              Add(a, b: Int) {
                 Return a + b;
@@ -597,7 +597,7 @@ Class Test {
         }"""
         expect = '''Error on line 11 col 29: abcd'''
         self.assertTrue(TestParser.test(input, expect, 240))
-    def test_return_3(self):
+    def test_return_241(self):
         input = """Class Res {
             Add(a, b : Int) {
                 Return a + b;
@@ -618,7 +618,7 @@ Class Test {
         }"""
         expect = "Error on line 18 col 9: <EOF>"
         self.assertTrue(TestParser.test(input, expect, 241))
-    def test_return_4(self):
+    def test_return_242(self):
         input = """Class Res {
             add (a,b : Array[Int, 1]) {
                 Val res : Array[Int, 6] = Array(a,b,res);
@@ -634,7 +634,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 242))
-    def test_stmt_1(self):
+    def test_stmt_243(self):
         input = """
         Class C1 : C2_C2C2 {
             Var $a : Int = 10;
@@ -654,7 +654,7 @@ Class Test {
         }"""
         expect = "Error on line 9 col 19: 10"
         self.assertTrue(TestParser.test(input, expect, 243))
-    def test_stmt_2(self):
+    def test_stmt_244(self):
         input = """
         Class C1 {
             Val $a : Int = 10;
@@ -676,7 +676,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 244))
-    def test_stmt_3(self):
+    def test_stmt_245(self):
         input = """
         Class C2 {
             Val $_11 : c;
@@ -697,7 +697,7 @@ Class Test {
         }"""
         expect = "Error on line 5 col 18: c"
         self.assertTrue(TestParser.test(input, expect, 245))
-    def test_stmt_4(self):
+    def test_stmt_246(self):
         input = """
         Class C3 : C2 {
             Val string : String;
@@ -710,7 +710,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 246))
-    def test_stmt_5(self):
+    def test_stmt_247(self):
         input = """
         Class checkExp {
             check1(a,b,c : Boolean ) {
@@ -719,7 +719,7 @@ Class Test {
         }"""
         expect = "Error on line 4 col 27: >"
         self.assertTrue(TestParser.test(input, expect, 247))
-    def test_stmt_6(self):
+    def test_stmt_248(self):
         input = """
         Class checkExp {
             check1(boolean, a,b,c : Boolean) {
@@ -728,7 +728,7 @@ Class Test {
         }"""
         expect = "Error on line 4 col 33: <="
         self.assertTrue(TestParser.test(input, expect, 248))
-    def test_stmt_7(self):
+    def test_stmt_249(self):
         input = """
         Class checkExp {
             $_check1(a,b,c : Bolen) {
@@ -738,8 +738,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 249))
-    # #======================================= 50-59 ==========================================
-    def test_stmt_8(self):
+    def test_stmt_250(self):
         input = """
         Class C3 : C2 {
             Val name : Car = New Car("Mazda", 2019);
@@ -761,8 +760,8 @@ Class Test {
             }
         }"""
         expect = "successful"
-    #     self.assertTrue(TestParser.test(input, expect, 250))
-    def test_stmt_9(self):
+        self.assertTrue(TestParser.test(input, expect, 250))
+    def test_stmt_251(self):
         input = """
         Class mainClass {
             main() {
@@ -774,7 +773,7 @@ Class Test {
         }"""
         expect = """abc"""
         self.assertTrue(TestParser.test(input, expect, 251))
-    def test_stmt_10(self):
+    def test_stmt_252(self):
         input = """
         Class mainClass {
             main() {
@@ -785,15 +784,14 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 252))
-    # test random
-    def test_only_EOF(self):
+    def test_only_EOF253(self):
         input = """##no have class
         *****************
         ******************##
         ## only have cmt ##"""
         expect = "Error on line 4 col 27: <EOF>"
         self.assertTrue(TestParser.test(input, expect, 253))
-    def test_random_1(self):
+    def test_random_254(self):
         input = """
         ## class parent ##
         Class Exp {
@@ -822,7 +820,7 @@ Class Test {
         """
         expect = "#"
         self.assertTrue(TestParser.test(input, expect, 254))
-    def test_random_2(self):
+    def test_random_255(self):
         input = """
         Class UnExp : Exp {
             Val op : String;
@@ -849,7 +847,7 @@ Class Test {
         }"""
         expect = "Error on line 15 col 72: $rotation"
         self.assertTrue(TestParser.test(input, expect, 255))
-    def test_random_3(self):
+    def test_random_256(self):
         input = """
         Class BinExp : Exp {
             Val op : String;
@@ -866,7 +864,7 @@ Class Test {
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 256))
-    def test_random_4(self):
+    def test_random_257(self):
         input = """Class follow_mouse {
     FixedUpdate () {
         ## Get the Screen positions of the object ##
@@ -886,7 +884,7 @@ Class Test {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 257))
-    def test_random_5(self):
+    def test_random_258(self):
         input = """
 Class smoke_run : MonoBehaviour{
     Val speed : Int = 5f;
@@ -901,7 +899,7 @@ Class smoke_run : MonoBehaviour{
 }"""
         expect = "Error on line 3 col 23: f"
         self.assertTrue(TestParser.test(input, expect, 258))
-    def test_random_6(self):
+    def test_random_259(self):
         input = """
 Class skill_check {
     FixedUpdate()
@@ -912,8 +910,7 @@ Class skill_check {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 259))
-    #======================================= 60-69 ==========================================
-    def test_random_7(self):
+    def test_random_260(self):
         input = """
 Class virus_move {
     Var myEffect : GameObject;
@@ -937,7 +934,7 @@ Class virus_move {
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 260))
     
-    def test_random_8(self):
+    def test_random_261(self):
             input = """
     Class drop_victim {
         Var count_time : Float = 0;
@@ -969,7 +966,7 @@ Class virus_move {
             expect = "Error on line 23 col 16: Update"
             self.assertTrue(TestParser.test(input, expect, 261))
             
-    def test_random_9(self):
+    def test_random_262(self):
             input = """
     Class control_victim {
         Val victim_die :GameObject ;
@@ -1015,7 +1012,7 @@ Class virus_move {
     }"""
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 262))
-    def test_random_10(self):
+    def test_random_263(self):
             input = """
     Class move {
         
@@ -1060,7 +1057,7 @@ Class virus_move {
     }"""
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 263))
-    def test_random_11(self):
+    def test_random_264(self):
             input = """
     Class PlayerMoment : MonoBehaviour{
 
@@ -1078,7 +1075,7 @@ Class virus_move {
     }"""
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 264))
-    def test_random_12(self):
+    def test_random_265(self):
             input = """
     Class PlayerMoment : MonoBehaviour{
         Var speed : Int= 12;
@@ -1103,7 +1100,7 @@ Class virus_move {
     }"""
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 265))
-    def test_random_13(self):
+    def test_random_266(self):
             input = """
     Class Faculty {
             Val name : String;
@@ -1113,7 +1110,7 @@ Class virus_move {
     }"""
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 266))
-    def test_random_14(self):
+    def test_random_267(self):
             input = """
     ## LECTURER ##
 
@@ -1134,7 +1131,7 @@ Lecturer(n : String)  { name=n; }
     }"""
             expect = "Error on line 10 col 5: ;"
             self.assertTrue(TestParser.test(input, expect, 267))
-    def test_random_15(self):
+    def test_random_268(self):
             input = """
             Class Test{
                Var ins: Int;
@@ -1148,7 +1145,7 @@ Lecturer(n : String)  { name=n; }
       """
             expect = "Error on line 7 col 34: ::"
             self.assertTrue(TestParser.test(input, expect, 268))
-    def test_random_16(self):
+    def test_random_269(self):
             input = """
     Class Subject {
             
@@ -1167,7 +1164,7 @@ Lecturer(n : String)  { name=n; }
     }"""
             expect = "Error on line 4 col 32: $number"
             self.assertTrue(TestParser.test(input, expect, 269))
-    def test_random_17(self):
+    def test_random_270(self):
             input = """
 
     Class Student {
@@ -1187,7 +1184,7 @@ Lecturer(n : String)  { name=n; }
             expect = "successful"
             self.assertTrue(TestParser.test(input, expect, 270))
             
-    def test104(self):
+    def test271(self):
         input = """
         Class a : _class {
             Var $x: Float = 1.0, y: Int = 3;
@@ -1195,7 +1192,7 @@ Lecturer(n : String)  { name=n; }
         expect = "Error on line 3 col 34: :"
         self.assertTrue(TestParser.test(input,expect,271))
         
-    def test_random_19(self):
+    def test_random_272(self):
         input =  """
 Class mainClass {
     main() {
@@ -1219,7 +1216,7 @@ Class mainClass {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 272))
-    def test_random_20(self):
+    def test_random_273(self):
         input = """
 Class mainClass {
     main() {
@@ -1240,7 +1237,7 @@ Class mainClass {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 273))
-    def test_random_21(self):
+    def test_random_274(self):
         input = """
 Class display {
     Val $dis_instance : Float;
@@ -1257,7 +1254,7 @@ Class display {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 274))
-    def test_random_22(self):
+    def test_random_275(self):
         input = """
 Class skill{
     Val name : String = "";
@@ -1290,7 +1287,7 @@ Class WaterHealing : skill{
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 275))
-    def test_random_23(self):
+    def test_random_276(self):
         input = """
 Class ButtonRun {
     Var my_skill : skill;
@@ -1310,7 +1307,7 @@ Class manager_skill {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 276))
-    def test_random_24(self):
+    def test_random_277(self):
         input = """
 Class Bank {
     Val bankName : String;
@@ -1339,7 +1336,7 @@ Class Vietcombank : Bank{
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 277))
-    def test_random_25(self):
+    def test_random_278(self):
         input = """
 Class Grade {
         
@@ -1353,7 +1350,7 @@ Class Grade {
 }"""
         expect = "Error on line 9 col 16: $num"
         self.assertTrue(TestParser.test(input, expect, 278))
-    def test_random_26(self):
+    def test_random_279(self):
         input = """
 Class Student {
         Val studentID : Int;
@@ -1364,7 +1361,7 @@ Class Student {
         expect = "Error on line 5 col 26: sumMark"
         self.assertTrue(TestParser.test(input, expect, 279))
         
-    def test_random_27(self):
+    def test_random_280(self):
         input = """
 Class mainClass {
  main() {
@@ -1396,7 +1393,7 @@ Class mainClass {
 }"""
         expect = "Error on line 8 col 57: +."
         self.assertTrue(TestParser.test(input, expect, 280))
-    def test_random_28(self):
+    def test_random_281(self):
         input = """
 Class mainClass {
     $getline(a : String) {
@@ -1429,7 +1426,7 @@ $main() {
 }"""
         expect = "Error on line 20 col 55: +."
         self.assertTrue(TestParser.test(input, expect, 281))
-    def test_random_29(self):
+    def test_random_282(self):
         input = """
 Class io {
     $getInt() {
@@ -1443,7 +1440,7 @@ Class io {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 282))
-    def test_random_30(self):
+    def test_random_283(self):
         input = """
 Class heap {
 minWaitingTime(n : Int;arrvalTime : Array[Int, 1]) {
@@ -1455,7 +1452,7 @@ minWaitingTime(n : Int;arrvalTime : Array[Int, 1]) {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 283))
-    def test_random_31(self):
+    def test_random_284(self):
         input = """
 Class heap {
  minWaitingTime(arr: Array[]) {
@@ -1478,7 +1475,7 @@ for i=((-1!=true||false)==(22/15)) downto xyz do {
 }"""
         expect = "Error on line 3 col 27: ]"
         self.assertTrue(TestParser.test(input, expect, 284))
-    def test_random_32(self):
+    def test_random_285(self):
         input = """
 Class heap {
  minWaitingTime() {
@@ -1499,7 +1496,7 @@ Class heap {
 }"""
         expect = "Error on line 11 col 28: ["
         self.assertTrue(TestParser.test(input, expect, 285))
-    def test_random_33(self):
+    def test_random_286(self):
         input = """
 Class student {
     $num_student: Int;
@@ -1513,7 +1510,7 @@ Class student {
 }"""
         expect = "Error on line 3 col 16: :"
         self.assertTrue(TestParser.test(input, expect, 286))
-    def test_random_34(self):
+    def test_random_287(self):
         input = """
 Class special_student : student {
     VAl list_skill_special : Array[String, 100];
@@ -1529,7 +1526,7 @@ Class special_student : student {
 }"""
         expect = "Error on line 3 col 8: list_skill_special"
         self.assertTrue(TestParser.test(input, expect, 287))
-    def test_random_35(self):
+    def test_random_288(self):
         input = """
 Class  Class {
     
@@ -1540,7 +1537,7 @@ Class  Class {
 }"""
         expect = "Error on line 2 col 7: Class"
         self.assertTrue(TestParser.test(input, expect, 288))
-    def test_random_36(self):
+    def test_random_289(self):
         input = """
 Class School {
     Val  $Class_name : Array[Int, -20];
@@ -1555,7 +1552,7 @@ Class School {
 }"""
         expect = "Error on line 3 col 34: -"
         self.assertTrue(TestParser.test(input, expect, 289))
-    def test_random_37(self):
+    def test_random_290(self):
         input = """
 Class makeSchool {
      main() {
@@ -1573,7 +1570,7 @@ Class makeSchool {
 }"""
         expect = "Error on line 4 col 17: ("
         self.assertTrue(TestParser.test(input, expect, 290))
-    def test_random_38(self):
+    def test_random_291(self):
         input = """
 Class makeSchool {
      main() {
@@ -1594,7 +1591,7 @@ Class makeSchool {
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 291))
         
-    def test_random_39(self):
+    def test_random_292(self):
         input = """
 Class getStudent {
      main() {
@@ -1609,7 +1606,7 @@ Class getStudent {
 }"""
         expect = "Error on line 9 col 12: Class"
         self.assertTrue(TestParser.test(input, expect, 292))
-    def test_random_40(self):
+    def test_random_293(self):
         input = """
                 Class a {
                 Var r, s: Int = 1, 0;
@@ -1622,7 +1619,7 @@ Class getStudent {
                 """
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 293))
-    def test_random_41(self):
+    def test_random_294(self):
         input = """
 Class linked_list {
     Val $node : start;
@@ -1638,7 +1635,7 @@ Class linked_list {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 294))
-    def test_random_42(self):
+    def test_random_295(self):
         input = """
 Class mainFuncion {
     insert () {
@@ -1650,7 +1647,7 @@ Class mainFuncion {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 295))
-    def test_random_43(self):
+    def test_random_296(self):
         input = """
 Class mainFuncion {
      insert () {
@@ -1667,8 +1664,7 @@ Class mainFuncion {
 }"""
         expect = "Error on line 7 col 12: n"
         self.assertTrue(TestParser.test(input, expect, 296))
-    # test array literal
-    def test_arraylit_1(self):
+    def test_arraylit_297(self):
         input = """
 Class tesster {
     getCaculatorInt() {
@@ -1677,7 +1673,7 @@ Class tesster {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 297))
-    def test_arraylit_2(self):
+    def test_arraylit_298(self):
         input = """
 Class tesster {
     getCaculatorInt() {
@@ -1686,7 +1682,7 @@ Class tesster {
 }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 298))
-    def test_arraylit_3(self):
+    def test_arraylit_299(self):
         input = """
 Class tesster {
     $getCaculatorInt($a,b : Int) {
@@ -1697,7 +1693,7 @@ Class tesster {
 }"""
         expect = "Error on line 3 col 21: $a"
         self.assertTrue(TestParser.test(input, expect, 299))
-    def test109(self):
+    def test300(self):
         input = """
         Class a {
                 Var r, s: Int;

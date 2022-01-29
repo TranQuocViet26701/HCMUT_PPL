@@ -25,24 +25,20 @@ program: class_declare+ EOF;
 /**********************************************************************/
 
 /**** Class ****/
-class_declare: CLASS ID ( COLON ID)? LP memberlist RP;							// Class ID (: ID)? {...}
+class_declare: CLASS ID ( COLON ID)? LP memberlist RP;									// Class ID (: ID)? {...}
 memberlist: members | ;							
 members: member members | member;
 member: attribute_declare | method_declare;
 
 /**** Attribute ****/
-// attribute_declare: (VAL | VAR) names_type_list initialization SEMI;					// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
+// Val/Var $?My1stCons, $?My2ndCons: Int (= 1 + 5, 2)?;
 attribute_declare: (VAL | VAR) identifier (CM identifier)*  COLON data_type SEMI
 				| {countName,countValue=0,0} (VAL | VAR) identifier (CM identifier {countName+=1})*  COLON data_type ASSIGN expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
 
 
 // fixed list attribute names
-names_type_list: attr_names COLON data_type;
 attr_names: (identifier CM attr_names | identifier);	
-identifier: ID | DOLLAR_ID;															// $?My1stCons, $?My2ndCons: Int
-
-
-initialization: ASSIGN exprlist | ;																// (= 1 + 5, 2)?
+identifier: ID | DOLLAR_ID;																// $?My1stCons, $?My2ndCons: Int
 exprlist: expr CM exprlist | expr;				
 
 /**** Method ****/
@@ -56,26 +52,25 @@ param: instance_attr_names COLON data_type;
 /**********************************************************************/
 /*							  Expression						   	  */
 /**********************************************************************/
-
-expr: expr1 CONCATE expr1 | expr1 COMPARE_STRING expr1 | expr1;				// +., ==. none
-expr1: expr2 EQUAL expr2 | expr2 NOT_EQUAL expr2 | expr2 LT expr2			// ==, !=, <, >, <=, >=  none
+expr: expr1 CONCATE expr1 | expr1 COMPARE_STRING expr1 | expr1;						// +., ==. none
+expr1: expr2 EQUAL expr2 | expr2 NOT_EQUAL expr2 | expr2 LT expr2					// ==, !=, <, >, <=, >=  none
 	| expr2 LTE expr2 | expr2 GT expr2 | expr2 GTE expr2 
 	| expr2;
-expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;							// &&, || left
-expr3: expr3 ADD expr4 | expr3 SUB expr4 | expr4;							// +, - left
-expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5;			// *, /, % left
-expr5: NOT expr5 | expr6;													// ! right
-expr6: SUB expr6 | expr7;													// - right
+expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;									// &&, || left
+expr3: expr3 ADD expr4 | expr3 SUB expr4 | expr4;									// +, - left
+expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5;					// *, /, % left
+expr5: NOT expr5 | expr6;															// ! right
+expr6: SUB expr6 | expr7;															// - right
 
-expr7: expr7 index_operators | expr8;										// [,] left
+expr7: expr7 index_operators | expr8;												// [,] left
 index_operators: LSB expr RSB | LSB expr RSB index_operators;
 
-expr8: expr8 DOT ID | expr8 DOT ID LB list_of_expr RB | expr9;				// . left
+expr8: expr8 DOT ID | expr8 DOT ID LB list_of_expr RB | expr9;						// . left
 
 expr9: ID TWOCOLON DOLLAR_ID | ID TWOCOLON DOLLAR_ID LB list_of_expr RB | expr10;	// :: none
 
 expr10: NEW ID LB list_of_expr RB | expr11;											// New right
-expr11: LB expr RB | ID | SELF | literal;					// method_call ????????? DOLLAR_ID ?????
+expr11: LB expr RB | ID | SELF | literal;											// method_call ????????? DOLLAR_ID ?????
 
 list_of_expr: exprlist | ;
 literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit ;
@@ -92,11 +87,9 @@ statement: declaration_statement
 		| method_invocation_statement
 		| block_statement;
 
-// declaration_statement: (VAL | VAR) instance_attr_names COLON data_type initialization SEMI;
 instance_attr_names: ID CM instance_attr_names | ID ;
 declaration_statement: (VAL | VAR) ID (CM ID)*  COLON data_type SEMI
 				| {countName,countValue=0,0} (VAL | VAR) ID (CM ID {countName+=1})*  COLON data_type ASSIGN expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
-											// a, b
 
 assignment_statement: lhs ASSIGN expr SEMI;
 lhs: ID | expr7;
@@ -207,9 +200,7 @@ LT: '<';
 LTE: '<=';
 COMPARE_STRING: '==.';
 CONCATE: '+.';
-// DOT_OP: DOT;
 TWOCOLON: '::';
-NEW_OP: NEW; // NEW_OP AND NEW IS THE SAME LEXEM.
 
 /**** SEPERATORS ****/
 LB: '(';
@@ -221,14 +212,12 @@ RSB: ']';
 SEMI: ';';
 COLON: ':';
 TWODOT: '..';
-DOT: '.'; // DOT_OP AND DOT IS THE SAME LEXEM.
+DOT: '.'; 
 CM: ',';
 
 /**** IDENTIFIERS ****/
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 DOLLAR_ID: '$'[a-zA-Z0-9_]+;
-
-
 
 
 /**** FRAGMENTS ****/
