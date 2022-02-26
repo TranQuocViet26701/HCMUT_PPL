@@ -1,0 +1,10 @@
+ 
+Class Test {
+        abc(){}
+        $abc(){}
+        abc(){}
+        print(){}
+        abc(){}
+        low2up(){}
+}
+                

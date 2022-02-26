@@ -54,25 +54,25 @@ param: instance_attr_names COLON data_type;
 /**********************************************************************/
 /*							  Expression						   	  */
 /**********************************************************************/
-expr: expr1 CONCATE expr1 | expr1 COMPARE_STRING expr1 | expr1;						// +., ==. none
-expr1: expr2 EQUAL expr2 | expr2 NOT_EQUAL expr2 | expr2 LT expr2					// ==, !=, <, >, <=, >=  none
+expr: expr1 CONCATE expr1 | expr1 COMPARE_STRING expr1 | expr1;						
+expr1: expr2 EQUAL expr2 | expr2 NOT_EQUAL expr2 | expr2 LT expr2					
 	| expr2 LTE expr2 | expr2 GT expr2 | expr2 GTE expr2 
 	| expr2; 
-expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;									// &&, || left
-expr3: expr3 ADD expr4 | expr3 SUB expr4 | expr4;								// +, - left
-expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5; 					// *, /, % left
-expr5: NOT expr5 | expr6;															// ! right
-expr6: SUB expr6 | expr7;															// - right
+expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;									
+expr3: expr3 ADD expr4 | expr3 SUB expr4 | expr4;								
+expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5; 			
+expr5: NOT expr5 | expr6;														
+expr6: SUB expr6 | expr7;														
 
-expr7: expr7 index_operators | expr8;	// ambigous											// [,] left
+expr7: expr7 index_operators | expr8;	
 index_operators: LSB expr RSB | LSB expr RSB index_operators; 
 
-expr8: expr8 DOT ID | expr8 DOT ID LB exprlist RB | expr9;						// . left
+expr8: expr8 DOT ID | expr8 DOT ID LB exprlist RB | expr9;						
 
-expr9: ID TWOCOLON DOLLAR_ID | ID TWOCOLON DOLLAR_ID LB exprlist RB | expr10; 	// :: none
+expr9: ID TWOCOLON DOLLAR_ID | ID TWOCOLON DOLLAR_ID LB exprlist RB | expr10; 	
 
-expr10: NEW ID LB exprlist RB | expr11;											// New right
-expr11: LB expr RB | ID | SELF | NULL | literal;											// method_call ????????? DOLLAR_ID ?????
+expr10: NEW ID LB exprlist RB | expr11;											
+expr11: LB expr RB | ID | SELF | literal;										
 
 exprlist: exprs | ; 
 literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit ; 
@@ -95,8 +95,7 @@ declaration_statement: (VAL | VAR) ID (CM ID)*  COLON data_type SEMI
 				| {countName,countValue=0,0} (VAL | VAR) ID (CM ID {countName+=1})*  COLON data_type ASSIGN expr (CM expr {countValue+=1})*  {countName==countValue}? SEMI;
 
 assignment_statement: lhs ASSIGN expr SEMI; 
-// lhs: ID | expr7;
-lhs: expr7; // should have ID ??? oke 
+lhs: expr7; 
 
 if_statement: IF LB expr RB block_statement
 			| IF LB expr RB block_statement else_statement
@@ -119,9 +118,11 @@ static_method_invocation: ID TWOCOLON DOLLAR_ID LB exprlist RB;
 
 block_statement: LP statementlist RP | LP RP; 
 statementlist: statement statementlist | statement; 
+
 /****************************************************************************/
 /*								Type										*/
 /****************************************************************************/
+
 data_type: primitive_type | arr_type | class_type; 
 primitive_type: INT | FLOAT | BOOLEAN | STRING; 
 

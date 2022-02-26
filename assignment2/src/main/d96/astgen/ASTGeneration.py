@@ -20,11 +20,9 @@ class ASTGeneration(D96Visitor):
     
     # memlist: member memlist | member;	
     def visitMemlist(self, ctx: D96Parser.MemlistContext):
-        if ctx.getChildCount == 2:
-            member = self.visit(ctx.member())
-            memlist = self.visit(ctx.memlist())
-            return member + memlist
-        return self.visit(ctx.member())
+        if ctx.getChildCount() == 1:
+            return self.visit(ctx.member())
+        return self.visit(ctx.member()) + self.visit(ctx.memlist()) 
     
     # member: attribute_declare | method_declare;
     def visitMember(self, ctx: D96Parser.MemberContext):
@@ -50,7 +48,7 @@ class ASTGeneration(D96Visitor):
             return list(map(lambda x: ConstDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [self.visit(x) for x in ctx.identifier()] # => list(identifier)
         typ = self.visit(ctx.data_type())
-        return list(map(lambda x: ConstDecl(x, typ)), ids)
+        return list(map(lambda x: ConstDecl(x, typ), ids))
     
     # mutable_declare: VAR identifier (CM identifier)*  COLON data_type SEMI
     #				| VAR identifier (CM identifier)*  COLON data_type ASSIGN expr (CM expr)* SEMI;
@@ -68,8 +66,6 @@ class ASTGeneration(D96Visitor):
     def visitIdentifier(self, ctx: D96Parser.IdentifierContext):
          return Id(ctx.getChild(0).getText())
     
-    #--------------METHODS-----------------------#
-    
     # method_declare: CONSTRUCTOR LB paramlist RB block_statement
 	# 			| CONSTRUCTOR LB RB block_statement
 	# 			| DESTRUCTOR LB RB block_statement
@@ -83,8 +79,8 @@ class ASTGeneration(D96Visitor):
         if ctx.DESTRUCTOR():
             return MethodDecl(Instance(), Id(ctx.DESTRUCTOR().getText()), [], self.visit(ctx.block_statement()))
         if ctx.paramlist():
-            return MethodDecl(Instance(), self.visit(ctx.identifier()), self.visit(ctx.paramlist()), self.visit(ctx.block_statement()))
-        return MethodDecl(Instance(), self.visit(ctx.identifier()), [], self.visit(ctx.block_statement()))
+            return MethodDecl(Static() if '$' in self.visit(ctx.identifier()).name else Instance(), self.visit(ctx.identifier()), self.visit(ctx.paramlist()), self.visit(ctx.block_statement()))
+        return MethodDecl(Static() if '$' in self.visit(ctx.identifier()).name else Instance(), self.visit(ctx.identifier()), [], self.visit(ctx.block_statement()))
     
     # paramlist: param SEMI paramlist | param; => list(Vardecl)
     def visitParamlist(self, ctx: D96Parser.ParamlistContext):
@@ -119,23 +115,8 @@ class ASTGeneration(D96Visitor):
 	# 	| block_statement;
     def visitStatement(self, ctx: D96Parser.StatementContext):
         if ctx.declaration_statement():
-            return self.visit(ctx.declaration_statement())
-        elif ctx.assignment_statement():
-            return self.visit(ctx.assignment_statement())
-        elif ctx.if_statement():
-            return self.visit(ctx.if_statement())
-        elif ctx.for_statement():
-            return self.visit(ctx.for_statement())
-        elif ctx.break_statement():
-            return self.visit(ctx.break_statement())
-        elif ctx.continue_statement():
-            return self.visit(ctx.continue_statement())
-        elif ctx.return_statement():
-            return self.visit(ctx.return_statement())
-        elif ctx.method_invocation_statement():
-            return self.visit(ctx.method_invocation_statement())
-        else:
-            return self.visit(ctx.block_statement())
+            return self.visit(ctx.getChild(0))
+        return [self.visit(ctx.getChild(0))]
         
     # declaration_statement: (VAL | VAR) ID (CM ID)*  COLON data_type SEMI
 	# 			| (VAL | VAR) ID (CM ID)*  COLON data_type ASSIGN expr (CM expr)* SEMI;
@@ -145,9 +126,9 @@ class ASTGeneration(D96Visitor):
             exprs = [self.visit(x) for x in ctx.expr()] # => list(expr)
             typ = self.visit(ctx.data_type())
             if ctx.VAL(): # Constant
-                return list(map(lambda x: ConstDecl(x[0], typ, x[1])), zip(ids, exprs))
+                return list(map(lambda x: ConstDecl(x[0], typ, x[1]), zip(ids, exprs)))
             else: # Variable
-                return list(map(lambda x: VarDecl(x[0], typ, x[1])), zip(ids, exprs))
+                return list(map(lambda x: VarDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [Id(x.getText()) for x in ctx.ID()] # => list(Id())
         typ = self.visit(ctx.data_type())
         if ctx.VAL(): # Constant
@@ -193,7 +174,7 @@ class ASTGeneration(D96Visitor):
     def visitFor_statement(self, ctx: D96Parser.For_statementContext):
         if ctx.BY():
             return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), self.visit(ctx.expr(2)), self.visit(ctx.block_statement()))
-        return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), self.visit(ctx.block_statement()))
+        return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), IntLiteral(1), self.visit(ctx.block_statement()))
     
     # break_statement: BREAK SEMI;
     def visitBreak_statement(self, ctx: D96Parser.Break_statementContext):
@@ -205,9 +186,9 @@ class ASTGeneration(D96Visitor):
     
     # return_statement: RETURN SEMI | RETURN expr SEMI;
     def visitReturn_statement(self, ctx: D96Parser.Return_statementContext):
-        if ctx.getChildCount() == 2:
-            return Return()
-        return Return(self.visit(ctx.expr()))
+        if ctx.expr():
+            return Return(self.visit(ctx.expr()))
+        return Return()
     
     # method_invocation_statement: (instance_method_invocation | static_method_invocation ) SEMI;
     def visitMethod_invocation_statement(self, ctx: D96Parser.Method_invocation_statementContext):
@@ -223,15 +204,15 @@ class ASTGeneration(D96Visitor):
     
     # block_statement: LP statementlist RP | LP RP;
     def visitBlock_statement(self, ctx: D96Parser.Block_statementContext):
-        if ctx.getChildCount() == 2:
-            return Block([])
-        return Block(self.visit(ctx.statementlist()))
+        if ctx.statementlist():
+            return Block(self.visit(ctx.statementlist()))
+        return Block([])
     
     # statementlist: statement statementlist | statement;
     def visitStatementlist(self, ctx: D96Parser.StatementlistContext):
         if ctx.getChildCount() == 1:
-            return [self.visit(ctx.statement())]
-        return [self.visit(ctx.statement())] + self.visit(ctx.statementlist())
+            return self.visit(ctx.statement())
+        return self.visit(ctx.statement()) + self.visit(ctx.statementlist())
     
     #**********************************************************************#
     #*							  Expression						   	  *#
@@ -241,15 +222,9 @@ class ASTGeneration(D96Visitor):
     def visitExpr(self, ctx: D96Parser.ExprContext):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr1(0))
-        
         left = self.visit(ctx.expr1(0))
         right = self.visit(ctx.expr1(1))
-        
-        if ctx.CONCATE():
-            op = ctx.CONCATE().getText()
-        else:
-            op = ctx.COMPARE_STRING().getText()
-            
+        op = ctx.getChild(1).getText()
         return BinaryOp(op, left, right)
       
     # expr1: expr2 EQUAL expr2 | expr2 NOT_EQUAL expr2 | expr2 LT expr2
@@ -258,70 +233,36 @@ class ASTGeneration(D96Visitor):
     def visitExpr1(self, ctx: D96Parser.Expr1Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr2(0))  
-
         left = self.visit(ctx.expr2(0))
         right = self.visit(ctx.expr2(1))  
-        
-        if ctx.EQUAL():
-            op = ctx.EQUAL().getText()
-        elif ctx.NOT_EQUAL():
-            op = ctx.NOT_EQUAL().getText()
-        elif ctx.LT():
-            op = ctx.LT().getText()
-        elif ctx.LTE():
-            op = ctx.LTE().getText()
-        elif ctx.GT():
-            op = ctx.GT().getText()
-        else:
-            op = ctx.GTE().getText()
-        
+        op = self.getChild(1).getText()
         return BinaryOp(op, left, right) 
     
     # expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;
     def visitExpr2(self, ctx: D96Parser.Expr2Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr3()) 
-
         left = self.visit(ctx.expr2())
         right = self.visit(ctx.expr3())  
-        
-        if ctx.AND():
-            op = ctx.AND().getText()
-        else:
-            op = ctx.OR().getText()
-        
+        op = ctx.getChild(1).getText()
         return BinaryOp(op, left, right)
     
     # expr3: expr3 ADD expr4 | expr3 SUB expr4 | expr4;
     def visitExpr3(self, ctx: D96Parser.Expr3Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr4()) 
-
         left = self.visit(ctx.expr3())
         right = self.visit(ctx.expr4())  
-        
-        if ctx.ADD():
-            op = ctx.ADD().getText()
-        else:
-            op = ctx.SUB().getText()
-        
+        op = ctx.getChild(1).getText()
         return BinaryOp(op, left, right)
     
     # expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5;
     def visitExpr4(self, ctx: D96Parser.Expr4Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr5()) 
-
         left = self.visit(ctx.expr4())
         right = self.visit(ctx.expr5())  
-        
-        if ctx.MUL():
-            op = ctx.MUL().getText()
-        elif ctx.DIV():
-            op = ctx.DIV().getText()
-        else:
-            op = ctx.MOD().getText()
-        
+        op = ctx.getChild(1).getText()
         return BinaryOp(op, left, right)
     
     # expr5: NOT expr5 | expr6;
@@ -340,7 +281,7 @@ class ASTGeneration(D96Visitor):
     def visitExpr7(self, ctx: D96Parser.Expr7Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr8())
-        return ArrayCell(self.visit(ctx.expr7()), self.visit(ctx.index_operators())) # use arraycell ???
+        return ArrayCell(self.visit(ctx.expr7()), self.visit(ctx.index_operators())) 
             
     # index_operators: LSB expr RSB | LSB expr RSB index_operators;
     def visitIndex_operators(self, ctx: D96Parser.Index_operatorsContext):
@@ -361,23 +302,21 @@ class ASTGeneration(D96Visitor):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr10())
         if ctx.getChildCount() == 3: 
-            return FieldAccess(self.visit(ctx.expr8()), Id(ctx.DOLLAR_ID().getText()))
-        return CallExpr(self.visit(ctx.expr8()), Id(ctx.DOLLAR_ID().getText()), self.visit(ctx.exprlist()) )
+            return FieldAccess(Id(ctx.ID().getText()), Id(ctx.DOLLAR_ID().getText()))
+        return CallExpr(Id(ctx.ID().getText()), Id(ctx.DOLLAR_ID().getText()), self.visit(ctx.exprlist()) )
     
     # expr10: NEW ID LB exprlist RB | expr11;
     def visitExpr10(self, ctx: D96Parser.Expr10Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr11())
-        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist()))
+        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist()) if self.visit(ctx.exprlist()) else NullLiteral()) # if empty exprlist => NullLiteral()
     
-    # expr11: LB expr RB | ID | SELF | NULL | literal;    // có thêm null literal
+    # expr11: LB expr RB | ID | SELF | literal;   
     def visitExpr11(self, ctx: D96Parser.Expr11Context):
         if ctx.ID():
             return Id(ctx.ID().getText())
         elif ctx.SELF():
             return SelfLiteral()
-        elif ctx.NULL():
-            return NullLiteral()
         elif ctx.literal():
             return self.visit(ctx.literal())
         return self.visit(ctx.expr())
@@ -400,11 +339,7 @@ class ASTGeneration(D96Visitor):
     
     # data_type: primitive_type | arr_type | class_type;
     def visitData_type(self, ctx: D96Parser.Data_typeContext):
-        if ctx.primitive_type():
-            return self.visit(ctx.primitive_type())
-        elif ctx.arr_type():
-            return self.visit(ctx.arr_type())
-        return self.visit(ctx.class_type())
+        return self.visit(ctx.getChild(0))
     
     # primitive_type: INT | FLOAT | BOOLEAN | STRING;
     def visitPrimitive_type(self, ctx: D96Parser.Primitive_typeContext):
@@ -422,16 +357,14 @@ class ASTGeneration(D96Visitor):
     
     # element_type: primitive_type | arr_type;
     def visitElement_type(self, ctx: D96Parser.Element_typeContext):
-        if ctx.primitive_type():
-            return self.visit(ctx.primitive_type())
-        return self.visit(ctx.arr_type())
+        return self.visit(ctx.getChild(0))
     
     # arr_size: INTLIT;	
     def visitArr_size(self, ctx: D96Parser.Arr_sizeContext):		
-        return int(ctx.INTLIT().getText())                      # should be IntLiteral ???										
+        return int(ctx.INTLIT().getText())                      										
         
     # class_type: ID; 
-    def visitClass_type(self, ctx: D96Parser.Class_typeContext):    # nên rút gọn ??? in element_type
+    def visitClass_type(self, ctx: D96Parser.Class_typeContext):    
         return ClassType(Id(ctx.ID().getText()))
     
     #****************************************************************************#

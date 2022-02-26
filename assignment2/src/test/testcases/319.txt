@@ -1,0 +1,7 @@
+ 
+Class Test {
+     a(abc : Int; xyz : Float){}
+        a(a : Array[Int, 5]){}
+}
+       
+                

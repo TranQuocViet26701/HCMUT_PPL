@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Test),[MethodDecl(Id(abc),Instance,[],Block([])),MethodDecl(Id($abc),Static,[],Block([])),MethodDecl(Id(abc),Instance,[],Block([])),MethodDecl(Id(print),Instance,[],Block([])),MethodDecl(Id(abc),Instance,[],Block([])),MethodDecl(Id(low2up),Instance,[],Block([]))])])

@@ -1,0 +1,10 @@
+ 
+Class Test {
+        square (x: Float)   ## function definition ##
+{
+    Var x : Float;
+    p = x * x ;
+    Return  p  ;
+}
+}
+                
