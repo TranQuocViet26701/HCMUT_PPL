@@ -1,0 +1,10 @@
+
+        Class Exa{
+            Var n: Int;
+            Var d: Array[Int, 10000000];
+            Double(){
+                Foreach (i In 1 .. (n + 1)){
+                    d[i] = i * i;
+                }
+            }
+        }

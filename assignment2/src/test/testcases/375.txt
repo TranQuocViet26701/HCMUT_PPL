@@ -1,0 +1,14 @@
+
+        Class Rectangle: Shape {
+            getArea(){
+            Return length*width;
+            }
+        }
+        Class Triangle: Shape {
+            x(){
+                Foreach (i In 1 .. 100 By 2) {
+                    io.writeIntLn(i);
+                    Intarray[i] = i + 1;
+                }
+            }
+        }

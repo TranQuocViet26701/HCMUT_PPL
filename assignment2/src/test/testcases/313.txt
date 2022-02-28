@@ -1,12 +1,7 @@
- 
-                Class Person {
-                        Val firstName, lastName: String; ## property ##
-                        Var age: Int;          ## property ##
-                        
-                        c(){
-                            s = a + b + c * d;
-                            d = a && b;
-                            e = !a;
-                        }
-                }
-                
+
+        Class A{
+            main(){
+               a[3+x.foo] = a[b[2]] + 3;
+               x.b[2] = x.m()[3];
+            }   
+        }

@@ -1,0 +1,21 @@
+
+        Class a{
+            findGCD(a,b: Int){
+                Var max,min: Int;
+                If(a>b){
+                    max=a;
+                    min=b;
+                }Else{
+                    max=b;
+                    min=a;
+                }
+                If(min==0){
+                    Return max;
+                }
+                Return a.findGCD(min,max % min);
+            }
+            findLCM(a,b: Int){
+                Return (a*b)/a.findGCD(a,b);
+            }
+        }
+        

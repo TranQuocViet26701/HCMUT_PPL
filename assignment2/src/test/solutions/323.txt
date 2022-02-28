@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Shape),[MethodDecl(Id(Shape),Instance,[param(Id(length),FloatType)],Block([ConstDecl(Id(a),IntType,None),AssignStmt(ArrayCell(Id(a),[ArrayCell(IntLit(2),[IntLit(3)])]),NewExpr(Id(s),[NullLiteral()]))]))])])

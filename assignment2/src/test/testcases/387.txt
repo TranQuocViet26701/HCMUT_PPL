@@ -1,0 +1,12 @@
+
+        Class Factor {
+            Factorial(n: Int){
+                If (n == 0) {Return 1;} 
+                Else {Return n * Self.Factorial(n - 1);}
+            }
+            Shape(length: Float){
+                Val a: Int;
+                a[2[3]] = New s();
+            }
+        }
+        

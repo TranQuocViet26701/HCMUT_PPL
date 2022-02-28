@@ -1,0 +1,7 @@
+
+        Class A{
+            Var $b: Int;
+            methodA() {
+                Var a: Int;
+                }
+            }

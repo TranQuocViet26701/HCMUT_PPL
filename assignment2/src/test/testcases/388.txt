@@ -1,0 +1,14 @@
+
+        Class x: vl {
+            ex() {
+                    If ((a || b) == False) {Break;}
+                    If (a > b){
+                        a = a - b; 
+                        }
+                    Else{
+                        b = b - a;
+                        }
+                    }
+                }
+            }
+        }

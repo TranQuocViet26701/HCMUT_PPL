@@ -1,0 +1,10 @@
+
+        Class x {
+            x() {
+                If (b < a[2][4*b]) {Return 0;}
+                Elseif (t >= 3) {
+                    c = a*b+c;
+                }
+                Else { Return a + 1; }
+            }
+        }

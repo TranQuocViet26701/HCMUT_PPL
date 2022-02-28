@@ -1,8 +1,7 @@
- 
-                    Class arr_test {
-                        Var arr: Array[Int, 5] = Array(1, 5, 7, 12);
-                        Var arr2: Array[Int, 3] = Array(!25, arr[0], (5/3)*10, (arr[2]/2)%2);
-                        Var arr3: Array[Array[Int, 3], 1] = Array(arr2);
-                        
-                        }
-                
+
+        Class s {
+            Contructor(a, b: Int){
+                Self.a = a;
+                Self.b = b;
+            }
+        }

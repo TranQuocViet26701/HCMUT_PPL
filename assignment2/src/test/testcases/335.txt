@@ -1,0 +1,12 @@
+
+        Class a {
+            b(c: Int){
+                Foreach (a In 0 .. c-1 By 2){
+                    a = c;
+                    Foreach (a In True .. bc){
+                        If(False) {Return;}
+                        Elseif(a) {Val x: Array[Array[String,5],5];}
+                    }
+                }
+            }
+        }

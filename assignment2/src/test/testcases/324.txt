@@ -1,0 +1,7 @@
+
+        Class Shape {
+            Shape(length: Float){
+                Val a: Int;
+                a[-2][3] = New s();
+            }
+        }

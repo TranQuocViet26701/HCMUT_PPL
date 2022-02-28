@@ -1,0 +1,9 @@
+
+        Class Frac {
+            Var tu, mau: Int;
+            AddORMinus(a: Frac){
+                Var x: Int = Self.gcd(Self.mau,a.a.mau);
+                If (Op == "+") {Return (a.tu*Self.mau + a.mau*Self.tu)/x;}
+                Else {Return (a.tu*Self.mau - a.mau*Self.tu)/x;}
+            }
+        }

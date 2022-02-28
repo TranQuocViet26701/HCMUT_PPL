@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Sort),[MethodDecl(Id(main),Instance,[],Block([For(Id(i),IntLit(0),Id(n),IntLit(1),Block([VarDecl(Id(a),StringType),ConstDecl(Id(b),StringType,StringLit(abc))])])]))])])

@@ -1,0 +1,10 @@
+
+        Class Swap {
+            main() {
+                Val a, b: Int;
+                Val c: Int = a;
+                a = b;
+                b = c;
+                Return 0;
+            }
+        }

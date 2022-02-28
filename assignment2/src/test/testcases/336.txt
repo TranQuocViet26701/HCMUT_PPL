@@ -1,0 +1,7 @@
+
+        Class exc {
+            float (){
+                b.foo(Array(Array(4,5),2,3),t);
+                Return 1 != -5;
+        }
+        }

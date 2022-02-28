@@ -1,0 +1,13 @@
+
+        Class a{
+            search(arr: Array[Int,10000]; x: Int)
+            {
+                Foreach (i In 0 .. arr.length()){
+                    If (arr[i] == x){
+                        Return i;
+                    }
+                }
+                Return -1;
+            }
+        }
+        

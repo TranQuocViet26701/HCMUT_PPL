@@ -1,0 +1,11 @@
+
+        Class Age{
+            Var _age: Int;
+            Constructor (age: Int){
+                Self._age = age;
+            }
+            isOld() {
+                If(Self.age > 18) {Return True;}
+                Return False;
+                }
+            }

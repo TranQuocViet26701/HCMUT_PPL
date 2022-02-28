@@ -1,0 +1,15 @@
+
+        Class Rectangle{
+            Var Dai, Rong: Float;
+            Val $Goc: Array[Float, 4];
+            isSquare(){
+                If(Dai == Rong) {Return True;}
+                Else{
+                    Foreach (i In 1 .. 4){
+                        If(Goc[i] == 90) {Return True;}
+                    }
+                    Return False;
+                }
+            }
+            Destructor (){}
+            }

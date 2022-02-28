@@ -1,0 +1,12 @@
+
+Class mainFuncion {
+     insert () {
+        If (index == 0) {
+            root.setNext(n);
+            If (index == 0)
+           { n.setNext(root.getNext());}
+        Else 
+            { insert(index - 1, root.getNext(), n); }
+        }
+    }
+}

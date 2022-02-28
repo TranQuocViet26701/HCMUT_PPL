@@ -1,0 +1,13 @@
+
+        Class Person{
+            Var FName, LName: String;
+            Var age: Int;
+            
+            isOld() {
+                If(Self.age > 18) {Return True;}
+                Return False;
+                }
+            Name(){
+                Return (FName +. "\b") +. LName;
+            }
+            }

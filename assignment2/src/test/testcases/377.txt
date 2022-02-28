@@ -1,0 +1,7 @@
+
+        Class mainClass{
+            Var n: Int;
+            Main(){
+                Return 0;
+            }
+            }

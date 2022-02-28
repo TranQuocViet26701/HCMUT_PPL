@@ -1,0 +1,15 @@
+
+        Class gcd {
+            gcd(a,b: Int){
+                If ((a == 0) || (b == 0)){ Return a + b;}
+                Foreach (a In 1 .. (b - 1) ){
+                    If (a > b){
+                        a = a - b; 
+                        }
+                    Else{
+                        b = b - a;
+                        }
+                    }
+            Return a;
+            }
+        }

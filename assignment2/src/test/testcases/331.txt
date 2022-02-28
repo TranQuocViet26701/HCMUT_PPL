@@ -1,0 +1,10 @@
+
+        Class a: b {
+            main() {
+                Foreach (x In 1 .. z-1) {
+                    If (x % 2 == 0){
+                        s.add(x, x+1);
+                    }
+                }
+            }
+        }

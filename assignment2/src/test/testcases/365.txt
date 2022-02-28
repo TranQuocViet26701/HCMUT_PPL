@@ -1,0 +1,6 @@
+
+        Class Ex{
+            A(a,b : Int){
+                Return a.b(c.d(), 5, b.d()[1]);
+            }
+            }

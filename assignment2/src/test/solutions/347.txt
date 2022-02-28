@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Sum),[AttributeDecl(Instance,VarDecl(Id(a),ArrayType(100,IntType))),MethodDecl(Id(Sum),Instance,[],Block([For(Id(i),IntLit(1),IntLit(100),IntLit(1),Block([If(BinaryOp(==,BinaryOp(%,ArrayCell(Id(a),[Id(i)]),IntLit(2)),IntLit(0)),Block([AssignStmt(Id(Sum),BinaryOp(+,Id(Sum),ArrayCell(Id(a),[Id(i)])))]))])]),Return(Id(Sum))]))])])

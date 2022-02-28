@@ -1,0 +1,6 @@
+
+        Class Rectangle: Shape {
+            getArea(){
+                a = string[x] - b;
+        }
+        }

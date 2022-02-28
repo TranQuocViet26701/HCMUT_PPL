@@ -1,7 +1,6 @@
- 
-                    Class Rectangle: Shape {
-                        getArea(){
-                            Return Self.length * Self.width;
-                        }
-                    }
-                
+
+        Class s {
+            Var $a, b: Int;
+            a(x: Array[Int,5]){}
+            Destructor(){}
+        }

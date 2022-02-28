@@ -1,0 +1,10 @@
+
+        Class a{
+            gtc(n: Int){
+                If((n==0)||(n==1)){
+                    Return 1;
+                }
+                Return n*a.gtc(n-2);
+            }
+        }
+        

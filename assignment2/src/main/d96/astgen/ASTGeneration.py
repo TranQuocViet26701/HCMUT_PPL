@@ -1,7 +1,7 @@
 from D96Visitor import D96Visitor
 from D96Parser import D96Parser
 from AST import *
-from main.d96.utils.AST import *
+# from main.d96.utils.AST import *
 
 class ASTGeneration(D96Visitor):
     # program: classdecl+ EOF;
@@ -48,7 +48,7 @@ class ASTGeneration(D96Visitor):
             return list(map(lambda x: ConstDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [self.visit(x) for x in ctx.identifier()] # => list(identifier)
         typ = self.visit(ctx.data_type())
-        return list(map(lambda x: ConstDecl(x, typ), ids))
+        return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
     
     # mutable_declare: VAR identifier (CM identifier)*  COLON data_type SEMI
     #				| VAR identifier (CM identifier)*  COLON data_type ASSIGN expr (CM expr)* SEMI;
@@ -60,7 +60,7 @@ class ASTGeneration(D96Visitor):
             return list(map(lambda x: VarDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [self.visit(x) for x in ctx.identifier()] # => list(identifier)
         typ = self.visit(ctx.data_type())
-        return list(map(lambda x: VarDecl(x, typ), ids))
+        return list(map(lambda x: VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
 
     # identifier: ID | DOLLAR_ID;
     def visitIdentifier(self, ctx: D96Parser.IdentifierContext):
@@ -92,7 +92,7 @@ class ASTGeneration(D96Visitor):
     def visitParam(self, ctx: D96Parser.ParamContext): 
         instance_attr_names = self.visit(ctx.instance_attr_names())
         typ = self.visit(ctx.data_type())
-        return [VarDecl(x, typ) for x in instance_attr_names]
+        return [VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None) for x in instance_attr_names]
         
     # instance_attr_names: ID CM instance_attr_names | ID ; => list(Id)
     def visitInstance_attr_names(self, ctx: D96Parser.Instance_attr_namesContext):
@@ -132,9 +132,9 @@ class ASTGeneration(D96Visitor):
         ids = [Id(x.getText()) for x in ctx.ID()] # => list(Id())
         typ = self.visit(ctx.data_type())
         if ctx.VAL(): # Constant
-            return list(map(lambda x: ConstDecl(x, typ), ids))
+            return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
         else:   # Variable
-            return list(map(lambda x: VarDecl(x, typ), ids))
+            return list(map(lambda x: VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
         
     # assignment_statement: lhs ASSIGN expr SEMI;
     def visitAssignment_statement(self, ctx: D96Parser.Assignment_statementContext):
@@ -173,8 +173,8 @@ class ASTGeneration(D96Visitor):
 	# 		| FOREACH LB identifier IN expr TWODOT expr BY expr RB block_statement;
     def visitFor_statement(self, ctx: D96Parser.For_statementContext):
         if ctx.BY():
-            return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), self.visit(ctx.expr(2)), self.visit(ctx.block_statement()))
-        return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), IntLiteral(1), self.visit(ctx.block_statement()))
+            return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), self.visit(ctx.block_statement()), self.visit(ctx.expr(2)))
+        return For(self.visit(ctx.identifier()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)), self.visit(ctx.block_statement()), IntLiteral(1))
     
     # break_statement: BREAK SEMI;
     def visitBreak_statement(self, ctx: D96Parser.Break_statementContext):
@@ -235,7 +235,7 @@ class ASTGeneration(D96Visitor):
             return self.visit(ctx.expr2(0))  
         left = self.visit(ctx.expr2(0))
         right = self.visit(ctx.expr2(1))  
-        op = self.getChild(1).getText()
+        op = ctx.getChild(1).getText()
         return BinaryOp(op, left, right) 
     
     # expr2: expr2 AND expr3 | expr2 OR expr3 | expr3;
@@ -309,7 +309,7 @@ class ASTGeneration(D96Visitor):
     def visitExpr10(self, ctx: D96Parser.Expr10Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr11())
-        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist()) if self.visit(ctx.exprlist()) else NullLiteral()) # if empty exprlist => NullLiteral()
+        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist()) if self.visit(ctx.exprlist()) else [NullLiteral()]) # if empty exprlist => NullLiteral()
     
     # expr11: LB expr RB | ID | SELF | literal;   
     def visitExpr11(self, ctx: D96Parser.Expr11Context):
@@ -360,8 +360,15 @@ class ASTGeneration(D96Visitor):
         return self.visit(ctx.getChild(0))
     
     # arr_size: INTLIT;	
-    def visitArr_size(self, ctx: D96Parser.Arr_sizeContext):		
-        return int(ctx.INTLIT().getText())                      										
+    def visitArr_size(self, ctx: D96Parser.Arr_sizeContext):
+        intlit = ctx.INTLIT().getText().lower()
+        if "x" in intlit: 
+            return int(intlit, 16)
+        elif "b" in intlit:
+            return int(intlit, 2)
+        elif intlit[0] == "0":
+            return int("0o" + intlit[1:], 8)
+        return int(intlit)	
         
     # class_type: ID; 
     def visitClass_type(self, ctx: D96Parser.Class_typeContext):    
@@ -374,7 +381,16 @@ class ASTGeneration(D96Visitor):
     # literal: INTLIT | FLOATLIT | STRINGLIT | BOOLLIT | array_lit ; 
     def visitLiteral(self, ctx: D96Parser.LiteralContext):
         if ctx.INTLIT():
-            return IntLiteral(int(ctx.INTLIT().getText()))
+            intlit = ctx.INTLIT().getText().lower()
+            if intlit in ["0", "00" ,"0b0", "0x0"]:
+                return IntLiteral(0)
+            if "x" in intlit: 
+                return IntLiteral(int(intlit, 16))
+            elif "b" in intlit:
+                return IntLiteral(int(intlit, 2))
+            elif intlit[0] == "0":
+                return IntLiteral(int("0o" + intlit[1:], 8))
+            return IntLiteral(int(intlit))
         elif ctx.FLOATLIT():
             return FloatLiteral(float(ctx.FLOATLIT().getText()))
         elif ctx.STRINGLIT():

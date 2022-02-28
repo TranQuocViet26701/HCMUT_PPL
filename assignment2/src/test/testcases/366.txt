@@ -1,0 +1,9 @@
+
+        Class examp{
+            Var $a: Int;
+            a(){
+                Var f: Int;
+                f = a[2][3+x] + b;
+                Return;
+            }
+            }

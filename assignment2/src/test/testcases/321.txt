@@ -1,0 +1,10 @@
+
+        Class Shape {
+            Shape(length,width: Float){
+                a = Array(
+                    Array("Volvo", "22", "18"),
+                    Array("Saab", "5", "2"),
+                    Array("Land Rover", "17", "15")
+                );
+            }
+        }

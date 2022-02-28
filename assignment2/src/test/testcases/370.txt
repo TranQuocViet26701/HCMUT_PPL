@@ -1,0 +1,12 @@
+
+        Class Exa{
+            Var Rownum, Colnum: Int;
+            Var a: Array[Array[Int,100000],100000];
+            Cols(){
+                Foreach(i In 1 .. Rownum){
+                    Foreach(j In 1 .. Colnum){
+                        a[j][j] = i*j;
+                    }
+                }
+            }
+            }

@@ -1,0 +1,6 @@
+
+        Class Exa{
+            t(a,b: Int) {
+                arr = Array(a , a % b, a / b);
+                }
+            }

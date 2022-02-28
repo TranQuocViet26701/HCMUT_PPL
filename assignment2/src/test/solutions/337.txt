@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(exc),[MethodDecl(Id(float),Instance,[param(Id(a),ArrayType(2,StringType)),param(Id(t),BoolType)],Block([Call(Id(b),Id(foo),[Id(a),Id(t)]),Return(BinaryOp(!=,IntLit(1),UnaryOp(-,IntLit(5))))]))])])

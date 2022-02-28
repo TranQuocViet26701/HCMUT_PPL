@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(secondary),Id(main),[MethodDecl(Id(Constructor),Instance,[],Block([]))])])
+Program([ClassDecl(Id(a),[AttributeDecl(Instance,ConstDecl(Id(x),FloatType,FloatLit(1.0))),AttributeDecl(Instance,ConstDecl(Id(y),FloatType,BinaryOp(+,FloatLit(0.2),FloatLit(0.2))))])])

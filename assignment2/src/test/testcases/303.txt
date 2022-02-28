@@ -1,3 +1,4 @@
 Class Rectangle {
-                        Var length: Int;
-                    }
+            Var numOfShape: Int = 0;
+            Val immutableAttribute: Int = 0;
+            }

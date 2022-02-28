@@ -1,0 +1,6 @@
+
+        Class Exam{
+            g(a,b: Int) {
+                arr = Array(a1, a3, a4, a5);
+                }
+            }

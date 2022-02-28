@@ -1,0 +1,7 @@
+
+        Class Example {
+            check1(a,b,c: Boolean) {
+                a1 = a > (b > c);
+                a2 = ((a==b) != c)==123;
+            }
+        }

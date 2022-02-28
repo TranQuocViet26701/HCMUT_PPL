@@ -1,0 +1,12 @@
+
+        Class Sum{
+            Var a: Array[Int, 100];
+            Sum() {
+                Foreach(i In 1 .. 100){
+                    If (a[i] % 2 == 0) {
+                        Sum = Sum + a[i];
+                        }
+                    }
+                Return Sum;
+                }
+            }

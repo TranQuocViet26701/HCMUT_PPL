@@ -1,3 +1,5 @@
 Class Rectangle {
-                        Val $x: Int = 10;
-                    }
+            Val $numOfShape: Int = 0;
+            Val immutableAttribute: Int = 0;
+            Var length, width: Int;
+            }

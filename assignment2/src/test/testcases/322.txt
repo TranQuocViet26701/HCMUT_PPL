@@ -1,0 +1,7 @@
+
+        Class Shape {
+            Shape(){
+                a = "xyz" +. "abc";
+                x = "100" + c + b + Array(a, True);
+            }
+        }

@@ -1,0 +1,6 @@
+
+        Class EX {
+            main(){
+                Return finish + 2;
+            }
+        }

@@ -1,0 +1,5 @@
+
+        Class x {
+                Var a: Int; 
+                Val b,c: Int = 1,2;
+        }

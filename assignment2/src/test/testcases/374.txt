@@ -1,0 +1,9 @@
+
+        Class Sort{
+            main() {
+                Foreach(i In 0 .. n) {
+                    Var a: String;
+                    Val b: String = "abc";
+                    }
+                }
+            }

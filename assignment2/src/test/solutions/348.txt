@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Count),[AttributeDecl(Instance,VarDecl(Id(a),ArrayType(100,IntType))),MethodDecl(Id(Count),Instance,[],Block([For(Id(i),IntLit(1),IntLit(100),IntLit(1),Block([If(BinaryOp(>=,ArrayCell(Id(a),[Id(i)]),IntLit(0)),Block([AssignStmt(Id(Count),BinaryOp(+,Id(Count),IntLit(1)))]))])]),Return(Id(Count))]))])])

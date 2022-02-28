@@ -1,0 +1,13 @@
+
+        Class HN {
+            Tower(n: Int; a,b,c: String ){
+                If (n==1) { Return;}
+                Self.Tower(n-1, a, c, b);
+                Self.Tower(1,a,b,c);
+                Self.Tower(n-1,b,a,c);
+            }
+            main(){
+               a[3+x.foo(2)] = a[b[2]] +3;
+               x.b[2] = x.m()[3];
+            } 
+        }

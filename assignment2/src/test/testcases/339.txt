@@ -1,0 +1,6 @@
+
+        Class a {
+            ForEx() {
+                Foreach ( $b In 5 .. 25 By 2){}
+            }
+        }

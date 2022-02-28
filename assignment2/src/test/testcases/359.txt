@@ -1,0 +1,7 @@
+
+        Class Fibo{
+            Fibo(n: Int){
+                If ((n == 1) || (n == 2)) {Return 1;}
+                Return Self.Fibo(n - 1) + Self.Fibo(n - 2);
+            }
+            }

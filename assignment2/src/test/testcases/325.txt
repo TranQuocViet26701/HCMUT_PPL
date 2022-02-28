@@ -1,0 +1,9 @@
+
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = b + 1.2e12 + 0X1232_32_3;}
+                Else{
+                    Val a: Float = 1.2;
+                }
+            }
+        }

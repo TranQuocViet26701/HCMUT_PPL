@@ -1,0 +1,4 @@
+ Class secondary : main { 
+                        Constructor () {}
+                    }
+                

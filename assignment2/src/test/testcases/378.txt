@@ -1,0 +1,8 @@
+
+        Class mainClass {
+            Var n: Int;
+            Main(){
+                Var a: mainClass;
+                a = New mainClass();
+            }
+        }

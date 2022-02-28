@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(a),[MethodDecl(Id(decimalToBinary),Instance,[param(Id(decimal_number),IntType)],Block([If(BinaryOp(==,Id(decimal_number),IntLit(0)),Block([Return(IntLit(0))]),Block([Return(BinaryOp(+,BinaryOp(%,Id(decimal_number),IntLit(2)),BinaryOp(*,IntLit(10),CallExpr(Id(a),Id(decimalToBinary),[BinaryOp(/,Id(decimal_number),IntLit(2))]))))]))]))])])

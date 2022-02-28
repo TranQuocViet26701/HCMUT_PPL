@@ -1,0 +1,12 @@
+
+        Class Count{
+            Var a: Array[Int, 100];
+            Count() {
+                Foreach(i In 1 .. 100){
+                    If (a[i] >= 0) {
+                        Count = Count + 1;
+                        }
+                    }
+                Return Count;
+                }
+            }

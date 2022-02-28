@@ -1,0 +1,8 @@
+
+        Class Student {
+            Var SID, Diem: Int;
+            Val $AvgDiem: Float = Diem / 3;
+            DiemTB(){
+                Return Self.AvgDiem;
+            }
+        }

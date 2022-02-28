@@ -1,0 +1,4 @@
+
+        Class a {
+            Val x, y: Float = 1.0, 22.12e-1 + 0.2;
+        }

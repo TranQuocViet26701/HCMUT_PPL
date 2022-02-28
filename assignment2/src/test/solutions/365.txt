@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Ex),[MethodDecl(Id(A),Instance,[param(Id(a),IntType),param(Id(b),IntType)],Block([Return(CallExpr(Id(a),Id(b),[CallExpr(Id(c),Id(d),[]),IntLit(5),ArrayCell(CallExpr(Id(b),Id(d),[]),[IntLit(1)])]))]))])])

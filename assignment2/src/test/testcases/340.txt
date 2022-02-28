@@ -1,0 +1,11 @@
+
+        Class a {
+            ForEX() {
+                Foreach (a In 5 .. 25) {
+                    a = a + 1;
+                    Foreach ($a In 55 .. 100 By 5) {
+                        a.Pi = 1 + 2;
+                    }
+                }
+            }
+        }

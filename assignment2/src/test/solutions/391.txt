@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(a),[AttributeDecl(Instance,ConstDecl(Id(x),FloatType,FloatLit(1.0))),AttributeDecl(Instance,ConstDecl(Id(y),FloatType,BinaryOp(+,FloatLit(2.212),FloatLit(0.2))))])])

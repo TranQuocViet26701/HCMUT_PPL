@@ -1,0 +1,12 @@
+
+        Class Example {
+            Peri (n: Int){
+            Val r, s: Float;
+            Var a, b: Array[Int, 5];
+            ##list of statements##
+            r = 2.0;
+            s = r*r*this.myPI;
+            a[0] = s;
+            }   
+        }
+        

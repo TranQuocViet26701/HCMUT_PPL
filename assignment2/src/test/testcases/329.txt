@@ -1,0 +1,10 @@
+
+        Class Res {
+            Add(a, b: Int) {
+                Return a + b;
+            }
+            Add(a,b: Float) {
+                Var c,d: Float;
+                If ((a==c) && (c==d)) {Return c+d;}
+            }
+        }

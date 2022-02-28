@@ -1,0 +1,5 @@
+
+        Class s {
+            Val s: s;
+            Var $b: Float = -0.15;
+        }

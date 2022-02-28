@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Exa),[AttributeDecl(Instance,VarDecl(Id(n),IntType)),AttributeDecl(Instance,VarDecl(Id(d),ArrayType(10000000,IntType))),MethodDecl(Id(Double),Instance,[],Block([For(Id(i),IntLit(1),BinaryOp(+,Id(n),IntLit(1)),IntLit(1),Block([AssignStmt(ArrayCell(Id(d),[Id(i)]),BinaryOp(*,Id(i),Id(i)))])])]))])])

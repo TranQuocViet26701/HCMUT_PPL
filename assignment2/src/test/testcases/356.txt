@@ -1,0 +1,10 @@
+
+        Class Triangle{
+            Var a, b, c: Float;
+            iaRightTriangle(){
+                If (Self.a * Self.a == Self.b * Self.b + Self.c * Self.c){
+                    Return "IsRightTri";
+                }
+                Else {Return "IsNotRightTri";}
+            }
+            }

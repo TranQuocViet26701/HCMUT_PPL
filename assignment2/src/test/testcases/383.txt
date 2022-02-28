@@ -1,0 +1,6 @@
+
+        Class exc {
+            e(){
+                Return Self.e.b()[5];
+            }
+        }

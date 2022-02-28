@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(examp),[AttributeDecl(Static,VarDecl(Id($a),IntType)),MethodDecl(Id(a),Instance,[],Block([VarDecl(Id(f),IntType),AssignStmt(Id(f),BinaryOp(+,ArrayCell(ArrayCell(Id(a),[IntLit(2)]),[BinaryOp(+,IntLit(3),Id(x))]),Id(b))),Return()]))])])

@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(a),[MethodDecl(Id(ForEx),Instance,[],Block([For(Id($b),IntLit(5),IntLit(25),IntLit(2),Block([])])]))])])

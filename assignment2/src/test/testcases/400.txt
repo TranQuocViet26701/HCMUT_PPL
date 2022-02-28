@@ -1,1 +1,11 @@
-int main() {foo();}
+
+        Class checkExp {
+            check1(boolean, a,b,c : Boolean) {
+                a1 = (a > (b > c)) <= boolean;
+                a = 00;
+                b = 0707;
+                c = 0xAF12;
+                d = 0b10110101;
+               ## b2 = 00 + 0707 + 0xAF12 + 0b00110101;##
+            }
+        }

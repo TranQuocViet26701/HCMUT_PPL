@@ -1,0 +1,8 @@
+
+        Class x {     
+            Exam(){
+                Val a,b,__a__5: Array[Float, 5_5_56];
+                Return x[2] + a[x+1][3];
+            }
+
+        }

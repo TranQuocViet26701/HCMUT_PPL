@@ -1,9 +1,10 @@
- 
-Class Test {
-    main()
-        {
-            Foreach (i In 1 .. 100 By -1) {}
+
+        Class ABC : DEF {
+            main(){
+                s = Shape;
+                s = New Rectangle(3,4);
+                io.writeFloatLn(s.getArea());
+                s = New Triangle(3,4);
+                io.writeFloatLn(s.getArea());
+            }
         }
-}
-    
-                

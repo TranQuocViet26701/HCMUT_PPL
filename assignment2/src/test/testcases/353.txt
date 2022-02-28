@@ -1,0 +1,9 @@
+
+        Class A: B {
+            test() {
+                Foreach (i In a .. a+(a >=d)/0){
+                    If (a > f-1) {Break;} 
+                    Else {Continue;}
+                }
+            }
+        }

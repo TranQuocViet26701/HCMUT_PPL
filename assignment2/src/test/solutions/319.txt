@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(Test),[MethodDecl(Id(a),Instance,[param(Id(abc),IntType),param(Id(xyz),FloatType)],Block([])),MethodDecl(Id(a),Instance,[param(Id(a),ArrayType(5,IntType))],Block([]))])])
+Program([ClassDecl(Id(Example1),[MethodDecl(Id(factorial),Instance,[],Block([If(Id(flag),Block([Call(Id(io),Id(writeStrLn),[StringLit(Expression is true)])]),Block([Call(Id(io),Id(writeStrLn),[StringLit(Expression is false)])]))]))])])

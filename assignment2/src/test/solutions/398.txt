@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(a),[MethodDecl(Id(search),Instance,[param(Id(arr),ArrayType(10000,IntType)),param(Id(x),IntType)],Block([For(Id(i),IntLit(0),CallExpr(Id(arr),Id(length),[]),IntLit(1),Block([If(BinaryOp(==,ArrayCell(Id(arr),[Id(i)]),Id(x)),Block([Return(Id(i))]))])]),Return(UnaryOp(-,IntLit(1)))]))])])
