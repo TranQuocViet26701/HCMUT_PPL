@@ -1,14 +1,12 @@
 
-        Class x: vl {
-            ex() {
-                    If ((a || b) == False) {Break;}
-                    If (a > b){
-                        a = a - b; 
-                        }
-                    Else{
-                        b = b - a;
-                        }
-                    }
-                }
-            }
+Class smoke_run : MonoBehaviour{
+    Val speed : Int = 5;
+    Var counter : Float = 0;
+    Var scaleChange : Vector3;
+    $FixedUpdate()
+    {
+        transform.localScale = transform.localScale + scaleChange;
+        If (counter == 100) {
         }
+    }
+}

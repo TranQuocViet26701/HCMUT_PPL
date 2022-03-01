@@ -1,7 +1,3 @@
-
-        Class exc {
-            float (a: Array[String, 2]; t: Boolean){
-                b.foo(a, t);
-                Return 1 != -5;
-        }
-        }
+Class Rectangle {
+            Var numOfShape: Int = 0;
+            }

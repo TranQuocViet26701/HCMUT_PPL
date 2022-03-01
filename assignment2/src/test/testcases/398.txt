@@ -1,13 +1,8 @@
 
-        Class a{
-            search(arr: Array[Int,10000]; x: Int)
-            {
-                Foreach (i In 0 .. arr.length()){
-                    If (arr[i] == x){
-                        Return i;
-                    }
-                }
-                Return -1;
+        Class mainClass {
+            main() {
+                Val c3 : C3 = New C3("abc",c1, 123_000.e-1, 0XA123);
+                c3.checkName("abcd");
+                io.Print(c3.getName(0.e10));
             }
         }
-        

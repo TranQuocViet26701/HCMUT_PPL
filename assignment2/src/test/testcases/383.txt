@@ -1,6 +1,4 @@
 
-        Class exc {
-            e(){
-                Return Self.e.b()[5];
-            }
+        Class a : _class {
+            Var $x: Float = 1.03;
         }

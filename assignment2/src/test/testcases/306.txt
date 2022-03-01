@@ -1,8 +1,6 @@
-Class Shape {
-            $getNumOfShape() {
-                Return numOfShape;
-                }
-            getArea() {
-                Return Self.length * Self.width;
-                }
-            }
+ Class main { 
+                        Val My1stCons, My2ndCons: Int = 6, 2;
+                        Var $x, $y : Int = 0, 0;
+                 
+                    }
+                

@@ -1,15 +1,16 @@
 
-        Class x {
-            x() {
-                Foreach (i In 1 .. 100 By 2) {
-                    Out.printInt(i);
-                    If (i % 2 == 0) { Break; }
-                    Else { Continue; }
-                }
+    Class Subject {
+            
+            Subject(n : String; number: Int) { name=n; sLec=0;}
+            getNameSubject() { Return name; }
+            setNameSubject(n : String) { name = n; }
+            inputData() {
+               
+                io.print("---------------\n");
+                io.print("Input name of Subject: ");
+                io.fflush(stdin);
+                io.getline(n);
+                name = n;
             }
-            test() {
-                Foreach (i In a .. a+(a >=d)/0){
-                    If (a > f-1) {Break;}
-                }
-            }
-        }
+           
+    }

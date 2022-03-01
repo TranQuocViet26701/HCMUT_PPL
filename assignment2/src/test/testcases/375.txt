@@ -1,14 +1,13 @@
 
-        Class Rectangle: Shape {
-            getArea(){
-            Return length*width;
-            }
+Class makeSchool {
+        secondary(a : Int) {
+            io.fflush(stdin);
+            io.getline(lass);
+            If (lass != "-1") 
+                {School.updateClass(lass);}
+            Else { Break;}
         }
-        Class Triangle: Shape {
-            x(){
-                Foreach (i In 1 .. 100 By 2) {
-                    io.writeIntLn(i);
-                    Intarray[i] = i + 1;
-                }
-            }
-        }
+    setNext(next : Node) {
+        Self.next = next;
+    }
+}

@@ -1,12 +1,15 @@
 
-        Class Count{
-            Var a: Array[Int, 100];
-            Count() {
-                Foreach(i In 1 .. 100){
-                    If (a[i] >= 0) {
-                        Count = Count + 1;
-                        }
-                    }
-                Return Count;
-                }
+    Class PlayerMoment : MonoBehaviour{
+
+        Var speed : Int = 12;
+        Val  gravity : Float = -9.81* 10;
+        ## Update is called once per frame ##
+         Update()
+        {
+            isGrounded = Physics.CheckSphere(groundCheck::$position, groundDistance, groundMask);
+
+            If (isGrounded && velocity.y < 0) {
+                velocity.y = -2;
             }
+        }
+    }

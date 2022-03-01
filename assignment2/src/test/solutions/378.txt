@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(mainClass),[AttributeDecl(Instance,VarDecl(Id(n),IntType)),MethodDecl(Id(Main),Instance,[],Block([VarDecl(Id(a),ClassType(Id(mainClass)),NullLiteral()),AssignStmt(Id(a),NewExpr(Id(mainClass),[NullLiteral()]))]))])])
+Program([ClassDecl(Id(student),[AttributeDecl(Static,ConstDecl(Id($num_student),IntType,None)),AttributeDecl(Static,VarDecl(Id($name),StringType)),MethodDecl(Id(getSkill),Instance,[],Block([Return(Id(list_skill_special))])),MethodDecl(Id(getNumStudent),Instance,[],Block([Return(FieldAccess(Id(CLASS),Id($num_student)))]))])])

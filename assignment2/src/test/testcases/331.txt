@@ -1,10 +1,9 @@
 
-        Class a: b {
-            main() {
-                Foreach (x In 1 .. z-1) {
-                    If (x % 2 == 0){
-                        s.add(x, x+1);
-                    }
+        Class testData{
+            loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
+                Foreach (i In (a + c -d == f) .. a+(a >=d)/32) {
+                        If (a > f-1) {Out.print(10);} 
+                        Elseif (a <= 10) {Return Tester::$number;}
                 }
             }
         }

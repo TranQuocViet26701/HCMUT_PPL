@@ -1,12 +1,42 @@
 
-        Class Sum{
-            Var a: Array[Int, 100];
-            Sum() {
-                Foreach(i In 1 .. 100){
-                    If (a[i] % 2 == 0) {
-                        Sum = Sum + a[i];
-                        }
-                    }
-                Return Sum;
-                }
+    Class move {
+        
+
+        ## FIRE
+        Transform fire_point;
+        GameObject bullet_water;
+        GameObject bullet_mask;
+        AudioSource shoot_Audio;
+        float num_bullet = 1.;
+        float count_trigger = 0;
+        # special skill ##
+        
+
+        Val Heart : GameObject;
+        Val count_kira : Float = -1.0e12;
+         Update() {
+            If (Input.GetKeyDown("f"))  {
+                Self.changeState();
             }
+            
+        }
+         shootMask() {
+            Foreach ( i In 0 .. Num_bulle By -1) {
+                system.Instantiate(bullet_mask, fire_point.position, fire_point.rotation);  
+                shoot_Audio.Play(0);       
+            }
+        }
+        ## FUNCTION CONTROLL UFO AND EFFECT WHEN JUMPING ##
+         outSmoke() {
+            system.Instantiate(smoke_pre, smoke_point.position, smoke_point.rotation);
+        }
+         jumpUp(upSize : Float) {
+            system.transform.position = transform.position + New Vector3(0, upSize, 0);
+        }
+         dropDown() {
+            system.transform.position = transform.position + New Vector3(0, falling, 0);
+        }
+        GameOver() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+    }

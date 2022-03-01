@@ -1,10 +1,9 @@
 
-        Class a{
-            gtc(n: Int){
-                If((n==0)||(n==1)){
-                    Return 1;
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = 0b1000_0001_00 - 0XABCDEF + 052746757;}
+                Else{
+                    Val a: Float = 2_12414_5.e1;
                 }
-                Return n*a.gtc(n-2);
             }
         }
-        

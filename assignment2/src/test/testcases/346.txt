@@ -1,7 +1,6 @@
 
-        Class A{
-            Var $b: Int;
-            methodA() {
-                Var a: Int;
+Class Shape {
+            $getNumOfShape() {
+                Return A::$numOfShape;
                 }
             }

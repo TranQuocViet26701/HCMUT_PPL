@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(a),[MethodDecl(Id(ForEX),Instance,[],Block([For(Id(a),IntLit(5),IntLit(25),IntLit(1),Block([AssignStmt(Id(a),BinaryOp(+,Id(a),IntLit(1))),For(Id($a),IntLit(55),IntLit(100),IntLit(5),Block([AssignStmt(FieldAccess(Id(a),Id(Pi)),BinaryOp(+,IntLit(1),IntLit(2)))])])])])]))])])
+Program([ClassDecl(Id(mainClass),[MethodDecl(Id(main),Instance,[],Block([ConstDecl(Id(c3),ClassType(Id(C3)),NewExpr(Id(C3),[StringLit(abc),Id(c1)])),Call(Id(c3),Id(checkName),[StringLit(abcd)]),Call(Id(io),Id(Print),[CallExpr(Id(c3),Id(getName),[])])]))])])

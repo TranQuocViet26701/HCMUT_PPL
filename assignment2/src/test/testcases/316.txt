@@ -1,8 +1,14 @@
-
-        Class x {
-            x() {
-                If (b < a[2][4*b]) {}
-                Elseif (t >= 3) {c = 2;}
-                Else { Return a + 1; }
-            }
-        }
+ 
+Class Test {
+        main(arg : Array[Int, 5]){}
+        $goo (x : Array[Float, 5]) {
+    Val y : Array[Float, 10];
+    Val x : Array[Float, 10];
+    Val z : Array[Float, 10];
+    a.foo( z ) ;
+     a.foo( x ) ;
+      a.foo( y ) ;
+    Return y;
+}
+}
+                

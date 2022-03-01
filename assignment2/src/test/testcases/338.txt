@@ -1,21 +1,7 @@
 
-        Class Shape {
-            Val length,width: Int;
-            getArea(){ }
-            Shape(length,width: Float){
-                Self.length = length;
-                Self.width = width;
+        Class checkExp {
+            $_check1(a,b,c : Bolen) {
+                a1 = a > (b > c);
+                a2 = ((a==b)!=c)==123;
             }
         }
-
-        Class Rectangle: Shape {
-            getArea(){
-                Return Self.length * Self.width;
-            }
-        }
-        Class Triangle: Shape {
-            getArea(){
-                Return Self.length * Self.width / 2;
-            }
-        }
-        

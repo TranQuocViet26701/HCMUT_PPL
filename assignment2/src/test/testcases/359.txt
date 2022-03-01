@@ -1,7 +1,26 @@
 
-        Class Fibo{
-            Fibo(n: Int){
-                If ((n == 1) || (n == 2)) {Return 1;}
-                Return Self.Fibo(n - 1) + Self.Fibo(n - 2);
-            }
-            }
+Class Bank {
+    Val bankName : String;
+
+    doSomething()
+    {
+        ####
+    }
+} 
+Class Vietcombank : Bank{
+    Student(ID : Int; name: String) {
+            Self.studentID = ID;
+            Self.name = name;
+            numOfGrade = 0;
+            sumMark = 0;
+        }
+        insertGrade( nameOfCourse: String;  mark : Int) {
+            grades.setName(nameOfCourse);
+            grades.setMark(mark);
+            numOfGrade = numOfGrade+1;
+            sumMark = sumMark+ mark;
+        }
+        setName(name : String) { Self.nameOfCourse = name; }
+        setMark()  { Self.mark = mark;}
+        getMark()      { Return mark; }
+}

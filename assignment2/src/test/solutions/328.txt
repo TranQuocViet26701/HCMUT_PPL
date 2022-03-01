@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(x),Id(vl),[MethodDecl(Id(ex),Instance,[],Block([If(BinaryOp(==,BinaryOp(||,Id(a),Id(b)),BooleanLit(False)),Block([Break]))]))])])
+Program([ClassDecl(Id(testData),Id(PPL),[MethodDecl(Id(loopTest),Instance,[param(Id(a),IntType),param(Id(v),IntType),param(Id(c),FloatType),param(Id(d),FloatType),param(Id(a),BoolType),param(Id(s),BoolType),param(Id(str1),StringType),param(Id(str2),StringType),param(Id(r1),ClassType(Id(Room))),param(Id(r2),ClassType(Id(Room)))],Block([]))])])

@@ -1,9 +1,12 @@
 
-        Class HN {
-            Tower(n: Int; a,b,c: String ){
-                If (n==1) { Return;}
-                Self.Tower(n-1, a, c, b);
-                Self.Tower(1,a,b,c);
-                Self.Tower(n-1,b,a,c);
+        Class School {
+            cloneStudent(stu: Student){
+                Var clone : Student = "qwerty\n";
+                If (clone != nil) {
+                    Return clone;
+                }
+                Else {
+                    Return null;
+                }
             }
         }

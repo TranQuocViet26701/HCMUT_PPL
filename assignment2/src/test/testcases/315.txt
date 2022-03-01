@@ -1,7 +1,9 @@
-
-        Class x {
-            x() {
-                If (b < a[2][4*b]) {}
-                Elseif (t >= 3) {c = 2;}
-            }
+ 
+Class Test : TestParent{
+        abc__bc_ab(c : Int){
         }
+        print(a : String){
+            Return "hello" + a;
+        }
+}
+                

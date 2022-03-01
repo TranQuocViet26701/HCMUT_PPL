@@ -1,6 +1,9 @@
 
-        Class Ex{
-            A(a,b : Int){
-                Return a.b(c.d(), 5, b.d()[1]);
-            }
-            }
+Class mainFuncion {
+    insert () {
+        If (index == 0) 
+           { n.setNext(root.getNext());}
+        Else 
+           { Self.insert(index - 1, root.getNext(), n)[Math.ceil(10, 5)[iphone.get()]] = 1; }
+    }
+}

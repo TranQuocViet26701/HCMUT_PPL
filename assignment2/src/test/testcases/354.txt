@@ -1,6 +1,18 @@
 
-        Class Rectangle: Shape {
-            getArea(){
-                a = string[x] - b;
-        }
-        }
+Class mainClass {
+    main() {
+    io.print("\n=============================================================\n");
+    io.print("How many Classroom? ");
+    io.getInt(n);
+    sRoom = n;
+    Foreach (i In 1 .. 10 By -b+a) {
+        io.print("---------------------------------\n");
+        io.print("Input details for Classroom " +. ":\n");
+        io.print("Input name of Classroom: ");
+        io.fflush(stdin);
+        io.getline(name);
+        ClassR.setNameClassroom(name);
+    }
+}
+
+}

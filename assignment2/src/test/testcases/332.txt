@@ -1,10 +1,8 @@
 
-        Class Swap {
-            main() {
-                Val a, b: Int;
-                Val c: Int = a;
-                a = b;
-                b = c;
-                Return 0;
+        Class testData : PPL {
+            _LoopTest() {
+                Foreach (incre In -10 .. (22+a) By -(22+5)) {
+                    Return (a!=10 && !a);
+                }
             }
         }

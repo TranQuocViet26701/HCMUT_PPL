@@ -1,15 +1,17 @@
-
-        Class gcd {
-            gcd(a,b: Int){
-                If ((a == 0) || (b == 0)){ Return a + b;}
-                Foreach (a In 1 .. (b - 1) ){
-                    If (a > b){
-                        a = a - b; 
-                        }
-                    Else{
-                        b = b - a;
-                        }
-                    }
-            Return a;
-            }
-        }
+Class follow_mouse {
+    FixedUpdate () {
+        ## Get the Screen positions of the object ##
+        Val angle : Float = system.AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+        transform.rotation =  Quaternion.Euler(New Vector3(0,0,angle - 180));
+    }
+    changeState() {
+        checkRun = !checkRun;
+    }
+    ## FUNCTION FOR SKILL AND FIRE BULLET
+    create_button_skill() {
+        system.Instantiate(button_skill, new Vector3(-6.5,-4,0), transform.rotation);
+    }
+    float AngleBetweenTwoPoints(Vector3 a, b) {
+         return Math.Atan2(a.y - b.y, a.x - b.x) * Math.Rad2Deg;
+    }##
+}

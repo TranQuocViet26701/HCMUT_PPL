@@ -1,8 +1,17 @@
 
-        Class Factor {
-            Factorial(n: Int){
-                If (n == 0) {Return 1;} 
-                Else {Return n * Self.Factorial(n - 1);}
+        Class testFor : _parentTest {
+            testFor(i: Float) {
+                Foreach (i In 1 .. 10) {a=a+1;}
+                
+                Return _123;
+            }
+            $callFor() {
+                Foreach (i In (10-5) .. 10 By -5) {
+                    a = a + 1;
+                    Foreach (i In 1 .. 10 By (10-5)) {
+                        a.Pi[5] = 1 + 2;
+                        
+                    }
+                }
             }
         }
-        

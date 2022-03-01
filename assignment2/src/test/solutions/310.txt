@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(s),[MethodDecl(Id(checker),Instance,[param(Id(a),IntType),param(Id(b),IntType),param(Id(c),IntType),param(Id(d),FloatType)],Block([]))])])
+Program([ClassDecl(Id(Shape),[AttributeDecl(Static,ConstDecl(Id($numOfShape),IntType,BinaryOp(+,IntLit(5),IntLit(2)))),AttributeDecl(Instance,ConstDecl(Id(immutableAttribute),IntType,BinaryOp(/,BinaryOp(*,IntLit(10),IntLit(6)),IntLit(8))))])])

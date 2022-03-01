@@ -1,8 +1,11 @@
 
-        Class mainClass {
-            Var n: Int;
-            Main(){
-                Var a: mainClass;
-                a = New mainClass();
-            }
-        }
+Class student {
+    Val $num_student: Int;
+    Var $name : String;
+    getSkill() {
+        Return list_skill_special;
+    }
+    getNumStudent() {
+        Return CLASS::$num_student;
+    }
+}

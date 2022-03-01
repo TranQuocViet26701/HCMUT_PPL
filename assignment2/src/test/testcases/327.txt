@@ -1,13 +1,8 @@
 
-        Class Factor {
-            Factorial(n: Int){
-                If (n == 0) {Return 1;} 
-                Else {Return n * Self.Factorial(n - 1);}
-            }
-            main(){
-                Val x: Int;
-                ## x = io.readInt();
-                io.writeIntLn(self.factorial(x)); ##
+        Class testData : PPL {
+            $loopTest(a, v : Int; c, d: Float; a, s: Boolean; str1, str2 : String; r1, r2: Room) {
+            Foreach (i In (a + c -d == f) .. a+(a >=d)/32 By (10-5)) {
+                    If (a > f-1) {Break;}
+                }
             }
         }
-        

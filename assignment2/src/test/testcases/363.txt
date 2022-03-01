@@ -1,11 +1,10 @@
 
-        Class ExamAr{
-            Var a: Array[Array[Int, 3],3];
-            Sum(){
-                Foreach (i In 1 .. 3){
-                    Foreach (j In 1 .. 3){
-                        Sum = Sum + Self.a[i][j];
-                    }
+                Class a {
+                Var r, s: Int = 1, 0;
+                
+                main(){
+                    Val a, b: Float = 1.5E10, -10.;
                 }
-            }
+               
         }
+                

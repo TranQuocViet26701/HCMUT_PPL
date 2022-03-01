@@ -1,12 +1,6 @@
 
-        Class Truong{
-            Var Ten, Diachi: String;
-            Var Solop, SoHS: Int;
-            
-            TongHS(){
-                Foreach (i In 1 .. Self.Solop){
-                    Sum = Sum + (Lop[i]).SoHS;
-                }
-                Return Sum;
-            }
-            }
+Class tesster {
+    getCaculatorInt() {
+        arr1sd = Array(a + b, a - b, a * b, a % b, a / b);
+    }
+}

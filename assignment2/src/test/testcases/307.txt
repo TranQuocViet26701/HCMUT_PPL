@@ -1,3 +1,4 @@
-Class a {
-                Val x, y: Float = 1.0, 2e-1 + 0.2;
-            }
+ Class secondary : main { 
+                        Constructor () {}
+                    }
+                

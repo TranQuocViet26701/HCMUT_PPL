@@ -1,14 +1,11 @@
 
-        Class Lophoc{
-            Var Ten, Phong, SoHS: Int;
-            Var LopTruong: String;
-            Constructor (Ten, Phong, SoHD: Int){
-                Self.Ten = Ten;
+            Class Test{
+               Var ins: Int;
+               Var $static: Int;
+               
+               Test(){
+                  Var a: Int= Self.ins;
+                  Var b: Int= A::$static;
+               }
             }
-            SetLopTruong(){
-                Foreach (i In 1 .. Self.SoHS){
-                    If(HS[i] > Max) {Self.LopTruong = HS[i];}
-                }
-            }
-            Destructor (){}
-            }
+      

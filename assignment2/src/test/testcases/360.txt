@@ -1,12 +1,11 @@
 
-        Class Sothu{
-            Var Thuc, Ao: Int;
-            Constructor (Thuc, Ao: Int){
-                Self.Thuc = Thuc;
-                Self.Ao = Ao;
-            }
-            Add(a: Sothuc){
-                Self.Thuc = a.Thuc + Self.Thuc;
-                Self.Ao = a.Ao + Self.Ao;
-            }
-            }
+Class io {
+    $getInt() {
+        data = (system.checkIntLitForm(system.getIO())).toInt();
+        a = data;
+    }
+    getFloat(a : Float) {
+        data = (system.checkFloatLitForm(system.getIO())).toFloat();
+        a = data;
+    }    
+}

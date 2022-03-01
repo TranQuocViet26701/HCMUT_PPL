@@ -1,18 +1,6 @@
 
-        Class a{
-            binarySearch(arr: Array[Int, 10000]; l,r,x: Int)
-            {
-                If (r >= l) {
-                    Var mid: int = l + (r - l) / 2;
-                    If (arr[mid] == x){
-                        Return mid;
-                    }
-                    If (arr[mid] > x){
-                        Return a.binarySearch(arr, l, mid - 1, x);
-                    }
-                    Return a.binarySearch(arr, mid + 1, r, x);
-                }
-                Return -1;
+        Class checkExp {
+            check1(a,b,c : Boolean ) {
+                a1 = ((a > b) > c) == "True";
             }
         }
-        

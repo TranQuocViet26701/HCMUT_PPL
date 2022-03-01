@@ -1,13 +1,9 @@
 
-        Class HN {
-            Tower(n: Int; a,b,c: String ){
-                If (n==1) { Return;}
-                Self.Tower(n-1, a, c, b);
-                Self.Tower(1,a,b,c);
-                Self.Tower(n-1,b,a,c);
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = 0b0 + 0x0 + 0X1232_32_3;}
+                Else{
+                    Val a: Float = 1.2;
+                }
             }
-            main(){
-               a[3+x.foo(2)] = a[b[2]] +3;
-               x.b[2] = x.m()[3];
-            } 
         }

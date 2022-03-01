@@ -1,3 +1,1 @@
-Class Rectangle {
-            Var numOfShape: Int = 0;
-            }
+Class Rectangle : Shape {}

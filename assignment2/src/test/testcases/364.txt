@@ -1,11 +1,13 @@
 
-        Class Factor {
-            Factorial(n: Int){
-                If (n == 0) {Return 1;} 
-                Else {Return n * Self.Factorial(n - 1);}
-            }
-            main(){
-                Val x: Int;
-                io.writeIntLn(a.factorial(x));
-            }
-        }
+Class linked_list {
+    Val $node : start;
+    linked_list(node: s) {
+        Self.start = s;
+    }
+    $getNode(index: Int; node : n) {
+        If (index == 0) 
+            { Return n; }
+        Else
+           { Return Self.getNode(index - 1, n.getNext()); }
+    }
+}

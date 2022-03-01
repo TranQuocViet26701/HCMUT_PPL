@@ -1,3 +1,1 @@
-Class Rectangle {
-                    Var length: Int;
-                    }
+Class Program {}

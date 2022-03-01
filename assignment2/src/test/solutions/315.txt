@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(x),[MethodDecl(Id(x),Instance,[],Block([If(BinaryOp(<,Id(b),ArrayCell(ArrayCell(Id(a),[IntLit(2)]),[BinaryOp(*,IntLit(4),Id(b))])),Block([]),If(BinaryOp(>=,Id(t),IntLit(3)),Block([AssignStmt(Id(c),IntLit(2))])))]))])])
+Program([ClassDecl(Id(Test),Id(TestParent),[MethodDecl(Id(abc__bc_ab),Instance,[param(Id(c),IntType)],Block([])),MethodDecl(Id(print),Instance,[param(Id(a),StringType)],Block([Return(BinaryOp(+,StringLit(hello),Id(a)))]))])])

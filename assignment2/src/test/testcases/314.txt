@@ -1,6 +1,10 @@
-
-        Class x {
-            x() {
-                If (b < a[2][4*b]) {}
-            }
-        }
+ 
+Class Test {
+        abc(){}
+        $abc(){}
+        abc(){}
+        print(){}
+        abc(){}
+        low2up(){}
+}
+                

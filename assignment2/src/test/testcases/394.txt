@@ -1,13 +1,9 @@
 
-        Class a{
-            decimalToBinary(decimal_number: Int)
-            {
-                If (decimal_number == 0) {
-                    Return 0;
-                }
-                Else {
-                    Return decimal_number % 2 + 10 * a.decimalToBinary(decimal_number / 2);
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = 0B0 + 0b1010100 + 0b1010111111111111;}
+                Else{
+                    Val a: Float = 1.2;
                 }
             }
         }
-        

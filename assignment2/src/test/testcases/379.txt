@@ -1,5 +1,15 @@
 
-        Class s {
-            Val s: s;
-            Var $b: Float = -0.15;
-        }
+Class mainClass {
+ main() {
+  
+    io.print("Enter number of Students? ");
+    io.getInt(n);
+        ## GET INFORMATION ##
+        io.print("Input details for Student " +. ":\n");
+        students.insertGrade(nameMark, mark);
+    n = 1;
+    ## GET AVERAGE  ##
+    
+    Return 0;
+}
+}

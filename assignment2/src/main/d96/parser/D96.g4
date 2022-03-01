@@ -64,8 +64,9 @@ expr4: expr4 MUL expr5 | expr4 DIV expr5 | expr4 MOD expr5 | expr5;
 expr5: NOT expr5 | expr6;														
 expr6: SUB expr6 | expr7;														
 
-expr7: expr7 index_operators | expr8;	
-index_operators: LSB expr RSB | LSB expr RSB index_operators; 
+expr7: expr7 (LSB expr RSB)+ | expr8;	
+// expr7: expr7 index_operators | expr8;
+// index_operators: LSB expr RSB | LSB expr RSB index_operators; 
 
 expr8: expr8 DOT ID | expr8 DOT ID LB exprlist RB | expr9;						
 

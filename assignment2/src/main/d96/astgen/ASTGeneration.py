@@ -277,17 +277,18 @@ class ASTGeneration(D96Visitor):
             return self.visit(ctx.expr7())
         return UnaryOp(ctx.SUB().getText(), self.visit(ctx.expr6()))
     
-    # expr7: expr7 index_operators | expr8;
+    # expr7: expr7 (LSB expr RSB)+ | expr8;	
     def visitExpr7(self, ctx: D96Parser.Expr7Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr8())
-        return ArrayCell(self.visit(ctx.expr7()), self.visit(ctx.index_operators())) 
+        exprs = [self.visit(x) for x in ctx.expr()]
+        return ArrayCell(self.visit(ctx.expr7()), exprs) 
             
-    # index_operators: LSB expr RSB | LSB expr RSB index_operators;
-    def visitIndex_operators(self, ctx: D96Parser.Index_operatorsContext):
-        if ctx.getChildCount() == 3:
-            return [self.visit(ctx.expr())]
-        return [self.visit(ctx.expr())] + self.visit(ctx.index_operators())
+    # # index_operators: LSB expr RSB | LSB expr RSB index_operators;
+    # def visitIndex_operators(self, ctx: D96Parser.Index_operatorsContext):
+    #     if ctx.getChildCount() == 3:
+    #         return [self.visit(ctx.expr())]
+    #     return [self.visit(ctx.expr())] + self.visit(ctx.index_operators())
     
     # expr8: expr8 DOT ID | expr8 DOT ID LB exprlist RB | expr9;
     def visitExpr8(self, ctx: D96Parser.Expr8Context):
@@ -309,7 +310,7 @@ class ASTGeneration(D96Visitor):
     def visitExpr10(self, ctx: D96Parser.Expr10Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr11())
-        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist()) if self.visit(ctx.exprlist()) else [NullLiteral()]) # if empty exprlist => NullLiteral()
+        return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.exprlist())) 
     
     # expr11: LB expr RB | ID | SELF | literal;   
     def visitExpr11(self, ctx: D96Parser.Expr11Context):

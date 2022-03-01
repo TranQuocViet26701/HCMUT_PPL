@@ -1,2 +1,19 @@
 
-        Class A: B {}
+Class heap {
+ minWaitingTime(arr: Array[Int, 10]) {
+     curTime = 0;
+
+    Return totalWaitTime;   
+
+     
+            If ((curTime >= arrvalTime[i]) && ((serCos == -1) || (serTime > completeTime[i]))) {
+                    serCos = i;
+                    serTime = completeTime[i];
+            }
+            If ((min == -1) || (min > arrvalTime[i])) { min = arrvalTime[i]; }
+        Else    { curTime = min; }
+        If (n < 0) { Break; }
+    
+}
+
+}

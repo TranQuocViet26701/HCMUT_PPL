@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(ABC),Id(DEF),[MethodDecl(Id(main),Instance,[],Block([AssignStmt(Id(s),Id(Shape)),AssignStmt(Id(s),NewExpr(Id(Rectangle),[IntLit(3),IntLit(4)])),Call(Id(io),Id(writeFloatLn),[CallExpr(Id(s),Id(getArea),[])]),AssignStmt(Id(s),NewExpr(Id(Triangle),[IntLit(3),IntLit(4)])),Call(Id(io),Id(writeFloatLn),[CallExpr(Id(s),Id(getArea),[])])]))])])
+Program([ClassDecl(Id(Test),[MethodDecl(Id(main),Instance,[],Block([For(Id(i),IntLit(1),IntLit(100),UnaryOp(-,IntLit(1)),Block([])])]))])])

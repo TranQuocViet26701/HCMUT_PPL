@@ -1,12 +1,13 @@
-
-        Class Example {
-            Peri (n: Int){
-            Val r, s: Float;
-            Var a, b: Array[Int, 5];
-            ##list of statements##
-            r = 2.0;
-            s = r*r*this.myPI;
-            a[0] = s;
-            }   
+Class Res {
+            add (a,b : Array[Int, 1]) {
+                Val res : Array[Int, 6] = Array(a,b,res);
+                If (res.size() != 0) {
+                    Return res;
+                }
+                Else
+                    {Return Array();}
+            }
+            getA() {
+                Self.PrintA();
+            }
         }
-        

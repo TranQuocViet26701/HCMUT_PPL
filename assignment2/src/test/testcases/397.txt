@@ -1,13 +1,7 @@
 
-        Class a{
-           fibonaci(n: Int){
-               If(n<0){
-                   Return -1;
-               }Elseif((n==0)||(n==1)){
-                   Return n;
-               }Else{
-                   Return a.fibonaci(n-1)+a.fibonaci(n-2);
-               }
-           }
+        Class mainClass {
+            main() {
+                Var c1 : C1 = New C1();
+                Var c3 : C3 = New C3("abc" +. c1);
+            }
         }
-        

@@ -1,6 +1,14 @@
 
-        Class EX {
-            main(){
-                Return finish + 2;
+        Class BinExp : Exp {
+            Val op : String;
+            Val left, right : Float;
+            BinExp(op : String; l, r : Float) {
+                Self.op = op;
+                Self.r = r;
+            }
+            eval() {
+                If (op == "+") {Return left + right;}
+                Elseif (op == "-") {Return lef - right;}
+                Elseif (op == "/") {Return lef / right;}
             }
         }

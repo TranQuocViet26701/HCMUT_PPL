@@ -1,8 +1,22 @@
 
-        Class A: B {
-            test() {
-                Foreach (i In a .. a+(a >=d)/0){
-                    If (a > f-1) {Break;}
-                }
+    Class PlayerMoment : MonoBehaviour{
+        Var speed : Int= 12;
+        Val gravity : Float= -9.81 * 10;
+        Val jumpHeight: Float = 7;
+        Val velocity : Victory;
+        Var isGrounded : Boolean;
+        ## Update is called once per frame ##
+         Update()
+        {
+            move = transform.right * x + transform.forward * z;
+            ctrller.Move(move  * speed * Time.deltaTime);
+
+            If (Input.GetButtonDown("Jump") && isGrounded) {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
             }
+            io.getInt(num);
+                sLec = num;
+            velocity.y = velocity.y + gravity * Time.deltaTime;
+            ctrller.Move(velocity * Time.deltaTime);
         }
+    }

@@ -1,6 +1,17 @@
 
-        Class Exam{
-            g(a,b: Int) {
-                arr = Array(a1, a3, a4, a5);
-                }
-            }
+Class makeSchool {
+     main() {
+        Foreach (i In 10 .. 1 By 2) {
+            Val new_Class : String;
+            io.fflush(stdin);
+            io.getline(new_Class);
+            If (new_Class != "-1") 
+                { School.updateClass(new_Class); }
+            Else { Break; }
+        }
+    }
+     getNext() {
+        Return next;
+    }
+    
+}

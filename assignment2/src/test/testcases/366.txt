@@ -1,9 +1,6 @@
 
-        Class examp{
-            Var $a: Int;
-            a(){
-                Var f: Int;
-                f = a[2][3+x] + b;
-                Return;
-            }
-            }
+Class tesster {
+    getCaculatorInt() {
+        arr = Array(1, a - b, a * bb);
+    }
+}

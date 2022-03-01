@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(Sort),[AttributeDecl(Instance,VarDecl(Id(n),IntType)),AttributeDecl(Instance,VarDecl(Id(a),ArrayType(100000,IntType))),MethodDecl(Id(Sort),Instance,[],Block([Return(CallExpr(Id(a),Id(Sort),[Id(n)]))]))])])
+Program([ClassDecl(Id(x),[MethodDecl(Id(x),Instance,[],Block([If(BinaryOp(<,Id(b),ArrayCell(Id(a),[IntLit(2),BinaryOp(*,IntLit(4),Id(b))])),Block([]))]))])])

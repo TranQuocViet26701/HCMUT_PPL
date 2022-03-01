@@ -1,19 +1,18 @@
 
-        Class Person{
-            Var FName, LName: String;
-            Var age: Int;
-            Var Sex: String;
-            
-            isOld() {
-                If(Self.age > 18) {Return True;}
-                Return False;
-                }
-            Name(){
-                Return (FName +. "\b") +. LName;
-            }
-            
-            isMale(){
-                If(Self.Sex == "Male") {Return True;}
-                Return False;
-                }
-        }
+    ## LECTURER ##
+
+    Class Lecturer {
+           
+Lecturer(n : String)  { name=n; }
+            Lecturer(n : String; f : Faculty) { name = n; lecFaculty = f; }
+            getNameFacultyOfLecturer() { Return lecFaculty.getNameFaculty(); }
+            setNameFacultyOfLecturer(n : String) { lecFaculty.setNameFaculty(n); }
+    }
+
+    ## ClassROOM ##
+
+    Class Classroom {
+            Constructor(n : String) { nameRoom=n;}
+             getNameClassroom() { Return nameRoom; }
+             setNameClassroom(n : String) { nameRoom = n; }
+    }

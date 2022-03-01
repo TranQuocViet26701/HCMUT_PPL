@@ -1,6 +1,8 @@
- Class main { 
-                        Val My1stCons, My2ndCons: Int = 6, 2;
-                        Var $x, $y : Int = 0, 0;
-                 
-                    }
-                
+
+Class tesster {
+    $getCaculatorInt(a,b : Int) {
+        a132 = a + b;
+        a2 = a- b;
+        arr = Array(a1,a2,a3,a4,a5);
+    }
+}

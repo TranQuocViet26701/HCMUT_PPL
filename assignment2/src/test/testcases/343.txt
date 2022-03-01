@@ -1,8 +1,8 @@
 
-        Class AddFrac {
-            Var tu, mau: Int;
-            Add(a: AddFrac){
-                Var x: Int = Self.gcd(Self.mau,a.a.mau);
-                Return (a.tu*Self.mau + a.mau*Self.tu)/x;
-            }
+Class skill_check {
+    FixedUpdate()
+    {
+        If (Input.GetKeyDown("s")) {
         }
+    }
+}

@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(exc),[MethodDecl(Id(e),Instance,[],Block([Return(ArrayCell(CallExpr(FieldAccess(Self(),Id(e)),Id(b),[]),[IntLit(5)]))]))])])
+Program([ClassDecl(Id(a),Id(_class),[AttributeDecl(Static,VarDecl(Id($x),FloatType,FloatLit(1.03)))])])

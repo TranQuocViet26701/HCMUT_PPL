@@ -1,21 +1,9 @@
 
-        Class a{
-            findGCD(a,b: Int){
-                Var max,min: Int;
-                If(a>b){
-                    max=a;
-                    min=b;
-                }Else{
-                    max=b;
-                    min=a;
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = 00 + 0124 + 0xAFFF;}
+                Else{
+                    Val a: Float = 1.2;
                 }
-                If(min==0){
-                    Return max;
-                }
-                Return a.findGCD(min,max % min);
-            }
-            findLCM(a,b: Int){
-                Return (a*b)/a.findGCD(a,b);
             }
         }
-        

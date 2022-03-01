@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(s),[AttributeDecl(Instance,ConstDecl(Id(s),ClassType(Id(s)),NullLiteral())),AttributeDecl(Static,VarDecl(Id($b),FloatType,UnaryOp(-,FloatLit(0.15))))])])
+Program([ClassDecl(Id(mainClass),[MethodDecl(Id(main),Instance,[],Block([Call(Id(io),Id(print),[StringLit(Enter number of Students? )]),Call(Id(io),Id(getInt),[Id(n)]),Call(Id(io),Id(print),[BinaryOp(+.,StringLit(Input details for Student ),StringLit(:\n))]),Call(Id(students),Id(insertGrade),[Id(nameMark),Id(mark)]),AssignStmt(Id(n),IntLit(1)),Return(IntLit(0))]))])])

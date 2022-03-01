@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(x),[MethodDecl(Id(Exam),Instance,[],Block([ConstDecl(Id(a),ArrayType(5556,FloatType),None),ConstDecl(Id(b),ArrayType(5556,FloatType),None),ConstDecl(Id(__a__5),ArrayType(5556,FloatType),None),Return(BinaryOp(+,ArrayCell(Id(x),[IntLit(2)]),ArrayCell(ArrayCell(Id(a),[BinaryOp(+,Id(x),IntLit(1))]),[IntLit(3)])))]))])])
+Program([ClassDecl(Id(Grade),[MethodDecl(Id(Grade),Instance,[],Block([AssignStmt(Id(nameOfCourse),StringLit()),AssignStmt(Id(mark),IntLit(0))])),MethodDecl(Id(Grade),Instance,[],Block([ConstDecl(Id(num),IntType,IntLit(10))]))])])

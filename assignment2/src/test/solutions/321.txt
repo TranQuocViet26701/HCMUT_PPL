@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(Shape),[MethodDecl(Id(Shape),Instance,[param(Id(length),FloatType),param(Id(width),FloatType)],Block([AssignStmt(Id(a),[[StringLit(Volvo),StringLit(22),StringLit(18)],[StringLit(Saab),StringLit(5),StringLit(2)],[StringLit(Land Rover),StringLit(17),StringLit(15)]])]))])])
+Program([ClassDecl(Id(Test),[MethodDecl(Id(main),Instance,[],Block([For(Id(i),IntLit(1),BinaryOp(+,IntLit(5),IntLit(1)),IntLit(1),Block([Call(Id(IO),Id(printf),[Id(i)])])])]))])])

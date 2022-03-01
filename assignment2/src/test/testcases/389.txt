@@ -1,13 +1,21 @@
 
-        Class Res {
-            Add(a, b: Int) {
-                Return a + b;
+        Class UnExp : Exp {
+            Val op : String;
+            Val value : Float;
+            UnExp(op : String;value : Float) {
+                Self.value = value;
             }
-            Add(a,b: Float) {
-                Var c,d: Float;
-                If ((a==c) && (c==d)) {Return c+d;}
+            eval() {
+                If (op == "+") {Return value; }
+                Else {Return value * (-1);}
             }
-            methodA() {
-                Var a: Int;
-            }
+            create_skill() {
+        can_skill = false;
+        have_button = false;
+        system.Instantiate(water_skill, New Vector3(-10,0,0), transform::$rotation);  
+        skill_Audio.Play(0);   
+    }
+     shootWater() {
+        
+    }
         }

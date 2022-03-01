@@ -1,17 +1,9 @@
 
-        Class a{
-            bubbleSort(arr: Array[Int,1000]; len: Int){
-                Var i,j: Int;
-                Foreach (i In 0 .. len){
-                    Foreach (j In len-1 .. i){
-                        If(arr[j] < arr[j-1]){
-                            temp = arr[j];
-                            arr[j] = arr[j-1];
-                            arr[j-1] = temp;
-                        }
-                    }
+        Class Shape {
+            Shape(length: Float){
+                If (True) {a = 0B0 + 0 + 0b0 + 0x0 + 0X0 + 00;}
+                Else{
+                    Val a: Float = 1.2;
                 }
-                Return arr;
             }
         }
-        

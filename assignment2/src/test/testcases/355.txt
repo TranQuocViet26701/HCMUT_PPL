@@ -1,11 +1,14 @@
 
-        Class A: B {
-            test() {
-                Foreach (PPP In in[1]+123-1.002e+1 .. (1+boo[22])) {
-                        If (a == 2) {
-                            a = 1 == 2;
-                            Continue;
-                        }
-                    }
-            }
+Class display {
+    Val $dis_instance : Float;
+    Var txt : Text;
+    Start()
+    {
+        If (display::$dis_instance == null)  {
+            dis_instance = Self;
         }
+    }
+    $Display(str: String) {
+        txt.text = str;
+    }
+}

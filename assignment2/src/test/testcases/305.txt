@@ -1,5 +1,1 @@
-Class Shape {
-            Val $numOfShape: Int = 0;
-            Val immutableAttribute: Int = 0;
-            $getNumOfShape() {}
-            }
+Class secondary : main { }

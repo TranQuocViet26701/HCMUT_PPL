@@ -1,8 +1,43 @@
 
-        Class Student {
-            Var SID, Diem: Int;
-            Val $AvgDiem: Float = Diem / 3;
-            DiemTB(){
-                Return Self.AvgDiem;
-            }
+    Class control_victim {
+        Val victim_die :GameObject ;
+        Val eff :GameObject ;
+        Val speed_human : Float = -0.15;
+
+         Constructor()
+        {
+            transform.position = transform.position + New Vector3(speed_human, 0, 0);
         }
+         OnTriggerEnter2D(col : Collider2D) {  
+            If ((col.gameObject.tag == "bullet_mask") || (col.gameObject.tag == "bullet_water_skill")) 
+            {
+                system.Destroy(Self);
+                system.Instantiate(eff, transform.position, transform.rotation);
+                system.Instantiate(victim_die, transform.position, transform.rotation);
+            }
+            If (!checkRun)  {
+                ## UPDATE PLAYER'S HP ##
+                txt.text = myHP.ToString();
+                If ((transform.position.y > 6) || (transform.position.y < -6))  {Self.GameOver();}
+                ## CONTROLL JUMP AND DROP OF PLAYER ##
+                If (Input.GetButtonDown("Jump") && !isJump) {
+                    jumpAudio.Play(0);
+                    countJump = 4;
+                    isJump = true;
+                    counting = 3;
+                    Self.outSmoke();
+                    Self.jumpUp(jumping / 2);
+                }
+                Elseif (countJump != 0) {
+                    If (countJump > 3) { Self.jumpUp(jumping); }
+                    Else { Self.jumpUp(jumping / 3); }
+                }
+                Else {
+                    Self.dropDown();
+                    If (counting == 0) { isJump = False; }
+                }
+            }
+            If ((col.gameObject.tag == "bullet_water") || (col.gameObject.tag == "bullet_mask")) 
+            { system.Destroy(col.gameObject); }
+        }
+    }

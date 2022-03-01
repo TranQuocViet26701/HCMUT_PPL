@@ -1,7 +1,17 @@
 
-        Class mainClass{
-            Var n: Int;
-            Main(){
-                Return 0;
-            }
-            }
+Class heap {
+ minWaitingTime() {
+     curTime = 0;
+    Return totalWaitTime;   
+}
+ main() {
+    {
+         n = 3;
+        arrvalTime = Array();
+        completeTime = Array(3, 9, 6, 10, 8);
+
+        io.pr(this.minWaitingTime(n, arrvalTime, completeTime));
+    }
+    io.pr(endl);
+}
+}

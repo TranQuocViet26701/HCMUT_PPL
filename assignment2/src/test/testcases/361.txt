@@ -1,15 +1,9 @@
 
-        Class Sothu{
-            Var Thuc, Ao: Int;
-            Constructor (Thuc, Ao: Int){
-                Self.Thuc = Thuc;
-                Self.Ao = Ao;
-            }
-            Add(a: Sothuc){
-                Self.Thuc = a.Thuc + Self.Thuc;
-                Self.Ao = a.Ao + Self.Ao;
-            }
-            Print(){
-                Return ((Thuc +. " + ") +. Ao) +. "i";
-            }
-            }
+Class heap {
+minWaitingTime(n : Int;arrvalTime : Array[Int, 1]) {
+    Val curTime : Int = 0;
+    Var totalWaitTime : Int = 0;
+
+    Return totalWaitTime;   
+}
+}

@@ -1,12 +1,7 @@
-
-        Class Example1 {
-            factorial(){
-            If (flag){ 
-                io.writeStrLn("Expression is true");
-                }
-            Else{
-                io.writeStrLn("Expression is false");
-                }
-            }
-        }
-        
+ 
+Class Test {
+     a(abc : Int; xyz : Float){}
+        a(a : Array[Int, 5]){}
+}
+       
+                

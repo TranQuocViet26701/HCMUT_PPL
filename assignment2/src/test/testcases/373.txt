@@ -1,5 +1,10 @@
 
-        Class x {
-                Var a: Int; 
-                Val b,c: Int = 1,2;
+        Class XXX {
+            method(){
+                Foreach (x In 1 .. 100) {
+                    io.writeIntLn(i);
+                    Intarray[i] = i + 1;
+                }
+            }
         }
+        

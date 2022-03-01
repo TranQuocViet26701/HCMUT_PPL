@@ -1,8 +1,6 @@
 
-        Class Sort{
-            Var n: Int;
-            Var a: Array[Int, 100000];
-            Sort(){
-                Return a.Sort(n);
+        Class x {
+            x() {
+                If (b < a[2][4*b]) {}
             }
-            }
+        }

@@ -1,10 +1,30 @@
 
-        Class Triangle{
-            Var a, b, c: Float;
-            iaRightTriangle(){
-                If (Self.a * Self.a == Self.b * Self.b + Self.c * Self.c){
-                    Return "IsRightTri";
-                }
-                Else {Return "IsNotRightTri";}
-            }
-            }
+Class skill{
+    Val name : String = "";
+    skill(){
+        If (Self.name == "") 
+           { Self.name = "Skill";}
+    }
+    getName() {
+        Return Self.name;
+    }
+    displayData() {}
+}
+Class factory_skil{
+    $get_skill( i :all_skill ) {
+        If (i == all_skill.FireBall) 
+                {Return New FireBall();}
+        Elseif (i == all_skill.WaterHealing) 
+                {Return New WaterHealing();}
+        Elseif (i == all_skill.RockShield )
+                {Return New RockShield();}
+        Else
+                {Return New skill();}
+    }
+}
+Class WaterHealing : skill{
+    WaterHealing(){ Self.name = "WaterHealing";}
+    displayData() {
+        display.dis_instance.Display(Self.name);
+    }
+}

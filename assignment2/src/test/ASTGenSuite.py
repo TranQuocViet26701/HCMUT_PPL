@@ -924,7 +924,7 @@ Class WaterHealing : skill{
         display.dis_instance.Display(Self.name);
     }
 }"""
-        expect = "Program([ClassDecl(Id(skill),[AttributeDecl(Instance,ConstDecl(Id(name),StringType,StringLit())),MethodDecl(Id(skill),Instance,[],Block([If(BinaryOp(==,FieldAccess(Self(),Id(name)),StringLit()),Block([AssignStmt(FieldAccess(Self(),Id(name)),StringLit(Skill))]))])),MethodDecl(Id(getName),Instance,[],Block([Return(FieldAccess(Self(),Id(name)))])),MethodDecl(Id(displayData),Instance,[],Block([]))]),ClassDecl(Id(factory_skil),[MethodDecl(Id($get_skill),Static,[param(Id(i),ClassType(Id(all_skill)))],Block([If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(FireBall))),Block([Return(NewExpr(Id(FireBall),[NullLiteral()]))]),If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(WaterHealing))),Block([Return(NewExpr(Id(WaterHealing),[NullLiteral()]))]),If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(RockShield))),Block([Return(NewExpr(Id(RockShield),[NullLiteral()]))]),Block([Return(NewExpr(Id(skill),[NullLiteral()]))]))))]))]),ClassDecl(Id(WaterHealing),Id(skill),[MethodDecl(Id(WaterHealing),Instance,[],Block([AssignStmt(FieldAccess(Self(),Id(name)),StringLit(WaterHealing))])),MethodDecl(Id(displayData),Instance,[],Block([Call(FieldAccess(Id(display),Id(dis_instance)),Id(Display),[FieldAccess(Self(),Id(name))])]))])])"
+        expect = "Program([ClassDecl(Id(skill),[AttributeDecl(Instance,ConstDecl(Id(name),StringType,StringLit())),MethodDecl(Id(skill),Instance,[],Block([If(BinaryOp(==,FieldAccess(Self(),Id(name)),StringLit()),Block([AssignStmt(FieldAccess(Self(),Id(name)),StringLit(Skill))]))])),MethodDecl(Id(getName),Instance,[],Block([Return(FieldAccess(Self(),Id(name)))])),MethodDecl(Id(displayData),Instance,[],Block([]))]),ClassDecl(Id(factory_skil),[MethodDecl(Id($get_skill),Static,[param(Id(i),ClassType(Id(all_skill)))],Block([If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(FireBall))),Block([Return(NewExpr(Id(FireBall),[]))]),If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(WaterHealing))),Block([Return(NewExpr(Id(WaterHealing),[]))]),If(BinaryOp(==,Id(i),FieldAccess(Id(all_skill),Id(RockShield))),Block([Return(NewExpr(Id(RockShield),[]))]),Block([Return(NewExpr(Id(skill),[]))]))))]))]),ClassDecl(Id(WaterHealing),Id(skill),[MethodDecl(Id(WaterHealing),Instance,[],Block([AssignStmt(FieldAccess(Self(),Id(name)),StringLit(WaterHealing))])),MethodDecl(Id(displayData),Instance,[],Block([Call(FieldAccess(Id(display),Id(dis_instance)),Id(Display),[FieldAccess(Self(),Id(name))])]))])])"
         self.assertTrue(TestAST.test(input, expect, 356))
     
     def test57(self):
@@ -1147,7 +1147,7 @@ Class getStudent {
                 If (b < a[2][4*b]) {}
             }
         }"""
-        expect = "Program([ClassDecl(Id(x),[MethodDecl(Id(x),Instance,[],Block([If(BinaryOp(<,Id(b),ArrayCell(ArrayCell(Id(a),[IntLit(2)]),[BinaryOp(*,IntLit(4),Id(b))])),Block([]))]))])])"
+        expect = "Program([ClassDecl(Id(x),[MethodDecl(Id(x),Instance,[],Block([If(BinaryOp(<,Id(b),ArrayCell(Id(a),[IntLit(2),BinaryOp(*,IntLit(4),Id(b))])),Block([]))]))])])"
         self.assertTrue(TestAST.test(input,expect,371))
     def test72(self):
         input = """
@@ -1583,7 +1583,7 @@ Class smoke_run : MonoBehaviour{
                 Var c3 : C3 = New C3("abc" +. c1);
             }
         }"""
-        expect = "Program([ClassDecl(Id(mainClass),[MethodDecl(Id(main),Instance,[],Block([VarDecl(Id(c1),ClassType(Id(C1)),NewExpr(Id(C1),[NullLiteral()])),VarDecl(Id(c3),ClassType(Id(C3)),NewExpr(Id(C3),[BinaryOp(+.,StringLit(abc),Id(c1))]))]))])])"
+        expect = "Program([ClassDecl(Id(mainClass),[MethodDecl(Id(main),Instance,[],Block([VarDecl(Id(c1),ClassType(Id(C1)),NewExpr(Id(C1),[])),VarDecl(Id(c3),ClassType(Id(C3)),NewExpr(Id(C3),[BinaryOp(+.,StringLit(abc),Id(c1))]))]))])])"
         self.assertTrue(TestAST.test(input, expect, 397))
     def test98(self):
         input = """

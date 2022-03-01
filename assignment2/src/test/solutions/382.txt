@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(x),[MethodDecl(Id(Exam),Instance,[],Block([ConstDecl(Id(a),ArrayType(1,FloatType),None),Return(BinaryOp(+,ArrayCell(Id(x),[IntLit(2)]),ArrayCell(ArrayCell(Id(a),[BinaryOp(+,Id(x),IntLit(1))]),[IntLit(3)])))]))])])
+Program([ClassDecl(Id(Student),[AttributeDecl(Instance,ConstDecl(Id(studentID),IntType,None)),MethodDecl(Id(getAverage),Instance,[],Block([Return(BinaryOp(/,Id(sumMark),Id(numOfGrade)))]))])])

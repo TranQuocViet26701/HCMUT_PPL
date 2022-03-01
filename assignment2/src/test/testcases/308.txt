@@ -1,6 +1,9 @@
-
-        Class a {
-            main() {
-                Out.printInt(Shape::$numOfShape);
-                }
-        }
+ 
+                    Class Shape {
+                        Val $numOfShape: Int = 0;
+                        Val immutableAttribute: Int = 0;
+                        Var length, width: Int;
+                        
+                        $getNumOfShape() {}
+                        }
+                
