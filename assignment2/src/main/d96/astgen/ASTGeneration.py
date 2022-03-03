@@ -48,7 +48,7 @@ class ASTGeneration(D96Visitor):
             return list(map(lambda x: ConstDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [self.visit(x) for x in ctx.identifier()] # => list(identifier)
         typ = self.visit(ctx.data_type())
-        return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
+        return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if isinstance(typ, ClassType) else None), ids))
     
     # mutable_declare: VAR identifier (CM identifier)*  COLON data_type SEMI
     #				| VAR identifier (CM identifier)*  COLON data_type ASSIGN expr (CM expr)* SEMI;
@@ -60,7 +60,7 @@ class ASTGeneration(D96Visitor):
             return list(map(lambda x: VarDecl(x[0], typ, x[1]), zip(ids, exprs)))
         ids = [self.visit(x) for x in ctx.identifier()] # => list(identifier)
         typ = self.visit(ctx.data_type())
-        return list(map(lambda x: VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
+        return list(map(lambda x: VarDecl(x, typ, NullLiteral() if isinstance(typ, ClassType) else None), ids))
 
     # identifier: ID | DOLLAR_ID;
     def visitIdentifier(self, ctx: D96Parser.IdentifierContext):
@@ -92,7 +92,7 @@ class ASTGeneration(D96Visitor):
     def visitParam(self, ctx: D96Parser.ParamContext): 
         instance_attr_names = self.visit(ctx.instance_attr_names())
         typ = self.visit(ctx.data_type())
-        return [VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None) for x in instance_attr_names]
+        return [VarDecl(x, typ, NullLiteral() if isinstance(typ, ClassType) else None) for x in instance_attr_names]
         
     # instance_attr_names: ID CM instance_attr_names | ID ; => list(Id)
     def visitInstance_attr_names(self, ctx: D96Parser.Instance_attr_namesContext):
@@ -132,9 +132,9 @@ class ASTGeneration(D96Visitor):
         ids = [Id(x.getText()) for x in ctx.ID()] # => list(Id())
         typ = self.visit(ctx.data_type())
         if ctx.VAL(): # Constant
-            return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
+            return list(map(lambda x: ConstDecl(x, typ, NullLiteral() if isinstance(typ, ClassType) else None), ids))
         else:   # Variable
-            return list(map(lambda x: VarDecl(x, typ, NullLiteral() if typ.__str__()[0 : 9] == "ClassType" else None), ids))
+            return list(map(lambda x: VarDecl(x, typ, NullLiteral() if isinstance(typ, ClassType) else None), ids))
         
     # assignment_statement: lhs ASSIGN expr SEMI;
     def visitAssignment_statement(self, ctx: D96Parser.Assignment_statementContext):

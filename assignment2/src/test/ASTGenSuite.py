@@ -1621,4 +1621,4 @@ Class smoke_run : MonoBehaviour{
         }"""
         expect = "Program([ClassDecl(Id(checkExp),[MethodDecl(Id(check1),Instance,[param(Id(boolean),BoolType),param(Id(a),BoolType),param(Id(b),BoolType),param(Id(c),BoolType)],Block([AssignStmt(Id(a1),BinaryOp(<=,BinaryOp(>,Id(a),BinaryOp(>,Id(b),Id(c))),Id(boolean))),AssignStmt(Id(a),IntLit(0)),AssignStmt(Id(b),IntLit(455)),AssignStmt(Id(c),IntLit(44818)),AssignStmt(Id(d),IntLit(181))]))])])"
         self.assertTrue(TestAST.test(input, expect, 400))
-    
+   
