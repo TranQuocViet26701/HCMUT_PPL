@@ -1,4 +1,4 @@
-# Generated from c:\Users\tranq\Desktop\HCMUT_PPL\assignment1\src\main\d96\parser\D96.g4 by ANTLR 4.8
+# Generated from d:\HCMUT_PPL\assignment1\src\main\d96\parser\D96.g4 by ANTLR 4.8
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
