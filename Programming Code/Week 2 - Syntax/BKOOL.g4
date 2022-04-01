@@ -68,9 +68,9 @@ exprlist: expr CM exprlist | expr;
 // expr: 'expr';
 // ------------------------------------------------------------
 // Question 4
-expr: term ADD expr | term;
-term: term SUB fact | fact;
-fact: fact MUL factor | fact DIV factor | factor;
+expr: term ADD expr | term;  // right associative
+term: fact SUB fact | fact;  // none associative
+fact: fact MUL factor | fact DIV factor | factor; // left associative
 factor: LP expr RP | INTNUMBER | FLOATNUMBER | func_call;
 
 //And some other rules for variable declaration, function declaration and other rules
