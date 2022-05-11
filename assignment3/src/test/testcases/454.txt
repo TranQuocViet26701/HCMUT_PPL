@@ -1,0 +1,14 @@
+
+        Class A{
+            Val $c: Int = 3;
+            
+            greet(){
+                Return "hello";
+            }
+        }
+        
+        Class Program {   
+            main(){
+                A::$c = 2;
+            }
+        }

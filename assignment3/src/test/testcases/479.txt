@@ -1,0 +1,11 @@
+
+        Class Parent{}
+        Class Program {
+            main(){
+                Var a: Int = Self.x();
+                Return;
+            }
+            x(){
+                Return "3";
+            }
+        }

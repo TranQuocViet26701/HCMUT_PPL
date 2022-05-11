@@ -1,0 +1,10 @@
+Class Program {
+            main() {
+                Var i: Int;
+                Foreach (i In 1 .. 100 By 2) {
+                    If (i % 2 == 0) {
+                        Continue; 
+                        }
+                }
+            }
+        }

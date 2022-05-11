@@ -1,0 +1,12 @@
+
+        Class A{
+            x(a:Int; b:Int){
+                Return b - a;
+            }
+        }
+        Class Program {   
+            main(){
+                Var c: A = New A();
+                Var a: Int = c.x(1,2);
+            }
+        }

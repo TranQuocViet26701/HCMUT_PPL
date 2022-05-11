@@ -1,0 +1,8 @@
+
+        Class Program { 
+        second()     {}
+            main(){
+                Var B: Array[Int,5];
+                Var a: Boolean = !3.2;
+            }
+        }

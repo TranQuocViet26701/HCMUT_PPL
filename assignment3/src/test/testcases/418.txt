@@ -1,0 +1,9 @@
+
+        Class Program{
+            Val x : Int = 10.0;
+            
+            main(){
+                Return;
+            }
+            
+            }

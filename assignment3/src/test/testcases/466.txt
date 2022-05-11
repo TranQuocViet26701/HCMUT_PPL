@@ -1,0 +1,12 @@
+
+        Class Program {   
+            x(a:Int; b:Int){
+                Return b + a;
+            }
+            y(){}
+            
+            main(){
+                Var B: Array[Int,5];
+                Var a: String =Self.x(1,2);
+            }
+        }

@@ -1,0 +1,14 @@
+
+        Class Test {}
+        Class Program {
+            x(){
+                Return "3";
+            }
+             
+             test(){}
+            main(){
+                Var a: String = Self.x();
+                Return;
+            }
+            
+        }

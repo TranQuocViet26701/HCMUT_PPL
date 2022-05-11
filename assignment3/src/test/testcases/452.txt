@@ -1,0 +1,14 @@
+
+        Class Program {
+            main(){
+                If(a) {Break;}
+            }
+        }
+        Class A{
+            Val $c: Int = 3;
+            
+            greet(){
+                Return "hello";
+            }
+        }
+        

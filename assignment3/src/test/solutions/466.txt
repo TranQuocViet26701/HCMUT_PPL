@@ -1,0 +1,1 @@
+Type Mismatch In Statement: VarDecl(Id(a),StringType,CallExpr(Self(),Id(x),[IntLit(1),IntLit(2)]))

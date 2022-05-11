@@ -1,0 +1,11 @@
+
+            Class B{
+                Val $a : String ="test";
+            }
+            Class Program{
+                main(){
+                    Var obj : B = New B();
+                    Var a : String = obj::$a;
+                }
+            }
+         

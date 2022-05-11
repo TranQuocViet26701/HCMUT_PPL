@@ -1,1 +1,13 @@
-int main() {}
+
+            Class B{
+                $test(a, b, c : Int){
+                }
+            }
+            
+            Class Program{
+                main(){
+                    B::$test(1.1,2,3);
+                    Return;
+                }
+            }
+         

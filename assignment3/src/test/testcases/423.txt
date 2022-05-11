@@ -1,0 +1,12 @@
+
+            Class B{
+                Val b : String = "b";
+            }
+            
+            Class Program : B{
+                Val $a : String = "test";
+                main(){
+                    Var b : String = Self.c;
+                }
+            }
+         

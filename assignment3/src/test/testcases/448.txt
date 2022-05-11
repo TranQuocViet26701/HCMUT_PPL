@@ -1,0 +1,4 @@
+ Class Program{
+            Var a : Int = Self.b;
+            main(){}
+        }

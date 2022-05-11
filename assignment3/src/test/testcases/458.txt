@@ -1,0 +1,13 @@
+
+        Class A{
+            Var $b: Int = 3;
+            x(a:Int; b:Int){
+                Return b - a + a;
+            }
+        }
+        Class Program {   
+            main(){
+                Var c: A = New A();
+                Var a: Int = c::$b;
+            }
+        }

@@ -1,0 +1,16 @@
+
+        
+        Class A{
+            x(){
+                Return "1251255";
+            }
+        }
+        Class Program {    
+        
+        clone()  {}
+            main(){
+                Var B: A = New A();
+                Var c: String = "2";
+                c = c +. B.x();
+            }
+        }

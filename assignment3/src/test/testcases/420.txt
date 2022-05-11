@@ -1,0 +1,8 @@
+
+            Class Program {
+                Var x : Array[Int , 3] = Array(2, 1.2, 10.0);
+                main(){
+                    Return;
+                }
+            }
+        

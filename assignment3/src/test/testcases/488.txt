@@ -1,0 +1,14 @@
+
+        Class Program {
+            Shape(left,right: Float){
+                Var a: Array[Array[String,3],3];
+                a = Array(
+                    Array("Volvo", 22, 18),
+                    Array("Saab", "5", "2"),
+                    Array("Land Rover", "17", "15")
+                );
+            }
+            
+            
+            main(){}
+        }

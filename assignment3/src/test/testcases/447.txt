@@ -1,0 +1,14 @@
+ Class Program{
+            main() {
+                Var i : Int;
+                Foreach (i In 1 .. 2){
+                    If ( i == 1) {
+                        Break;
+                    }
+                    Else {
+                        Continue;
+                    }
+                }
+                Continue;
+            }
+        }

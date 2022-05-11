@@ -1,0 +1,1 @@
+ Class A{} Class B : A{} Class C : A{} Class F{} Class A : F{}

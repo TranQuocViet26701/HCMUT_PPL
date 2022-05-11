@@ -1,0 +1,1 @@
+Type Mismatch In Statement: AssignStmt(Id(a),[[StringLit(Volvo),StringLit(22),StringLit(18)],[StringLit(Saab),StringLit(5),StringLit(2)],[StringLit(Land Rover),StringLit(17),StringLit(15)]])

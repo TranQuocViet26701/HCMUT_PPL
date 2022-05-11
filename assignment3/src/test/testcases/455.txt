@@ -1,0 +1,13 @@
+
+        Class A{
+            Var $c: Int = 3;
+            test(){
+                Return;
+            }
+        }
+        
+        Class Program {   
+            main(){
+                Var a: Int = A::$b;
+            }
+        }

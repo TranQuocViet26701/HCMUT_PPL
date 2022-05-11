@@ -1,0 +1,12 @@
+
+        Class A{
+            Var $b: Int = 100;
+            x(a:Int; b:Int){
+                Return a / b + 20;
+            }
+        }
+        Class Program {   
+            main(){
+                Var a: Int = A::$b;
+            }
+        }

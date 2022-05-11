@@ -1,0 +1,17 @@
+
+            Class A {
+            }
+            Class Program : A{
+                Var a : A = New A();
+                main(){
+                    Var a : Int;
+                    Var b : Int = 1;
+                    If (b) {
+                        a = 1;
+                    } 
+                    Else {
+                        a = 2;
+                    }
+                }
+            }
+         

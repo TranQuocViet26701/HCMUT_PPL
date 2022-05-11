@@ -1,0 +1,8 @@
+
+        Class Program {     
+        
+        test(){} 
+            main(){
+                Var B: Array[Int,5] = Array(1,2);
+            }
+        }

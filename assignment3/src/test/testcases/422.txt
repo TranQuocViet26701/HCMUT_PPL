@@ -1,0 +1,10 @@
+
+            Class B{}
+            Class Program {
+                Var a : Int;
+                Val b : Int = a+1;
+                
+                main(){
+                }
+            }
+         

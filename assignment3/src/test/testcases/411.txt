@@ -1,0 +1,11 @@
+
+            Class B{}
+            Class Program {
+                main(){
+                    Var test : B = New B();
+                    test.access();
+                    
+                    Return;
+                }
+            }
+        

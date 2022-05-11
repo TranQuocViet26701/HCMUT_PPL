@@ -1,0 +1,9 @@
+
+        Class Program {    
+                test(){}
+          
+            main(){
+                Var B: Array[Int,5];
+                Var a: Int = 1.2 % 3;
+            }
+        }

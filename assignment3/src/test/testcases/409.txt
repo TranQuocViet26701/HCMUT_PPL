@@ -1,0 +1,18 @@
+
+            Class B{}
+            Class Program {
+                main(){
+                    {
+                        {
+                            {
+                                {
+                                    Val c : C;
+                                    
+                                }
+                            }
+                        }
+                    }
+                    Return;
+                }
+            }
+        

@@ -1,0 +1,13 @@
+
+           
+            Class Program{
+                main(){
+                    Var a : Array[Float, 4] = Array(1.5, 2.2, 3.10, 4.0);
+                    Var sum : Int = 0;
+                    Var i : Int;
+                    Foreach (i In 0 .. 3){
+                        sum = "5" + a[i];
+                    }
+                }
+            }
+         

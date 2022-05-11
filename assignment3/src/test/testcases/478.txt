@@ -1,0 +1,11 @@
+
+        Class A{
+            x(){
+                Return "10";
+            }
+        }
+        Class Program {      
+            main(){
+                Var B: A = New A();
+            }
+        }

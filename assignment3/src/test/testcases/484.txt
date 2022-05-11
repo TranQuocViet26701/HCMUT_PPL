@@ -1,0 +1,8 @@
+
+        Class Parent {}
+        Class Program {
+            
+            main(){
+                Val a: Int;
+            }
+        }

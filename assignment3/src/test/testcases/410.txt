@@ -1,0 +1,11 @@
+
+            Class B{}
+            Class Program {
+                main(){
+                    Val a : Int = 0;
+                    a = 1;
+                    
+                    Return;
+                }
+            }
+        

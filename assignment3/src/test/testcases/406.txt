@@ -1,0 +1,15 @@
+
+            Class Program {
+                Val numOfShape : Int = 0;
+                Var immuAttribute : Int = 0;
+                test(n : Int){
+                    Var a : Int;
+                        Val y : Int = 5;
+                        Var a : Int = 6;
+                }
+                
+                main(){
+                    Return;
+                }
+            }
+        

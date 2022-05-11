@@ -1,0 +1,12 @@
+
+            Class Program {
+                getValue(){
+                    Return 10;
+                }
+                
+                main(){
+                    Var x: Int = Self.getValue();
+                    Return;
+                }
+            }
+        

@@ -1,0 +1,1 @@
+Type Mismatch In Statement: For(Id(i),FloatLit(1.0),FloatLit(100.5),IntLit(2),Block([Call(Id(Out),Id(printInt),[Id(i)])])])

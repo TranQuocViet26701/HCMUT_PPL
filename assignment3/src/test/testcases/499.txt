@@ -1,0 +1,10 @@
+
+        
+        Class Program {
+            
+                Val $numOfShape: Int = 2.5;
+                Val immutableAttribute: Int = 0;
+                Var length, width: Int;
+                main(){
+                }
+            }

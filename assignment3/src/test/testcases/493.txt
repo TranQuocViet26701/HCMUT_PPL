@@ -1,0 +1,13 @@
+Class Program {
+            printInt(){
+                Return;
+            }
+            
+            main() {
+                Var i: Int = 200;
+                Foreach (i In 1 .. 100 By 2) {
+                    Self.printInt();
+                }
+                Continue;
+            }
+        }

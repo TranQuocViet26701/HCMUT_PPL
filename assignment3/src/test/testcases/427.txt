@@ -1,0 +1,13 @@
+
+            Class A {
+                foo(){
+                    Return 1;
+                }
+            }
+            Class Program : A{
+                Var a : A = New A();
+               main(){
+                    a.foo();
+                }
+            }
+         

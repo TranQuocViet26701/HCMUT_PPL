@@ -1,0 +1,1 @@
+Type Mismatch In Statement: If(Id(b),Block([AssignStmt(Id(a),IntLit(1))]),Block([AssignStmt(Id(a),IntLit(2))]))

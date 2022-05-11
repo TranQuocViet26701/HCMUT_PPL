@@ -1,0 +1,14 @@
+
+            Class A {
+            }
+            Class Program : A{
+                Var a : A = New A();
+                main(){
+                    Var a : Int = 0;
+                    Var i : A = New A();
+                    Foreach (i In 1 .. 100){
+                        a = a + 1;
+                    }
+                }
+            }
+         

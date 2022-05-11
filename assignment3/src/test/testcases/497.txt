@@ -1,0 +1,8 @@
+Class Program {
+            main() {
+                Var i: Int;
+                Foreach (i In 1.0 .. 100.5 By 2) {
+                    Out.printInt(i);
+                }
+            }
+        }

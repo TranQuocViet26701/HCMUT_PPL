@@ -1,0 +1,12 @@
+
+        Class A{
+            x(a:Int; b:Int){
+                Return a*b;
+            }
+        }
+        Class Program {   
+            main(){
+                Var c: A = New A();
+                Var a: String = c.x(1,2);
+            }
+        }

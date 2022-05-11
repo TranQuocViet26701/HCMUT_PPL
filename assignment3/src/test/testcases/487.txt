@@ -1,0 +1,10 @@
+
+        Class Program {
+            Shape(left,right: Float){
+                Var a: Array[String, 3];
+                a = Array("Volvo", "22", "18");
+                Var b: String = a[1.5];
+            }
+
+            main(){}
+        }

@@ -1,0 +1,11 @@
+
+        Class A{}
+            Class Program{
+                main(){
+                    Var a : Float;
+                    a =5;
+                    
+                    Return;
+                }
+            }
+        

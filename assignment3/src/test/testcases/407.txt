@@ -1,0 +1,6 @@
+
+            Class B{}
+            Class A {
+                Val c : C;
+            }
+        

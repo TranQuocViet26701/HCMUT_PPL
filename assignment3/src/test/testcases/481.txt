@@ -1,0 +1,12 @@
+
+        
+        Class Parent{}
+        Class Program {
+            
+            main(){
+                Var b: Int;
+                b = 3;
+                Val a: Float = 5.0;
+                b = b + a;
+            }
+        }

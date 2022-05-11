@@ -1,0 +1,15 @@
+
+            Class Program {
+                Var a : Int = 3.5;
+                
+                getValue(){
+                    Return 10;
+                }
+                
+                main(){
+                    Var x: Int;
+                    x = Self.a;
+                    Return;
+                }
+            }
+        

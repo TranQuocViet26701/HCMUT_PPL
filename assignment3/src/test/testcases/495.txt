@@ -1,0 +1,9 @@
+ 
+        Class Program {
+            main() {
+                Var i: Int = 20;
+                Foreach (i In 1 .. 100 By 2) {
+                    Self.printInt(i);
+                }
+            }
+        }

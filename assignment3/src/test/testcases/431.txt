@@ -1,0 +1,10 @@
+
+            Class A {
+            }
+            Class Program{
+                main(){
+                    Var a : Array[Float, 2];
+                    a = Array(1, 2, 3);
+                }
+            }
+         

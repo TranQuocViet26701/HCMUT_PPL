@@ -1,0 +1,13 @@
+
+            Class B{
+                Var b : Int;
+            }
+            
+            Class Program : B{
+                Var a : Int;
+                main(){
+                    b=1;
+                    Return;
+                }
+            }
+        

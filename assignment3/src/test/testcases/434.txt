@@ -1,0 +1,19 @@
+
+            Class A {
+                Val value :Int = 5;
+            }
+            Class Program{
+                main(){
+                    Var a : Int = 5;
+                    Var b : A = New A();
+                    Var c : String;
+                    
+                    If (a < b) {
+                        c = "a";
+                    } 
+                    Else {
+                        c = "b";
+                    }
+                }
+            }
+         

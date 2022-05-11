@@ -1,0 +1,7 @@
+
+        Class Program {   
+            Var $b: Int = 3;
+            main(){
+                Var a: Int = A::$b;
+            }
+        }
