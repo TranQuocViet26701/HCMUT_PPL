@@ -1,6 +1,6 @@
 # Principles of Programming Languages
 
-Ho Chi Minh City University of Technology
+Semester 212 - Ho Chi Minh City University of Technology
 
 ## Table of Contents
 
